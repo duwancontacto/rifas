@@ -3,6 +3,7 @@ import RegistroSucessfull from "./RegistroSucessfull";
 import Tabs from "../Tab";
 import RegistroCuenta from "./RegistroCuenta";
 import CreateRifa from "./CreateRifa";
+import SuccessRaffle from "../Rifas/SuccessRaffle";
 
 export default function CrearRifaRegistro() {
   const tabs = [
@@ -13,6 +14,7 @@ export default function CrearRifaRegistro() {
     },
     { label: " Registro una AC", Component: RegistroCuenta },
     { label: " Crear rifa", Component: CreateRifa },
+    { label: " Rifa enviada", Component: SuccessRaffle, active: true },
   ];
 
   return (

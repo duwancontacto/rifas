@@ -15,8 +15,6 @@ import ResumeRaffle from "./ResumeRaffle";
 export default function ConfiguraRifa({ handleChangeRaffle }: any) {
   const { loading, associations } = useSelector(selectRaffleState);
 
-  console.log("Teasdads", associations);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

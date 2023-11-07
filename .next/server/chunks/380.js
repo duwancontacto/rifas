@@ -1,6 +1,6 @@
 "use strict";
-exports.id = 630;
-exports.ids = [630];
+exports.id = 380;
+exports.ids = [380];
 exports.modules = {
 
 /***/ 5616:
@@ -346,7 +346,6 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_mod
 
 function ConfiguraRifa({ handleChangeRaffle  }) {
     const { loading , associations  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_4__/* .selectRaffleState */ .VB);
-    console.log("Teasdads", associations);
     const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         const timeoutId = setTimeout(()=>{
@@ -468,178 +467,215 @@ __webpack_async_result__();
 
 /***/ }),
 
-/***/ 5122:
+/***/ 6968:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ ConfirmacionRifa)
-});
-
-// EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(997);
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(6689);
-;// CONCATENATED MODULE: ./src/assets/img/gal-microsite-apac2.jpg
-/* harmony default export */ const gal_microsite_apac2 = ({"src":"/_next/static/media/gal-microsite-apac2.4c45cf7b.jpg","height":1192,"width":1632,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAYACAMBIgACEQEDEQH/xAAnAAEBAAAAAAAAAAAAAAAAAAAAAgEBAAAAAAAAAAAAAAAAAAAAAv/aAAwDAQACEAMQAAAAoN//xAAeEAACAQMFAAAAAAAAAAAAAAABAxEAAgQFEhMikf/aAAgBAQABPwDWs9WAq3iSRcWiO0jZAPtf/8QAGREBAQEAAwAAAAAAAAAAAAAAAQIDABKR/9oACAECAQE/AM84sWpF70ePP//EABkRAAEFAAAAAAAAAAAAAAAAAAEAAgMRcv/aAAgBAwEBPwCQC25C/9k=","blurWidth":8,"blurHeight":6});
-// EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__(5675);
-var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
-// EXTERNAL MODULE: ./src/assets/img/logoRifas.svg
-var logoRifas = __webpack_require__(9037);
-// EXTERNAL MODULE: ./src/utils/ParseNumber.ts
-var ParseNumber = __webpack_require__(6843);
-// EXTERNAL MODULE: external "next/router"
-var router_ = __webpack_require__(1853);
-;// CONCATENATED MODULE: ./src/components/Rifas/ConfirmacionRifa.tsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ ConfirmacionRifa)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5675);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9037);
+/* harmony import */ var _utils_ParseNumber__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6843);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1853);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
 
 
-
-function ConfirmacionRifa({ raffle , resetRaffle  }) {
-    const router = (0,router_.useRouter)();
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("section", {
+function ConfirmacionRifa({ raffle , resetRaffle , handleSubmit  }) {
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_4__.useRouter)();
+    const preview = raffle?.image && raffle?.image[0] ? URL.createObjectURL(raffle?.image[0] || "") : null;
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
         className: " shadow  px-3",
         children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                 className: "title-confirmacionRifa mb-0 mt-3",
                 children: "\xa1Felicidades estas a un peque\xf1o paso!"
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                 className: "subtitle-confirmacionRifa m-0",
                 children: "Tu Rifa esta en proceso de aprobaci\xf3n:"
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                 className: "text-confirmacionRifa  col-11",
                 children: "Gracias por rifarte con nosotros, tu rifa esta en proceso de aprobaci\xf3n y en menos de 24 horas estar\xe1 lista para que la compartas con todos tus conocidos y juntos apoyemos a tu noble causa."
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                 className: "subtitle-confirmacionRifa ",
                 children: "Recibir\xe1s un correo electr\xf3nico una vez que tu causa haya sido aprobada y este en circulaci\xf3n."
             }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "d-flex row  m-0 justify-content-center p-3 rounded-2  ",
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "d-flex row  m-0 justify-content-center p-1 p-lg-3 rounded-2  ",
                 children: [
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        className: "col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 ",
-                        style: {
-                            maxWidth: "309px",
-                            width: "100%",
-                            height: "700px"
-                        },
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: gal_microsite_apac2,
-                                className: "w-100 h-25",
-                                alt: ""
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                className: "p-3",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("h6", {
-                                        className: "raffles-title-card  ",
-                                        children: raffle?.title || ""
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                        className: "card-text raffles-subtitle-card my-1",
-                                        children: raffle?.description || ""
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                        className: " textInformatinRifa  d-flex m-0 lh-sm",
-                                        children: [
-                                            "La meta es de:",
-                                            " ",
-                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                className: "fw-bold m-0",
-                                                children: [
-                                                    " $",
-                                                    (0,ParseNumber/* parseNumber */.p)(raffle?.price) || "",
-                                                    " MXN."
-                                                ]
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: "col-12 col-lg-12 shadow mt-4 mt-md-0 p-3",
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                            className: "p-3",
+                            children: [
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "d-block  justify-content-between d-md-flex  row col-12 col-lg-10 ",
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                            className: "col-12  col-lg-6  z-2 ",
+                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                                src: preview || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
+                                                alt: "fondoDescription",
+                                                className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
+                                                style: {
+                                                    maxHeight: "300px"
+                                                },
+                                                width: 160,
+                                                height: 160
                                             })
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        className: "d-flex textInformatinRifa  m-0 lh-sm",
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                className: " m-0 ",
-                                                children: "Costo por boleto: "
-                                            }),
-                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                className: "  fw-semibold m-0 ",
-                                                children: [
-                                                    "$",
-                                                    (0,ParseNumber/* parseNumber */.p)(raffle?.ticket_price) || ""
-                                                ]
-                                            })
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        className: "d-flex  textInformatinRifa m-0  ",
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                className: "m-0",
-                                                children: " Numero de boletos: "
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                className: " fw-semibold m-0 ",
-                                                children: raffle?.ticket_number || ""
-                                            })
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("h6", {
-                                        className: " textInformatinRifa ",
-                                        children: [
-                                            "Fecha de inicio:",
-                                            " ",
-                                            new Date(raffle?.start_date || "").toLocaleDateString()
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("h6", {
-                                        className: " textInformatinRifa my-1",
-                                        children: [
-                                            "Fecha de fin:",
-                                            " ",
-                                            new Date(raffle?.end_date || "").toLocaleDateString()
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("h6", {
-                                        className: "mt-3 informationPremio",
-                                        children: "\xbfCu\xe1l es el premio?"
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                        className: "text-informativopPremio",
-                                        children: raffle?.prize?.name || ""
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                        className: "text-informativopPremio",
-                                        children: raffle?.prize?.description || ""
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                        className: " col-12 col-md-8    ",
-                                        children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                            src: raffle?.prize?.image || logoRifas/* default */.Z,
-                                            alt: "donation",
-                                            className: "w-100 h-auto mx-0 ",
-                                            width: 100,
-                                            height: 100
+                                        }),
+                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                            className: "col-12 col-lg-6 mt-4 mt-md-0 text-rifaDescription mb-5 ",
+                                            children: [
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h6", {
+                                                    className: "raffles-title-card  ",
+                                                    children: raffle?.name || ""
+                                                }),
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                    className: "card-text raffles-subtitle-card my-1",
+                                                    children: raffle?.description || ""
+                                                }),
+                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                                    className: " textInformatinRifa  d-flex m-0 lh-sm",
+                                                    children: [
+                                                        "La meta es de:",
+                                                        " ",
+                                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                                            className: "fw-bold m-0 text-black",
+                                                            children: [
+                                                                "  $",
+                                                                (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_5__/* .parseNumber */ .p)(raffle?.price) || "",
+                                                                " MXN."
+                                                            ]
+                                                        })
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                                    className: "d-flex textInformatinRifa  m-0 lh-sm",
+                                                    children: [
+                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                            className: " m-0 ",
+                                                            children: "Costo por boleto: "
+                                                        }),
+                                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                                            className: "  fw-semibold m-0 ",
+                                                            children: [
+                                                                "$",
+                                                                (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_5__/* .parseNumber */ .p)(raffle?.ticket_price) || ""
+                                                            ]
+                                                        })
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                                    className: "d-flex  textInformatinRifa m-0  ",
+                                                    children: [
+                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                            className: "m-0",
+                                                            children: " Numero de boletos: "
+                                                        }),
+                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                            className: " fw-semibold m-0 ",
+                                                            children: raffle?.ticket_number || ""
+                                                        })
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h6", {
+                                                    className: " textInformatinRifa ",
+                                                    children: [
+                                                        "Fecha de inicio:",
+                                                        " ",
+                                                        new Date(raffle?.start_date || "").toLocaleDateString()
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h6", {
+                                                    className: " textInformatinRifa my-1",
+                                                    children: [
+                                                        "Fecha de fin:",
+                                                        " ",
+                                                        new Date(raffle?.end_date || "").toLocaleDateString()
+                                                    ]
+                                                })
+                                            ]
                                         })
-                                    })
-                                ]
-                            })
-                        ]
+                                    ]
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h5", {
+                                    className: "subtitle-rifDescription text-center text-lg-start  z-2 py-2 pt-5 ",
+                                    children: "\xbfCu\xe1l es la causa?"
+                                }),
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "d-block  justify-content-between d-md-flex  row col-12 col-lg-10 ",
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                            className: "col-12  col-lg-6  z-2 ",
+                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                                src: raffle?.cause?.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
+                                                alt: "fondoDescription",
+                                                className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
+                                                style: {
+                                                    maxHeight: "300px"
+                                                },
+                                                width: 160,
+                                                height: 160
+                                            })
+                                        }),
+                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                            className: "col-12 col-lg-6 mt-4 mt-md-0 opacity-75 text-rifaDescription mb-5 ",
+                                            children: [
+                                                raffle?.cause?.name || "",
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
+                                                raffle?.cause?.description || ""
+                                            ]
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h5", {
+                                    className: "subtitle-rifDescription text-center text-lg-start  z-2 py-2  pt-5 ",
+                                    children: "\xbfCu\xe1l es el premio?"
+                                }),
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "d-block  justify-content-between d-md-flex  row col-12 col-lg-10 ",
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                            className: "col-12  col-lg-6  z-2 ",
+                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                                src: raffle?.prize?.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
+                                                alt: "fondoDescription",
+                                                className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
+                                                width: 160,
+                                                height: 160
+                                            })
+                                        }),
+                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                            className: "col-12 col-lg-6 mt-4 mt-md-0 opacity-75 text-rifaDescription mb-5 ",
+                                            children: [
+                                                raffle?.prize?.name || "",
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
+                                                raffle?.prize?.description || ""
+                                            ]
+                                        })
+                                    ]
+                                })
+                            ]
+                        })
                     }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                        onClick: resetRaffle,
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                        onClick: handleSubmit,
                         className: "btn btn-pink mt-4",
-                        children: "Crear otra Rifa"
+                        children: "Enviar rifa para aprobaci\xf3n"
                     }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                         onClick: ()=>router.push("/"),
                         className: "btn btn-border-pink mt-3",
                         children: "Ir al inicio"
@@ -695,12 +731,6 @@ function DefinicionRifa({ handleChangeRaffle  }) {
             type: "subtitle"
         },
         {
-            label: " Fecha de Inicio",
-            name: "start_date",
-            required: true,
-            type: "date"
-        },
-        {
             label: " Fecha de Fin",
             name: "end_date",
             required: true,
@@ -708,7 +738,17 @@ function DefinicionRifa({ handleChangeRaffle  }) {
             options: raffleDate?.map((date)=>({
                     label: new Date(date.date).toLocaleDateString(),
                     value: date.date
-                }))
+                })),
+            customChange: ({ setValue  })=>{
+                setValue("start_date", undefined);
+            }
+        },
+        {
+            label: " Fecha de Inicio",
+            name: "start_date",
+            required: true,
+            type: "date",
+            maxDate: "end_date"
         },
         {
             label: "2. Informacion de tu rifa",
@@ -947,8 +987,10 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9818);
 /* harmony import */ var _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(3904);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__]);
-([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5140);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__]);
+([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -960,6 +1002,7 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_For
 function ModalCausa({ show , setShow , handleSubmit , handleClose , activeSelect  }) {
     const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
     const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const getCauses = (0,_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__/* .useCausesStore */ .e)((state)=>state.getCauses);
     const { causesCategories , associations  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .selectRaffleState */ .VB);
     const fields = [
         {
@@ -1010,13 +1053,14 @@ function ModalCausa({ show , setShow , handleSubmit , handleClose , activeSelect
     const submitData = async (data)=>{
         setLoading(true);
         const { payload  } = await dispatch((0,_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .createRafflesCause */ .Z8)(data));
+        setLoading(false);
         if (payload) {
+            getCauses(1);
             return handleSubmit({
                 type: "cause",
                 ...payload
             });
         }
-        setLoading(false);
     };
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2___default()), {
         show: show,
@@ -1126,8 +1170,10 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9818);
 /* harmony import */ var _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(5951);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__]);
-([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9899);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__]);
+([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -1141,6 +1187,7 @@ function ModalPremio({ show , handleClose , handleSubmit , activeSelect  }) {
     const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const { prizesCategories  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .selectRaffleState */ .VB);
     const { associations  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .selectRaffleState */ .VB);
+    const getPremio = (0,_store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__/* .usePremioStore */ .Z)((state)=>state.getPremio);
     const fields = [
         {
             label: " \xbfCu\xe1l es el nombre del premio?*",
@@ -1206,13 +1253,14 @@ function ModalPremio({ show , handleClose , handleSubmit , activeSelect  }) {
     const submitData = async (data)=>{
         setLoading(true);
         const { payload  } = await dispatch((0,_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .createRafflesPrize */ .FL)(data));
+        setLoading(false);
         if (payload) {
+            getPremio(1);
             return handleSubmit({
                 type: "prize",
                 ...payload
             });
         }
-        setLoading(false);
     };
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2___default()), {
         show: show,
@@ -1369,9 +1417,9 @@ function ModalSelectCausa({ handleSubmit  }) {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     src: causes.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
                                     alt: "fondo",
-                                    className: "w-100 h-100  rounded ",
-                                    width: 100,
-                                    height: 100
+                                    className: " rounded ",
+                                    width: 160,
+                                    height: 160
                                 })
                             }),
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -1485,9 +1533,9 @@ function ModalSelectPremio({ handleSubmit  }) {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     src: premio.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
                                     alt: "fondo",
-                                    className: "w-100 h-100  rounded ",
-                                    width: 100,
-                                    height: 100
+                                    className: " rounded ",
+                                    width: 160,
+                                    height: 160
                                 })
                             }),
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {

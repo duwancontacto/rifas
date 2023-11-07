@@ -1,11 +1,13 @@
 import { toast } from "react-hot-toast";
 
 export const handleError = (error: any) => {
+  console.log("TEst", error);
   let message = "";
 
   let detail = error.response.data.detail;
 
   if (error.response.data.email) detail = error.response.data.email.join(" ");
+  if (error.response.data.prize) detail = error.response.data.prize.join(" ");
 
   if (error.response.data === "Invalid Coupon") detail = "Cupon invalido";
   switch (error.response?.status) {

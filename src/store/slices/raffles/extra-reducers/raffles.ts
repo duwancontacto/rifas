@@ -35,6 +35,10 @@ export const RAFFLES_EXTRA_REDUCERS = (
     state.loading = false;
   });
 
+  builder.addCase(createRaffle.rejected, (state, action) => {
+    state.loading = false;
+  });
+
   builder.addCase(validateCoupon.fulfilled, (state, action) => {
     if (action.payload) {
       state.coupon = action.payload;

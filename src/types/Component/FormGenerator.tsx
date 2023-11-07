@@ -16,6 +16,7 @@ export interface Field {
   maxRange?: number;
   customChange?: any;
   minDate?: string;
+  maxDate?: string;
   tooltip?: string;
   disabled?: boolean;
   visible?: string;

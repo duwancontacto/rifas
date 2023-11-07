@@ -52,6 +52,9 @@ const RAFFLES_EXTRA_REDUCERS = (builder)=>{
     builder.addCase(_thunks__WEBPACK_IMPORTED_MODULE_0__/* .createRaffle.fulfilled */ .ni.fulfilled, (state, action)=>{
         state.loading = false;
     });
+    builder.addCase(_thunks__WEBPACK_IMPORTED_MODULE_0__/* .createRaffle.rejected */ .ni.rejected, (state, action)=>{
+        state.loading = false;
+    });
     builder.addCase(_thunks__WEBPACK_IMPORTED_MODULE_0__/* .validateCoupon.fulfilled */ .hD.fulfilled, (state, action)=>{
         if (action.payload) {
             state.coupon = action.payload;

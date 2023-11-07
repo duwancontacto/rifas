@@ -9,6 +9,7 @@ import { Auth } from "@/types/Model/Profile";
 import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesCause, selectRaffleState } from "@/store/slices/raffles";
 import ModalSelectCausa from "./ModalSelectCausa";
+import { useCausesStore } from "@/store/zustand/CausesStore";
 
 export default function ModalCausa({
   show,
@@ -20,6 +21,7 @@ export default function ModalCausa({
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 
+  const getCauses = useCausesStore((state) => state.getCauses);
   const { causesCategories, associations } = useSelector(selectRaffleState);
 
   const fields: Field[] = [
@@ -72,13 +74,15 @@ export default function ModalCausa({
   const submitData = async (data: any) => {
     setLoading(true);
     const { payload } = await dispatch(createRafflesCause(data) as any);
+    setLoading(false);
     if (payload) {
+      getCauses(1);
+
       return handleSubmit({
         type: "cause",
         ...payload,
       });
     }
-    setLoading(false);
   };
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal ">

@@ -65,9 +65,11 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([reac
 react_hot_toast__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 const handleError = (error)=>{
+    console.log("TEst", error);
     let message = "";
     let detail = error.response.data.detail;
     if (error.response.data.email) detail = error.response.data.email.join(" ");
+    if (error.response.data.prize) detail = error.response.data.prize.join(" ");
     if (error.response.data === "Invalid Coupon") detail = "Cupon invalido";
     switch(error.response?.status){
         case 400:

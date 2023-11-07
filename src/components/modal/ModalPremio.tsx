@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesPrize, selectRaffleState } from "@/store/slices/raffles";
 import ModalSelectPremio from "./ModalSelectPremio";
+import { usePremioStore } from "@/store/zustand/PremioStore";
 
 export default function ModalPremio({
   show,
@@ -19,6 +20,7 @@ export default function ModalPremio({
   const [loading, setLoading] = useState(false);
   const { prizesCategories } = useSelector(selectRaffleState);
   const { associations } = useSelector(selectRaffleState);
+  const getPremio = usePremioStore((state) => state.getPremio);
 
   const fields: Field[] = [
     {
@@ -80,13 +82,14 @@ export default function ModalPremio({
   const submitData = async (data: any) => {
     setLoading(true);
     const { payload } = await dispatch(createRafflesPrize(data) as any);
+    setLoading(false);
     if (payload) {
+      getPremio(1);
       return handleSubmit({
         type: "prize",
         ...payload,
       });
     }
-    setLoading(false);
   };
 
   return (

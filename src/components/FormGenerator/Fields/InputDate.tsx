@@ -6,6 +6,7 @@ interface Props {
   required?: boolean;
   error?: any;
   minDate?: string;
+  maxDate?: string;
   watch: any;
 }
 export default function InputDate({
@@ -15,6 +16,7 @@ export default function InputDate({
   required,
   error,
   minDate = "",
+  maxDate = "",
   watch,
 }: Props) {
   const values: any = watch();
@@ -33,6 +35,9 @@ export default function InputDate({
           <input
             type="datetime-local"
             min={new Date(values[minDate] || null).toISOString().slice(0, 16)}
+            max={new Date(values[maxDate] || new Date())
+              .toISOString()
+              .slice(0, 16)}
             className={`w-100 form-control my-2 fs-5 m-0 ${
               error && "border-danger "
             }`}

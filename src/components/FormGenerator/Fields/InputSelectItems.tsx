@@ -56,6 +56,12 @@ export default function InputSelectItems({
   const resetValue = () => {
     setSelected(null);
     setValue(name, null);
+    setActiveSelect(false);
+  };
+
+  const handleSelect = (e: any) => {
+    handleShow(e);
+    setActiveSelect(true);
   };
 
   return (
@@ -80,14 +86,16 @@ export default function InputSelectItems({
         handleClose={handleClose}
       />
       {selected ? (
-        <SelectedComponent selectedItem={selected} resetValue={resetValue} />
+        <SelectedComponent
+          selectedItem={selected}
+          resetValue={resetValue}
+          handleSelect={handleSelect}
+          handleShow={handleShow}
+        />
       ) : (
         <div className="d-lg-flex col-12  m-auto mb-3 mt-2  ">
           <button
-            onClick={(e) => {
-              handleShow(e);
-              setActiveSelect(true);
-            }}
+            onClick={handleSelect}
             className=" btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 "
           >
             {selectTitle}

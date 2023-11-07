@@ -32,14 +32,6 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
       required: true,
       type: "subtitle",
     },
-
-    {
-      label: " Fecha de Inicio",
-      name: "start_date",
-      required: true,
-      type: "date",
-    },
-
     {
       label: " Fecha de Fin",
       name: "end_date",
@@ -49,9 +41,18 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
         label: new Date(date.date).toLocaleDateString(),
         value: date.date,
       })),
-      /* customChange: ({ setValue }: any) => {
-        setValue("end_date", undefined);
-      }, */
+
+      customChange: ({ setValue }: any) => {
+        setValue("start_date", undefined);
+      },
+    },
+
+    {
+      label: " Fecha de Inicio",
+      name: "start_date",
+      required: true,
+      type: "date",
+      maxDate: "end_date",
     },
 
     {

@@ -56,9 +56,9 @@ export default function ModalSelectCausa({ handleSubmit }: any) {
                 <Image
                   src={causes.image || LogoRifas}
                   alt="fondo"
-                  className="w-100 h-100  rounded "
-                  width={100}
-                  height={100}
+                  className=" rounded "
+                  width={160}
+                  height={160}
                 />
               </div>
               <div className="ms-0 ms-lg-3 col-8 col-sm-7  mt-3 mt-lg-0">

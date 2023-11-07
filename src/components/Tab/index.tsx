@@ -55,7 +55,7 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
               <li
                 key={index}
                 className={`mx-3 opacity-75  ${
-                  index < step || tab.active
+                  index < step || (tab.active && index === step)
                     ? "title-tabs  "
                     : "Title-tabs2 opacity-50 "
                 } fs-5 d-flex align-items-center  `}

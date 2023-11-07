@@ -37,14 +37,10 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
 
   const handleSubmit = async () => {
     const { payload } = await dispatch(createRaffle(raffle as RafflesI) as any);
-    if (!payload) setStep(1);
+
+    if (!payload) return setStep(1);
+    nextStep();
   };
-
-  useEffect(() => {
-    if (step === 3) handleSubmit();
-
-    //eslint-disable-next-line
-  }, [step]);
 
   const resetRaffle = () => {
     setStep(1);
@@ -65,6 +61,7 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
           onClick={() => {}}
         >
           <button
+            onClick={() => step > 1 && setStep(1)}
             className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${
               step === 1 ? " opacity-50 " : " opacity-100  "
             }`}
@@ -76,12 +73,13 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
             <div className="m-0">{StepIcon(step, 1)}</div>
           </button>
         </div>
-        {step === 1 && (
+        <div className={`${step !== 1 && "d-none"}`}>
           <ConfiguraRifa handleChangeRaffle={handleChangeRaffle} />
-        )}
+        </div>
 
         <div className=" d-flex justify-content-between align-items-center  mt-4  ">
           <button
+            onClick={() => step > 2 && setStep(2)}
             className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
               step === 2 ? " opacity-50 " : " opacity-100  "
             }`}
@@ -93,9 +91,9 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
           </button>
         </div>
 
-        {step === 2 && (
+        <div className={`${step !== 2 && "d-none"}`}>
           <DefinicionRifa handleChangeRaffle={handleChangeRaffle} />
-        )}
+        </div>
 
         <div className=" d-flex justify-content-around align-items-center   mt-4   ">
           <button
@@ -109,18 +107,14 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
             <div className="m-0">{StepIcon(step, 3)}</div>
           </button>
         </div>
-        {step === 3 && (
-          <ConfirmacionRifa resetRaffle={resetRaffle} raffle={raffle} />
-        )}
-      </div>
-      <div className=" text-dark text-center col-12">
-        <button
-          onClick={() => router.push("/")}
-          className=" my-2  btn btn-border-pink col-11  col-md-7"
-          type="button"
-        >
-          Ir al inicio
-        </button>
+
+        <div className={`${step !== 3 && "d-none"}`}>
+          <ConfirmacionRifa
+            handleSubmit={handleSubmit}
+            resetRaffle={resetRaffle}
+            raffle={raffle}
+          />
+        </div>
       </div>
     </div>
   );

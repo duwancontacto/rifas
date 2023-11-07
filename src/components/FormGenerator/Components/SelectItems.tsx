@@ -7,9 +7,16 @@ interface Props {
   selectedItem: SelectedItems;
   setSelected: any;
   resetValue?: any;
+  handleSelect: any;
+  handleShow: any;
 }
 
-export const Cause = ({ selectedItem, resetValue }: Props) => {
+export const Cause = ({
+  selectedItem,
+  resetValue,
+  handleSelect,
+  handleShow,
+}: Props) => {
   return (
     <div>
       <p className="m-0 mt-2">Causa seleccionada</p>
@@ -35,9 +42,20 @@ export const Cause = ({ selectedItem, resetValue }: Props) => {
             onClick={(e) => {
               e.preventDefault();
               resetValue();
+              handleSelect(e);
             }}
           >
             Cambiar causa
+          </button>
+          <button
+            className="btn btn-outline-pink  mt-3 mx-2  mb-4"
+            onClick={(e) => {
+              e.preventDefault();
+              resetValue();
+              handleShow(e);
+            }}
+          >
+            Crear nueva Causa
           </button>
         </div>
       </div>
@@ -45,7 +63,12 @@ export const Cause = ({ selectedItem, resetValue }: Props) => {
   );
 };
 
-export const Prize = ({ selectedItem, resetValue }: Props) => {
+export const Prize = ({
+  selectedItem,
+  resetValue,
+  handleSelect,
+  handleShow,
+}: Props) => {
   return (
     <div>
       <p className="m-0 mt-2">Premio seleccionado</p>
@@ -73,9 +96,20 @@ export const Prize = ({ selectedItem, resetValue }: Props) => {
             onClick={(e) => {
               e.preventDefault();
               resetValue();
+              handleSelect(e);
             }}
           >
             Cambiar premio
+          </button>
+          <button
+            className="btn btn-outline-pink  mt-3 mx-2 mb-4"
+            onClick={(e) => {
+              e.preventDefault();
+              resetValue();
+              handleShow(e);
+            }}
+          >
+            Crear nuevo Premio
           </button>
         </div>
       </div>

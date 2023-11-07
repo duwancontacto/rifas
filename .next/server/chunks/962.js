@@ -132,7 +132,7 @@ function InputCustom(props) {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-function InputDate({ register , label , name , required , error , minDate ="" , watch  }) {
+function InputDate({ register , label , name , required , error , minDate ="" , maxDate ="" , watch  }) {
     const values = watch();
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "col-5",
@@ -149,6 +149,7 @@ function InputDate({ register , label , name , required , error , minDate ="" , 
                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                         type: "datetime-local",
                         min: new Date(values[minDate] || null).toISOString().slice(0, 16),
+                        max: new Date(values[maxDate] || new Date()).toISOString().slice(0, 16),
                         className: `w-100 form-control my-2 fs-5 m-0 ${error && "border-danger "}`,
                         ...register(name, {
                             required
@@ -650,7 +651,7 @@ var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
 
 
 
-const Cause = ({ selectedItem , resetValue  })=>{
+const Cause = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx("p", {
@@ -700,8 +701,18 @@ const Cause = ({ selectedItem , resetValue  })=>{
                                 onClick: (e)=>{
                                     e.preventDefault();
                                     resetValue();
+                                    handleSelect(e);
                                 },
                                 children: "Cambiar causa"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                className: "btn btn-outline-pink  mt-3 mx-2  mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    resetValue();
+                                    handleShow(e);
+                                },
+                                children: "Crear nueva Causa"
                             })
                         ]
                     })
@@ -710,7 +721,7 @@ const Cause = ({ selectedItem , resetValue  })=>{
         ]
     });
 };
-const Prize = ({ selectedItem , resetValue  })=>{
+const Prize = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx("p", {
@@ -760,8 +771,18 @@ const Prize = ({ selectedItem , resetValue  })=>{
                                 onClick: (e)=>{
                                     e.preventDefault();
                                     resetValue();
+                                    handleSelect(e);
                                 },
                                 children: "Cambiar premio"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                className: "btn btn-outline-pink  mt-3 mx-2 mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    resetValue();
+                                    handleShow(e);
+                                },
+                                children: "Crear nuevo Premio"
                             })
                         ]
                     })
@@ -800,6 +821,11 @@ function InputSelectItems({ register , label , name , required , error , ModalCo
     const resetValue = ()=>{
         setSelected(null);
         setValue(name, null);
+        setActiveSelect(false);
+    };
+    const handleSelect = (e)=>{
+        handleShow(e);
+        setActiveSelect(true);
     };
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: "",
@@ -826,15 +852,14 @@ function InputSelectItems({ register , label , name , required , error , ModalCo
             }),
             selected ? /*#__PURE__*/ jsx_runtime_.jsx(SelectedComponent, {
                 selectedItem: selected,
-                resetValue: resetValue
+                resetValue: resetValue,
+                handleSelect: handleSelect,
+                handleShow: handleShow
             }) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                 className: "d-lg-flex col-12  m-auto mb-3 mt-2  ",
                 children: [
                     /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                        onClick: (e)=>{
-                            handleShow(e);
-                            setActiveSelect(true);
-                        },
+                        onClick: handleSelect,
                         className: " btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 ",
                         children: selectTitle
                     }),
