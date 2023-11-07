@@ -91,7 +91,7 @@ export const registerFields: Field[] = [
   },
   {
     label: " ¿La dirección de la asociación es diferente a la fiscal?",
-    required: true,
+    required: false,
     name: "fiscal_address2",
     type: "checkbox",
   },
@@ -101,29 +101,33 @@ export const registerFields: Field[] = [
     required: true,
     name: "address",
     type: "text",
+    visible: "fiscal_address2",
   },
   {
     label: "Código postal*",
     required: true,
     name: "zip",
     type: "number",
+    visible: "fiscal_address2",
   },
   {
     label: "Estado*",
     required: true,
     name: "state",
     type: "text",
+    visible: "fiscal_address2",
   },
   {
     label: "Municipio*",
     required: true,
     name: "province",
     type: "text",
+    visible: "fiscal_address2",
   },
-  {
+  /*  {
     label: "RFC*",
     required: true,
     name: "rfc2",
     type: "text",
-  },
+  }, */
 ];

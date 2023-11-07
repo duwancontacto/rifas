@@ -28,6 +28,12 @@ export default function DashboardProfile({ nextStep }: any) {
     //if (payload) nextStep();
   };
 
+  const getFiscalAddress =
+    filterAssociation?.address ||
+    filterAssociation?.zip ||
+    filterAssociation?.stage ||
+    filterAssociation?.province;
+
   const fields: Field[] = [
     {
       label: " 1 / 2 Datos de asociacion",
@@ -130,7 +136,8 @@ export default function DashboardProfile({ nextStep }: any) {
       required: false,
       name: "fiscal_address2",
       type: "checkbox",
-      default: filterAssociation?.fiscal_address2,
+
+      default: getFiscalAddress,
     },
 
     {
@@ -138,6 +145,7 @@ export default function DashboardProfile({ nextStep }: any) {
       required: false,
       name: "address",
       type: "text",
+      visible: "fiscal_address2",
       default: filterAssociation?.address,
     },
     {
@@ -145,6 +153,7 @@ export default function DashboardProfile({ nextStep }: any) {
       required: false,
       name: "zip",
       type: "number",
+      visible: "fiscal_address2",
       default: filterAssociation?.zip,
     },
     {
@@ -152,6 +161,7 @@ export default function DashboardProfile({ nextStep }: any) {
       required: false,
       name: "state",
       type: "text",
+      visible: "fiscal_address2",
       default: filterAssociation?.state,
     },
     {
@@ -159,15 +169,16 @@ export default function DashboardProfile({ nextStep }: any) {
       required: false,
       name: "province",
       type: "text",
+      visible: "fiscal_address2",
       default: filterAssociation?.province,
     },
-    {
+    /*  {
       label: "RFC*",
       required: false,
       name: "rfc2",
       type: "text",
       default: filterAssociation?.rfc2,
-    },
+    }, */
   ];
 
   return (

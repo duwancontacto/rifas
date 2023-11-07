@@ -6,7 +6,11 @@ import CreateRifa from "./CreateRifa";
 
 export default function CrearRifaRegistro() {
   const tabs = [
-    { label: " Cuenta Completada", Component: RegistroSucessfull },
+    {
+      label: " Cuenta Completada",
+      Component: RegistroSucessfull,
+      active: true,
+    },
     { label: " Registro una AC", Component: RegistroCuenta },
     { label: " Crear rifa", Component: CreateRifa },
   ];

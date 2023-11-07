@@ -6,6 +6,8 @@ interface Props {
   required?: boolean;
   error?: any;
   subLabel: string;
+  visible?: string;
+  watch: any;
   disabled?: boolean;
 }
 export default function InputText({
@@ -16,7 +18,12 @@ export default function InputText({
   error,
   subLabel,
   disabled,
+  visible,
+  watch,
 }: Props) {
+  const values: any = watch();
+
+  if (visible && !values[visible]) return <> </>;
   return (
     <div>
       <label

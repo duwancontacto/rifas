@@ -7,6 +7,7 @@ interface Props {
   error?: any;
   setValue: any;
   watch: any;
+  visible: string;
   customChange: any;
 }
 export default function InputNumber({
@@ -17,9 +18,11 @@ export default function InputNumber({
   setValue,
   error,
   watch,
+  visible,
   customChange,
 }: Props) {
   const values: any = watch();
+  if (visible && !values[visible]) return <> </>;
   return (
     <div>
       <label

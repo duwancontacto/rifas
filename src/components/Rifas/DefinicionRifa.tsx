@@ -32,25 +32,26 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
       required: true,
       type: "subtitle",
     },
+
     {
-      label: " Fecha de inicio",
+      label: " Fecha de Inicio",
       name: "start_date",
+      required: true,
+      type: "date",
+    },
+
+    {
+      label: " Fecha de Fin",
+      name: "end_date",
       required: true,
       type: "select",
       options: raffleDate?.map((date) => ({
         label: new Date(date.date).toLocaleDateString(),
         value: date.date,
       })),
-      customChange: ({ setValue }: any) => {
+      /* customChange: ({ setValue }: any) => {
         setValue("end_date", undefined);
-      },
-    },
-    {
-      label: " Fecha de Fin",
-      name: "end_date",
-      required: true,
-      type: "date",
-      minDate: "start_date",
+      }, */
     },
 
     {

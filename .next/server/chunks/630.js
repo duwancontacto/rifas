@@ -279,7 +279,7 @@ const registerFields = [
     },
     {
         label: " \xbfLa direcci\xf3n de la asociaci\xf3n es diferente a la fiscal?",
-        required: true,
+        required: false,
         name: "fiscal_address2",
         type: "checkbox"
     },
@@ -287,31 +287,29 @@ const registerFields = [
         label: "Calle y n\xfamero*",
         required: true,
         name: "address",
-        type: "text"
+        type: "text",
+        visible: "fiscal_address2"
     },
     {
         label: "C\xf3digo postal*",
         required: true,
         name: "zip",
-        type: "number"
+        type: "number",
+        visible: "fiscal_address2"
     },
     {
         label: "Estado*",
         required: true,
         name: "state",
-        type: "text"
+        type: "text",
+        visible: "fiscal_address2"
     },
     {
         label: "Municipio*",
         required: true,
         name: "province",
-        type: "text"
-    },
-    {
-        label: "RFC*",
-        required: true,
-        name: "rfc2",
-        type: "text"
+        type: "text",
+        visible: "fiscal_address2"
     }
 ];
 
@@ -697,24 +695,20 @@ function DefinicionRifa({ handleChangeRaffle  }) {
             type: "subtitle"
         },
         {
-            label: " Fecha de inicio",
+            label: " Fecha de Inicio",
             name: "start_date",
             required: true,
-            type: "select",
-            options: raffleDate?.map((date)=>({
-                    label: new Date(date.date).toLocaleDateString(),
-                    value: date.date
-                })),
-            customChange: ({ setValue  })=>{
-                setValue("end_date", undefined);
-            }
+            type: "date"
         },
         {
             label: " Fecha de Fin",
             name: "end_date",
             required: true,
-            type: "date",
-            minDate: "start_date"
+            type: "select",
+            options: raffleDate?.map((date)=>({
+                    label: new Date(date.date).toLocaleDateString(),
+                    value: date.date
+                }))
         },
         {
             label: "2. Informacion de tu rifa",

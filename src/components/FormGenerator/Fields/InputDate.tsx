@@ -29,7 +29,7 @@ export default function InputDate({
       </label>
 
       <div className="d-flex ">
-        <div className="col-5 col-md-7 d-md-flex d-flex ">
+        <div className="  d-flex ">
           <input
             type="datetime-local"
             min={new Date(values[minDate] || null).toISOString().slice(0, 16)}

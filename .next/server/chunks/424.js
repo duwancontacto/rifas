@@ -68,7 +68,7 @@ function Tabs({ tabs , hasHeader =true  }) {
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
                         className: " d-flex flex-column flex-lg-row  list-unstyled align-items-center justify-content-center",
                         children: tabs.map((tab, index)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                                className: `mx-3 opacity-75  ${index < step ? "title-tabs  " : "Title-tabs2 opacity-50 "} fs-5 d-flex align-items-center  `,
+                                className: `mx-3 opacity-75  ${index < step || tab.active ? "title-tabs  " : "Title-tabs2 opacity-50 "} fs-5 d-flex align-items-center  `,
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaCheck, {
                                         size: 17

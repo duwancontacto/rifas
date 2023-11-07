@@ -51,11 +51,13 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
             </p>
           </div>
           <ul className=" d-flex flex-column flex-lg-row  list-unstyled align-items-center justify-content-center">
-            {tabs.map((tab, index) => (
+            {tabs.map((tab: any, index) => (
               <li
                 key={index}
                 className={`mx-3 opacity-75  ${
-                  index < step ? "title-tabs  " : "Title-tabs2 opacity-50 "
+                  index < step || tab.active
+                    ? "title-tabs  "
+                    : "Title-tabs2 opacity-50 "
                 } fs-5 d-flex align-items-center  `}
               >
                 <FaCheck size={17} />

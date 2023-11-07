@@ -7,7 +7,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <title>Rifa con causa</title>
-
+      <link rel="icon" href="/icon.ico" sizes="any" />
       {/* Metatags de Open Graph / Facebook */}
       <meta property="og:title" content="Rifa con causa" />
       <meta

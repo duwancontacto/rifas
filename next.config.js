@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["gasa1296.pythonanywhere.com"],
+    domains: ["gasa1296.pythonanywhere.com", "www.api.rifaconcausa.org"],
   },
 };
 

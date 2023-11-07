@@ -145,7 +145,7 @@ function InputDate({ register , label , name , required , error , minDate ="" , 
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                 className: "d-flex ",
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                    className: "col-5 col-md-7 d-md-flex d-flex ",
+                    className: "  d-flex ",
                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                         type: "datetime-local",
                         min: new Date(values[minDate] || null).toISOString().slice(0, 16),
@@ -367,8 +367,11 @@ __webpack_async_result__();
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-function InputNumber({ register , label , name , required , setValue , error , watch , customChange  }) {
+function InputNumber({ register , label , name , required , setValue , error , watch , visible , customChange  }) {
     const values = watch();
+    if (visible && !values[visible]) return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: " "
+    });
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -946,7 +949,11 @@ function InputSubtitle({ register , label , name , required , error , subLabel  
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-function InputText({ register , label , name , required , error , subLabel , disabled  }) {
+function InputText({ register , label , name , required , error , subLabel , disabled , visible , watch  }) {
+    const values = watch();
+    if (visible && !values[visible]) return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: " "
+    });
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {

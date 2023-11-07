@@ -27,6 +27,11 @@ function Document() {
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("title", {
                 children: "Rifa con causa"
             }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                rel: "icon",
+                href: "/icon.ico",
+                sizes: "any"
+            }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                 property: "og:title",
                 content: "Rifa con causa"

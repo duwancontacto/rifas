@@ -115,22 +115,20 @@ const getMyAssociations = ()=>{
 };
 const createAsociacion = (asociacion)=>{
     const formData = new FormData();
-    formData.append("address", asociacion.address);
     formData.append("association_name", asociacion.association_name);
     formData.append("email", asociacion.email);
     formData.append("first_name", asociacion.first_name);
-    formData.append("fiscal_address2", asociacion.fiscal_address2);
     formData.append("last_name", asociacion.last_name);
     formData.append("last_name2", asociacion.last_name2);
     formData.append("paypal", asociacion.paypal);
     formData.append("phone", asociacion.phone);
     formData.append("regime", asociacion.regime);
     formData.append("rfc", asociacion.rfc);
-    formData.append("province", asociacion.province);
-    formData.append("rfc2", asociacion.rfc2);
-    formData.append("state", asociacion.state);
     formData.append("user", asociacion.user);
-    formData.append("zip", asociacion.zip);
+    formData.append("zip", asociacion.fiscal_address2 ? asociacion.zip : null);
+    formData.append("address", asociacion.fiscal_address2 ? asociacion.address : null);
+    formData.append("state", asociacion.fiscal_address2 ? asociacion.state : null);
+    formData.append("province", asociacion.fiscal_address2 ? asociacion.province : null);
     if (asociacion.image[0]) formData.append("image", asociacion.image[0]);
     return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post(baseUrl + "/associations/", formData, {
         headers: {
@@ -141,22 +139,20 @@ const createAsociacion = (asociacion)=>{
 };
 const updateAsociacion = (asociacion)=>{
     const formData = new FormData();
-    formData.append("address", asociacion.address);
     formData.append("association_name", asociacion.association_name);
     formData.append("email", asociacion.email);
     formData.append("first_name", asociacion.first_name);
-    formData.append("fiscal_address2", asociacion.fiscal_address2);
     formData.append("last_name", asociacion.last_name);
     formData.append("last_name2", asociacion.last_name2);
     formData.append("paypal", asociacion.paypal);
     formData.append("phone", asociacion.phone);
     formData.append("regime", asociacion.regime);
     formData.append("rfc", asociacion.rfc);
-    formData.append("province", asociacion.province);
-    formData.append("rfc2", asociacion.rfc2);
-    formData.append("state", asociacion.state);
     formData.append("user", asociacion.user);
-    formData.append("zip", asociacion.zip);
+    formData.append("zip", asociacion.fiscal_address2 ? asociacion.zip : "");
+    formData.append("address", asociacion.fiscal_address2 ? asociacion.address : "");
+    formData.append("state", asociacion.fiscal_address2 ? asociacion.state : "");
+    formData.append("province", asociacion.fiscal_address2 ? asociacion.province : "");
     if (asociacion.image[0]) formData.append("image", asociacion.image[0]);
     return axios__WEBPACK_IMPORTED_MODULE_1__["default"].put(baseUrl + `/associations/${asociacion.id}/`, formData, {
         headers: {
