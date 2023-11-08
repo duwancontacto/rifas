@@ -7,7 +7,7 @@ export interface RaffleInitialState {
   loading: boolean;
   raffles: RafflesI[];
   raffle: null | RafflesI;
-  donationForm1: Donation | {};
+  donationForm1: any | {};
   donationFrom2: any;
   associations: Association[];
   causesCategories: { id: number; name: string }[];

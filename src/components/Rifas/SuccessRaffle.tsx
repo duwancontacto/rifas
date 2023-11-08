@@ -12,14 +12,14 @@ export default function SuccessRaffle() {
 
         <div className=" my-5 p-5 pb-2 text-center shadow col-11 col-lg-8 mx-auto">
           <h3 className="text-secondary " style={{ fontSize: "24px" }}>
-            Nos estamos rifando validando los datos de tu solicitud. Ya podrás
-            rifarte con nosotros en las próximas horas y obtener la ayuda que
-            necesitas para tus causas.
+            Nos estamos rifando validando los datos de solicitud para tu causa.
+            Podrás rifarte con nosotros en las próximas horas y obtener la ayuda
+            que necesitas para tu causa.
           </h3>
 
           <h3 className="text-secondary pt-3" style={{ fontSize: "20px" }}>
             Mientras tanto, puedes darte una vuelta por las rifas y apoyar otras
-            causas en lo que terminamos de configurar tu cuenta.
+            causas en lo que terminamos de validar tu rifa.
           </h3>
           <button
             onClick={() => router.push("/rifas")}

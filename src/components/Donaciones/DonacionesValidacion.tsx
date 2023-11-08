@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import imagenDonaciones from "@/assets/img/Premio-donar.jpg";
-import { useDispatch } from "react-redux";
-import { Donations } from "@/store/slices/raffles";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Donations,
+  selectRaffleState,
+  setResetDonation,
+} from "@/store/slices/raffles";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { BiHeartCircle } from "react-icons/bi";
+import LogoRifas from "@/assets/img/logoRifas.svg";
 
 export default function DonacionesValidacion({
   nextStep,
@@ -13,14 +18,24 @@ export default function DonacionesValidacion({
 }: any) {
   const dispatch = useDispatch();
 
+  const { donationFrom2 } = useSelector(selectRaffleState);
+
+  const preview: string | null =
+    donationFrom2?.image && donationFrom2?.image[0]
+      ? URL.createObjectURL(donationFrom2?.image[0] || "")
+      : null;
+
   return (
     <div>
       <section className="row m-0 my-3 ">
         <div className=" col-12 col-lg-6    ">
           <Image
-            src={imagenDonaciones}
+            src={preview || LogoRifas}
             alt="donation"
+            width={100}
+            height={100}
             className="w-100 h-auto mx-0 "
+            style={{ maxWidth: "600px", maxHeight: "600px" }}
           />
         </div>
         <div className=" col-lg-5 col-12   text-secondary ms-0 ms-lg-3 ">
@@ -96,7 +111,10 @@ export default function DonacionesValidacion({
             </button> */}
             <button
               className="btn btn-pink btn-sm w-50 mx-2 fs-6"
-              onClick={() => initialStep()}
+              onClick={() => {
+                dispatch(setResetDonation({}) as any);
+                initialStep();
+              }}
             >
               Ir a donar otro premio
             </button>

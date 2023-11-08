@@ -1,7 +1,6 @@
 import { toast } from "react-hot-toast";
 
 export const handleError = (error: any) => {
-  console.log("TEst", error);
   let message = "";
 
   let detail = error.response.data.detail;

@@ -3,8 +3,8 @@
     "/": [],
     "/nosotros": [],
     "/rifas/[id]": [],
-    "/rifas/detalles/[id]": [],
     "/rifas": [],
+    "/rifas/detalles/[id]": [],
     "/sitios/[id]": []
   },
   "app": {},

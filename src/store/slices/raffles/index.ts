@@ -33,7 +33,12 @@ export const rafflesSlice = createSlice({
     },
 
     setDonationsForm2: (state, action) => {
-      state.donationFrom2 = action.payload;
+      state.donationFrom2 = { ...state.donationFrom2, ...action.payload };
+    },
+
+    setResetDonation: (state, action) => {
+      state.donationFrom2 = {};
+      state.donationForm1 = {};
     },
 
     setCausesCategories: (state, action) => {
@@ -79,6 +84,7 @@ export const {
   setSelectedPaymentMethod,
   setSelectedWallet,
   resetBuyRaffle,
+  setResetDonation,
 } = rafflesSlice.actions;
 export const selectRaffleState = (state: RootState) => state.raffles;
 export default rafflesSlice.reducer;

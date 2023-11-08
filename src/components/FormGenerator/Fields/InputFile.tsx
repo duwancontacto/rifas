@@ -14,6 +14,7 @@ interface Props {
   maxFile?: number;
   subLabel: string;
   watch: any;
+  customChange: any;
 }
 export default function InputFile({
   label,
@@ -23,6 +24,7 @@ export default function InputFile({
   maxFile,
   subLabel,
   watch,
+  customChange,
 }: Props) {
   const values: any = watch();
   const [files, setFiles] = useState<File[]>([]);
@@ -46,6 +48,7 @@ export default function InputFile({
     }
 
     const preview: string = URL.createObjectURL(file);
+    customChange({ setValue, newValue: [...files, file], values });
     setValue(name, [...files, file]);
     setFiles((prev) => [...prev, file]);
     setPreviews((prev) => [...prev, preview]);
@@ -56,19 +59,28 @@ export default function InputFile({
       name,
       files.filter((_, key) => key !== index)
     );
+    customChange({
+      setValue,
+      newValue: files.filter((_, key) => key !== index),
+      values,
+    });
     setPreviews((prev) => prev.filter((_, key) => key !== index));
     setFiles((prev) => prev.filter((_, key) => key !== index));
   };
 
   const handleParseFiles = async () => {
     if (!values[name]) return;
+
     const files = await handleGetFiles(values[name]);
     setFiles(files as any);
     setValue(name, files);
 
-    const previews = values[name].map((image: string) =>
-      isHttp(image) ? image : `${process.env.NEXT_PUBLIC_BASE_URL}${image}`
-    );
+    const previews = values[name].map((image: any) => {
+      if (typeof image !== "string") return URL.createObjectURL(image);
+      return isHttp(image)
+        ? image
+        : `${process.env.NEXT_PUBLIC_BASE_URL}${image}`;
+    });
     setPreviews(previews);
   };
 

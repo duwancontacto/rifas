@@ -52,6 +52,12 @@ const RAFFLES_EXTRA_REDUCERS = (builder)=>{
     builder.addCase(_thunks__WEBPACK_IMPORTED_MODULE_0__/* .createRaffle.fulfilled */ .ni.fulfilled, (state, action)=>{
         state.loading = false;
     });
+    builder.addCase(_thunks__WEBPACK_IMPORTED_MODULE_0__/* .Donations.pending */ ._Z.pending, (state)=>{
+        state.loading = true;
+    });
+    builder.addCase(_thunks__WEBPACK_IMPORTED_MODULE_0__/* .Donations.fulfilled */ ._Z.fulfilled, (state, action)=>{
+        state.loading = false;
+    });
     builder.addCase(_thunks__WEBPACK_IMPORTED_MODULE_0__/* .createRaffle.rejected */ .ni.rejected, (state, action)=>{
         state.loading = false;
     });
@@ -75,6 +81,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */   "CP": () => (/* reexport safe */ _thunks__WEBPACK_IMPORTED_MODULE_2__.CP),
 /* harmony export */   "FL": () => (/* reexport safe */ _thunks__WEBPACK_IMPORTED_MODULE_2__.FL),
 /* harmony export */   "H4": () => (/* reexport safe */ _thunks__WEBPACK_IMPORTED_MODULE_2__.H4),
+/* harmony export */   "Ld": () => (/* binding */ setResetDonation),
 /* harmony export */   "RS": () => (/* binding */ setPrizesCategories),
 /* harmony export */   "S2": () => (/* binding */ setDonationsForm2),
 /* harmony export */   "VB": () => (/* binding */ selectRaffleState),
@@ -129,7 +136,14 @@ const rafflesSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlic
             state.donationForm1 = action.payload;
         },
         setDonationsForm2: (state, action)=>{
-            state.donationFrom2 = action.payload;
+            state.donationFrom2 = {
+                ...state.donationFrom2,
+                ...action.payload
+            };
+        },
+        setResetDonation: (state, action)=>{
+            state.donationFrom2 = {};
+            state.donationForm1 = {};
         },
         setCausesCategories: (state, action)=>{
             state.causesCategories = action.payload;
@@ -162,7 +176,7 @@ const rafflesSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlic
         (0,_extra_reducers__WEBPACK_IMPORTED_MODULE_1__/* .RAFFLES_EXTRA_REDUCERS */ .C)(builder);
     }
 });
-const { setRaffle , setReserveTime , setSelectedTicket , setDonationsForm1 , setDonationsForm2 , setPrizesCategories , setCausesCategories , setSelectedPaymentMethod , setSelectedWallet , resetBuyRaffle  } = rafflesSlice.actions;
+const { setRaffle , setReserveTime , setSelectedTicket , setDonationsForm1 , setDonationsForm2 , setPrizesCategories , setCausesCategories , setSelectedPaymentMethod , setSelectedWallet , resetBuyRaffle , setResetDonation  } = rafflesSlice.actions;
 const selectRaffleState = (state)=>state.raffles;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rafflesSlice.reducer);
 
@@ -231,7 +245,7 @@ const GetRaffle = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.createAsyncTh
         (0,_utils_handleError__WEBPACK_IMPORTED_MODULE_1__/* .handleError */ .S)(error);
     }
 });
-const Donations = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.createAsyncThunk)(`${PREFIX}/donations`, async (donation, thunkAPI)=>{
+const Donations = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.createAsyncThunk)(`${PREFIX}/donations-create`, async (donation, thunkAPI)=>{
     try {
         const { raffles  } = thunkAPI.getState();
         const dataDonation = {
@@ -244,13 +258,15 @@ const Donations = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.createAsyncTh
         dataDonation.category = Number(dataDonation.category);
         const result = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createDonations */ .Bk)(dataDonation);
         const petitions = [];
-        dataDonation.image.map((gallery)=>petitions.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createPrizeGallery */ .J2)(gallery, result.data.id)));
-        const resultGallery = await Promise.all(petitions);
-        await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .updateGalleryPrize */ .cW)(result.data.id, {
-            gallery: resultGallery.map((gallery)=>gallery.data.id),
-            name: dataDonation.name,
-            value: dataDonation.value
-        });
+        if (dataDonation.image && dataDonation.image.length > 1) {
+            dataDonation.image.map((gallery)=>petitions.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createPrizeGallery */ .J2)(gallery, result.data.id)));
+            const resultGallery = await Promise.all(petitions);
+            await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .updateGalleryPrize */ .cW)(result.data.id, {
+                gallery: resultGallery.map((gallery)=>gallery.data.id),
+                name: dataDonation.name,
+                value: dataDonation.value
+            });
+        }
         return result.data;
     } catch (error) {
         (0,_utils_handleError__WEBPACK_IMPORTED_MODULE_1__/* .handleError */ .S)(error);

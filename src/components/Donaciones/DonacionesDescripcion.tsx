@@ -7,6 +7,7 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState } from "@/store/slices/auth";
 import { Donation } from "@/types/Model/Profile";
+import LogoRifas from "@/assets/img/logoRifas.svg";
 import {
   getCategories,
   selectRaffleState,
@@ -14,7 +15,8 @@ import {
 } from "@/store/slices/raffles";
 export default function DonacionesDescripcion({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
-  const { prizesCategories } = useSelector(selectRaffleState);
+  const { prizesCategories, donationFrom2, donationForm1 } =
+    useSelector(selectRaffleState);
 
   const dispatch = useDispatch();
 
@@ -34,6 +36,8 @@ export default function DonacionesDescripcion({ nextStep }: any) {
       name: "name",
       required: true,
       type: "text",
+
+      default: donationForm1?.name || "",
     },
 
     {
@@ -41,6 +45,7 @@ export default function DonacionesDescripcion({ nextStep }: any) {
       name: "description",
       required: true,
       type: "textarea",
+      default: donationForm1?.description || "",
     },
     {
       label: "¿Que categoria describe tu producto?*",
@@ -51,6 +56,7 @@ export default function DonacionesDescripcion({ nextStep }: any) {
         label: prize.name,
         value: prize.id,
       })),
+      default: donationForm1?.category || "",
     },
   ];
 
@@ -58,14 +64,23 @@ export default function DonacionesDescripcion({ nextStep }: any) {
     dispatch(getCategories({}) as any);
     //eslint-disable-next-line
   }, []);
+
+  const preview: string | null =
+    donationFrom2?.image && donationFrom2?.image[0]
+      ? URL.createObjectURL(donationFrom2?.image[0] || "")
+      : null;
+
   return (
     <div>
       <section className="row m-0 my-3">
         <div className=" col-12 col-md-6    ">
           <Image
-            src={imagenDonaciones}
+            src={preview || LogoRifas}
             alt="donation"
             className="w-100 h-auto mx-0 "
+            width={100}
+            height={100}
+            style={{ maxWidth: "600px", maxHeight: "600px" }}
           />
         </div>
         <div className="col-12 col-md-6 text-secondary mx-0 pt-5 pt-md-0 ps-md-5  ">

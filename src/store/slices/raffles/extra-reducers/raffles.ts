@@ -1,5 +1,6 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import {
+  Donations,
   GetAssociations,
   Raffles,
   createRaffle,
@@ -32,6 +33,14 @@ export const RAFFLES_EXTRA_REDUCERS = (
   });
 
   builder.addCase(createRaffle.fulfilled, (state, action) => {
+    state.loading = false;
+  });
+
+  builder.addCase(Donations.pending, (state) => {
+    state.loading = true;
+  });
+
+  builder.addCase(Donations.fulfilled, (state, action) => {
     state.loading = false;
   });
 

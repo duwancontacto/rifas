@@ -7,6 +7,9 @@ interface Props {
   error?: string;
   options?: { label: string; value: string }[];
   disabledStyle?: boolean;
+  customChange: any;
+  setValue: any;
+  watch: any;
 }
 export default function InputRadioButton({
   register,
@@ -16,7 +19,11 @@ export default function InputRadioButton({
   error,
   options,
   disabledStyle,
+  customChange,
+  setValue,
+  watch,
 }: Props) {
+  const values: any = watch();
   return (
     <div>
       <label
@@ -56,6 +63,15 @@ export default function InputRadioButton({
               <input
                 value={option.value}
                 {...register(name, { required })}
+                onChange={(e) => {
+                  setValue(name, e.target.value);
+                  customChange &&
+                    customChange({
+                      setValue,
+                      newValue: e.target.value,
+                      values,
+                    });
+                }}
                 name={name}
                 className="form-check-input mt-0"
                 type="radio"

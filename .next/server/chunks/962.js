@@ -225,7 +225,7 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([reac
 
 
 
-function InputFile({ label , name , error , setValue , maxFile , subLabel , watch  }) {
+function InputFile({ label , name , error , setValue , maxFile , subLabel , watch , customChange  }) {
     const values = watch();
     const [files, setFiles] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]);
     const [previews, setPreviews] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]);
@@ -240,6 +240,14 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
             return;
         }
         const preview = URL.createObjectURL(file);
+        customChange({
+            setValue,
+            newValue: [
+                ...files,
+                file
+            ],
+            values
+        });
         setValue(name, [
             ...files,
             file
@@ -255,6 +263,11 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
     };
     const onDelete = (index)=>{
         setValue(name, files.filter((_, key)=>key !== index));
+        customChange({
+            setValue,
+            newValue: files.filter((_, key)=>key !== index),
+            values
+        });
         setPreviews((prev)=>prev.filter((_, key)=>key !== index));
         setFiles((prev)=>prev.filter((_, key)=>key !== index));
     };
@@ -263,7 +276,10 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
         const files = await (0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .handleGetFiles */ .wf)(values[name]);
         setFiles(files);
         setValue(name, files);
-        const previews = values[name].map((image)=>(0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://www.api.rifaconcausa.org"}${image}`);
+        const previews = values[name].map((image)=>{
+            if (typeof image !== "string") return URL.createObjectURL(image);
+            return (0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://www.api.rifaconcausa.org"}${image}`;
+        });
         setPreviews(previews);
     };
     (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{
@@ -461,7 +477,8 @@ function InputPassword({ register , label , name , required , error , validate =
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-function InputRadioButton({ register , label , name , required , error , options , disabledStyle  }) {
+function InputRadioButton({ register , label , name , required , error , options , disabledStyle , customChange , setValue , watch  }) {
+    const values = watch();
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -500,6 +517,14 @@ function InputRadioButton({ register , label , name , required , error , options
                                 ...register(name, {
                                     required
                                 }),
+                                onChange: (e)=>{
+                                    setValue(name, e.target.value);
+                                    customChange && customChange({
+                                        setValue,
+                                        newValue: e.target.value,
+                                        values
+                                    });
+                                },
                                 name: name,
                                 className: "form-check-input mt-0",
                                 type: "radio",
@@ -1247,6 +1272,7 @@ function isHttp(url) {
     return url?.startsWith("http://") || url?.startsWith("https://");
 }
 async function urlToFile(url, mimeType) {
+    if (typeof url !== "string") return url;
     const httpUrl = isHttp(url) ? url : `${"https://www.api.rifaconcausa.org"}${url}`;
     const res = await fetch(httpUrl);
     const buf = await res.arrayBuffer();

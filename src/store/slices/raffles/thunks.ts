@@ -74,7 +74,7 @@ export const GetRaffle = createAsyncThunk(
 );
 
 export const Donations = createAsyncThunk(
-  `${PREFIX}/donations`,
+  `${PREFIX}/donations-create`,
   async (donation: any, thunkAPI): Promise<{} | undefined> => {
     try {
       const { raffles } = thunkAPI.getState() as RootState;
@@ -98,17 +98,19 @@ export const Donations = createAsyncThunk(
       const result = await createDonations(dataDonation);
 
       const petitions: any[] = [];
-      dataDonation.image.map((gallery: any) =>
-        petitions.push(createPrizeGallery(gallery, result.data.id))
-      );
+      if (dataDonation.image && dataDonation.image.length > 1) {
+        dataDonation.image.map((gallery: any) =>
+          petitions.push(createPrizeGallery(gallery, result.data.id))
+        );
 
-      const resultGallery = await Promise.all(petitions);
+        const resultGallery = await Promise.all(petitions);
 
-      await updateGalleryPrize(result.data.id, {
-        gallery: resultGallery.map((gallery) => gallery.data.id),
-        name: dataDonation.name,
-        value: dataDonation.value,
-      });
+        await updateGalleryPrize(result.data.id, {
+          gallery: resultGallery.map((gallery) => gallery.data.id),
+          name: dataDonation.name,
+          value: dataDonation.value,
+        });
+      }
 
       return result.data;
     } catch (error) {

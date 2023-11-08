@@ -6,7 +6,6 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 
 export default function FooterMicrositio() {
   const site = useAsociatonsStoreDashboard((state) => state.site);
-  console.log("TEst", site);
   return (
     <section>
       <footer className="  footer-fondo p-4  ">

@@ -60,6 +60,7 @@ export function isHttp(url: String) {
 }
 
 async function urlToFile(url: string, mimeType: string) {
+  if (typeof url !== "string") return url;
   const httpUrl = isHttp(url)
     ? url
     : `${process.env.NEXT_PUBLIC_BASE_URL}${url}`;
