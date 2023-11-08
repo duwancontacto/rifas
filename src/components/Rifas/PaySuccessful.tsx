@@ -135,8 +135,8 @@ export default function PaySuccessful({ initialStep }: any) {
           <p className="value-paySucessful m-0 ps-1">{payId}.</p>
         </p>
         <p className=" mt-3 mb-0  text-paySucessful ">
-          Ayúdanos a compartir en tus redes sociales y más gente se una a la
-          causa.
+          Ayúdanos a compartir en tus redes sociales <br /> y más gente se una a
+          la causa.
         </p>
         <div>
           <h6 className=" text-center share-paySucessfull my-2 ">Compartir:</h6>
