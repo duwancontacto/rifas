@@ -1,4 +1,4 @@
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { SelectedItems } from "@/types/Component/FormGenerator";
 import { parseNumber } from "@/utils/ParseNumber";
 import Image from "next/image";

@@ -9,7 +9,7 @@ import {
 } from "@/store/slices/raffles";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { BiHeartCircle } from "react-icons/bi";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 
 export default function DonacionesValidacion({
   nextStep,

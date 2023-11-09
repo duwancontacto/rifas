@@ -27,7 +27,7 @@ export default function InputSliser({
   const values: any = watch();
   const handleChange = (value: any) => {
     setValue(name, marks[value]);
-    customChange({ setValue, newValue: marks[value], values });
+    customChange && customChange({ setValue, newValue: marks[value], values });
   };
 
   return (

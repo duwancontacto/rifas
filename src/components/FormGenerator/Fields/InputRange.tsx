@@ -45,7 +45,8 @@ export default function InputRange({
           values={[values[name]] || [0]}
           onChange={(valuesChange) => {
             setValue(name, valuesChange[0]);
-            customChange({ setValue, newValue: valuesChange[0], values });
+            customChange &&
+              customChange({ setValue, newValue: valuesChange[0], values });
           }}
           step={STEP}
           min={MIN}

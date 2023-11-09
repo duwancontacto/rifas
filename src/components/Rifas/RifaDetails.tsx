@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
 import { getDays } from "@/utils/getDays";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import {
   FacebookShareButton,
   TwitterShareButton,

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 export default function HeaderMicrositio() {
   const site = useAsociatonsStoreDashboard((state) => state.site);
   return (

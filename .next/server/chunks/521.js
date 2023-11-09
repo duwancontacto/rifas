@@ -26,7 +26,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_icons_md__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_icons_md__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4751);
 /* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_icons_io__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9037);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3037);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(1853);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(6022);
@@ -162,7 +162,7 @@ function RifasActivas({ all  }) {
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_5___default()), {
                                                 width: 100,
                                                 height: 100,
-                                                src: raffle.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z,
+                                                src: raffle.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z,
                                                 className: "w-100 h-50",
                                                 alt: ""
                                             }),

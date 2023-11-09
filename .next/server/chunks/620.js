@@ -3,16 +3,6 @@ exports.id = 620;
 exports.ids = [620];
 exports.modules = {
 
-/***/ 4251:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/gal-microsite-apac1.0dd74558.jpg","height":1192,"width":1634,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAYACAMBIgACEQEDEQH/xAAoAAEBAAAAAAAAAAAAAAAAAAAABQEBAQAAAAAAAAAAAAAAAAAAAAP/2gAMAwEAAhADEAAAAKQV/8QAHBAAAwACAwEAAAAAAAAAAAAAAQIDBBEAIkKR/9oACAEBAAE/AMO0sy6wou3DdB4DMxGz85//xAAYEQEBAAMAAAAAAAAAAAAAAAACAQAhQf/aAAgBAgEBPwBmRrXbn//EABcRAAMBAAAAAAAAAAAAAAAAAAABESH/2gAIAQMBAT8AuI//2Q==","blurWidth":8,"blurHeight":6});
-
-/***/ }),
-
 /***/ 620:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -24,7 +14,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _assets_img_gal_microsite_apac1_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4251);
+/* harmony import */ var _assets_img_gente_rifada_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9338);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5675);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _Rifa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8682);
@@ -64,7 +54,7 @@ function AllRifas() {
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "mx-0 mx-lg-5 mt-2 col-12 col-lg-5 ",
                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
-                            src: _assets_img_gal_microsite_apac1_jpg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
+                            src: _assets_img_gente_rifada_png__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
                             alt: "fondoAllrifas",
                             className: "w-100 h-100 "
                         })

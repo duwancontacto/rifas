@@ -1,7 +1,7 @@
 {
+  "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/contacto": "pages/contacto.html",
-  "/_app": "pages/_app.js",
   "/dashboard/[id]": "pages/dashboard/[id].html",
   "/donaciones": "pages/donaciones.html",
   "/dashboard": "pages/dashboard.html",
@@ -9,15 +9,15 @@
   "/": "pages/index.html",
   "/login": "pages/login.html",
   "/nosotros": "pages/nosotros.html",
-  "/profile": "pages/profile.html",
   "/privacyNotice": "pages/privacyNotice.html",
-  "/_error": "pages/_error.js",
+  "/profile": "pages/profile.html",
   "/registro": "pages/registro.html",
   "/rifas/[id]": "pages/rifas/[id].html",
   "/rifas/crear_rifas": "pages/rifas/crear_rifas.html",
+  "/rifas/detalles/[id]": "pages/rifas/detalles/[id].html",
   "/rifas": "pages/rifas.html",
   "/sitios/[id]": "pages/sitios/[id].html",
-  "/rifas/detalles/[id]": "pages/rifas/detalles/[id].html",
   "/terminosCondiciones": "pages/terminosCondiciones.html",
+  "/_error": "pages/_error.js",
   "/404": "pages/404.html"
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { ReactElement, useState } from "react";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { SelectedItems } from "@/types/Component/FormGenerator";
 import { Cause, Prize } from "../Components/SelectItems";
 interface Props {

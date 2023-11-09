@@ -10,7 +10,7 @@ import { MdEmail } from "react-icons/md";
 
 import { useRouter } from "next/router";
 
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { parseNumber } from "@/utils/ParseNumber";
 import { getDays } from "@/utils/getDays";
 import { useRaffleStore } from "@/store/zustand/RaffleStore";

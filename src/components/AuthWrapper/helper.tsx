@@ -3,7 +3,10 @@ export const validateAuthPath = (pathname: string, authorizated: boolean) => {
     if (
       pathname === "/donaciones" ||
       pathname === "/rifas/crear_rifas" ||
-      pathname === "/rifas/[id]"
+      pathname === "/rifas/[id]" ||
+      pathname === "/dashboard" ||
+      pathname === "/dashboard/[id]" ||
+      pathname === "/profile"
     ) {
       return true;
     }

@@ -7,7 +7,7 @@ import Image from "next/image";
 import fondoRifasActivas from "@/assets/img/gal-microsite-apac2.jpg";
 import { MdAccessTime } from "react-icons/md";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";

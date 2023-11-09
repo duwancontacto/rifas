@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 

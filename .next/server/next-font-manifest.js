@@ -1,1 +1,1 @@
-self.__NEXT_FONT_MANIFEST={pages:{"/":[],"/nosotros":[],"/rifas/[id]":[],"/rifas":[],"/sitios/[id]":[],"/rifas/detalles/[id]":[]},app:{},appUsingSizeAdjust:!1,pagesUsingSizeAdjust:!1};
+self.__NEXT_FONT_MANIFEST={pages:{"/":[],"/nosotros":[],"/rifas/[id]":[],"/rifas/detalles/[id]":[],"/rifas":[],"/sitios/[id]":[]},app:{},appUsingSizeAdjust:!1,pagesUsingSizeAdjust:!1};

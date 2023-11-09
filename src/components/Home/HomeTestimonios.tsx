@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import testimnialesFondo from "@/assets/img/bg-testomoniales.png";
 import Image from "next/image";
 import { useRaffleStore } from "@/store/zustand/RaffleStore";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 
 export default function HomeTestimonios() {
   const settings = {
@@ -46,7 +46,9 @@ export default function HomeTestimonios() {
           alt="fondoTestimoniales"
           className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded p-0"
         />
-        <h5 className=" home-title-testimonios pt-5 ps-4 ps-lg-5">Testimoniales</h5>
+        <h5 className=" home-title-testimonios pt-5 ps-4 ps-lg-5">
+          Testimoniales
+        </h5>
         <Slider {...settings}>
           {testimonies?.map((testimonio, index) => (
             <div key={index} className="py-3 p-5">

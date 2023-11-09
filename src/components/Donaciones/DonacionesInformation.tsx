@@ -6,7 +6,7 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState } from "@/store/slices/auth";
 import { Donation2 } from "@/types/Model/Profile";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import {
   Donations,
   GetAssociations,

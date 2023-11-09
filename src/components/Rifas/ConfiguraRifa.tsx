@@ -33,7 +33,7 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
     {
       label: " Seleccionar Asociación Civil",
       name: "association",
-      required: true,
+      // required: true,
       type: "select",
       options: associations?.map((association) => ({
         label: association.association_name,

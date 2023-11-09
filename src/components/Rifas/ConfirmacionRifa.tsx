@@ -4,7 +4,7 @@ import imagenConfirmacionRifa from "@/assets/img/Premio-donar.jpg";
 
 import Image from "next/image";
 import { MdAccessTime } from "react-icons/md";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { parseNumber } from "@/utils/ParseNumber";
 import { useRouter } from "next/router";
 

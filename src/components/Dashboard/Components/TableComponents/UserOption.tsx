@@ -2,7 +2,7 @@ import { getStatusOptions } from "@/utils/getStatusOptions";
 import Image from "next/image";
 import React from "react";
 import { FaRegEdit, FaTrash } from "react-icons/fa";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 
 export default function UserOption({ option, index, actions }: any) {
   const { setShowEditUser, setShowScreenDelete } = actions;

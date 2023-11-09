@@ -6,7 +6,7 @@ import {
 import Image from "next/image";
 import React from "react";
 import { FaRegEdit } from "react-icons/fa";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 
 export default function PremioOptions({ option, index, actions }: any) {
   const { setShowEdit, setShowInfo } = actions;

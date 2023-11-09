@@ -3,9 +3,9 @@
     "/": [],
     "/nosotros": [],
     "/rifas/[id]": [],
+    "/rifas/detalles/[id]": [],
     "/rifas": [],
-    "/sitios/[id]": [],
-    "/rifas/detalles/[id]": []
+    "/sitios/[id]": []
   },
   "app": {},
   "appUsingSizeAdjust": false,

@@ -13,7 +13,7 @@ exports.modules = {
 /* harmony export */ });
 const validateAuthPath = (pathname, authorizated)=>{
     if (!authorizated) {
-        if (pathname === "/donaciones" || pathname === "/rifas/crear_rifas" || pathname === "/rifas/[id]") {
+        if (pathname === "/donaciones" || pathname === "/rifas/crear_rifas" || pathname === "/rifas/[id]" || pathname === "/dashboard" || pathname === "/dashboard/[id]" || pathname === "/profile") {
             return true;
         }
     }

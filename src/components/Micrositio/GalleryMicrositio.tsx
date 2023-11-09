@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import fondos1 from "@/assets/img/gal-microsite-apac1.jpg";
 import fondos2 from "@/assets/img/gal-microsite-apac2.jpg";
 import fondos3 from "@/assets/img/gal-microsite-apac3.jpg";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 import { isHttp } from "../FormGenerator/helper";
 

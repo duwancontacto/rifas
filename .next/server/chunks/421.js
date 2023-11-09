@@ -438,7 +438,7 @@ __webpack_async_result__();
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6290);
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9037);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3037);
 
 
 
@@ -467,7 +467,7 @@ function PremioOptions({ option , index , actions  }) {
                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_1___default()), {
                             width: 50,
                             height: 50,
-                            src: option.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z,
+                            src: option.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z,
                             alt: option.name,
                             className: "rounded"
                         })

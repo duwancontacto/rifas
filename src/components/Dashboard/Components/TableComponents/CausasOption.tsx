@@ -1,7 +1,7 @@
 import { getStatusColor, getStatusValue } from "@/utils/getStatusColor";
 import Image from "next/image";
 import React from "react";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import { FaRegEdit } from "react-icons/fa";
 export default function CausasOption({ option, index, actions }: any) {
   const { setShowEdit, setShowInfo } = actions;

@@ -201,7 +201,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5675);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _store_zustand_RaffleStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(1047);
-/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9037);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3037);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_store_zustand_RaffleStore__WEBPACK_IMPORTED_MODULE_7__]);
 _store_zustand_RaffleStore__WEBPACK_IMPORTED_MODULE_7__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
@@ -299,7 +299,7 @@ function HomeTestimonios() {
                                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_6___default()), {
                                                     width: 100,
                                                     height: 100,
-                                                    src: testimonio.raffle.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z,
+                                                    src: testimonio.raffle.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z,
                                                     alt: "fondo",
                                                     className: "w-100 h-75 "
                                                 })

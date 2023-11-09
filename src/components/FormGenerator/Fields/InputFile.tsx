@@ -48,7 +48,8 @@ export default function InputFile({
     }
 
     const preview: string = URL.createObjectURL(file);
-    customChange({ setValue, newValue: [...files, file], values });
+    customChange &&
+      customChange({ setValue, newValue: [...files, file], values });
     setValue(name, [...files, file]);
     setFiles((prev) => [...prev, file]);
     setPreviews((prev) => [...prev, preview]);
@@ -59,11 +60,12 @@ export default function InputFile({
       name,
       files.filter((_, key) => key !== index)
     );
-    customChange({
-      setValue,
-      newValue: files.filter((_, key) => key !== index),
-      values,
-    });
+    customChange &&
+      customChange({
+        setValue,
+        newValue: files.filter((_, key) => key !== index),
+        values,
+      });
     setPreviews((prev) => prev.filter((_, key) => key !== index));
     setFiles((prev) => prev.filter((_, key) => key !== index));
   };

@@ -361,7 +361,7 @@ function ConfiguraRifa({ handleChangeRaffle  }) {
         {
             label: " Seleccionar Asociaci\xf3n Civil",
             name: "association",
-            required: true,
+            // required: true,
             type: "select",
             options: associations?.map((association)=>({
                     label: association.association_name,
@@ -479,7 +479,7 @@ __webpack_async_result__();
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5675);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9037);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3037);
 /* harmony import */ var _utils_ParseNumber__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6843);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1853);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
@@ -525,7 +525,7 @@ function ConfirmacionRifa({ raffle , resetRaffle , handleSubmit  }) {
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                             className: "col-12  col-lg-6  z-2 ",
                                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
-                                                src: preview || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
+                                                src: preview || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
                                                 alt: "fondoDescription",
                                                 className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
                                                 style: {
@@ -620,7 +620,7 @@ function ConfirmacionRifa({ raffle , resetRaffle , handleSubmit  }) {
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                             className: "col-12  col-lg-6  z-2 ",
                                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
-                                                src: raffle?.cause?.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
+                                                src: raffle?.cause?.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
                                                 alt: "fondoDescription",
                                                 className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
                                                 style: {
@@ -650,7 +650,7 @@ function ConfirmacionRifa({ raffle , resetRaffle , handleSubmit  }) {
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                             className: "col-12  col-lg-6  z-2 ",
                                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
-                                                src: raffle?.prize?.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
+                                                src: raffle?.prize?.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
                                                 alt: "fondoDescription",
                                                 className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
                                                 width: 160,
@@ -1358,7 +1358,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9037);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3037);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5675);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5140);
@@ -1415,7 +1415,7 @@ function ModalSelectCausa({ handleSubmit  }) {
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                 className: "col-10 col-sm-4 p-0 ",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
-                                    src: causes.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
+                                    src: causes.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
                                     alt: "fondo",
                                     className: " rounded ",
                                     width: 160,
@@ -1473,7 +1473,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9037);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3037);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5675);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9899);
@@ -1531,7 +1531,7 @@ function ModalSelectPremio({ handleSubmit  }) {
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                 className: "col-10 col-sm-4  mx-auto mx-sm-0    p-0 ",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
-                                    src: premio.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
+                                    src: premio.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
                                     alt: "fondo",
                                     className: " rounded ",
                                     width: 160,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import Image from "next/image";
 import { useCausesStore } from "@/store/zustand/CausesStore";
 import { useInView } from "react-intersection-observer";

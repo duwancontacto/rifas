@@ -237,10 +237,11 @@ margin-top: 280px;
 }
 
 .icon-whatsapp {
-  position: absolute;
+  position: fixed;
   z-index: 10;
   right: 20px;
   bottom: 20px;
+  width: 50px;
   cursor: pointer;
   background:#00C851 ;
   padding: 7px;
@@ -626,6 +627,7 @@ opacity: 1;
   background: #CEA2B61A 0% 0% no-repeat padding-box;
   border: 1px solid #70707000;
   opacity: 1;
+  padding: 20px 10px
 }
 
 .title-AllRifas{

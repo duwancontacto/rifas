@@ -20,7 +20,7 @@ export default function HomeHeader() {
     let message = encodeURIComponent(
       "¡Hola! Me gustaría hacer una consulta sobre Rifa con causa."
     );
-    let phoneNumber = "+52 55 8585 0001";
+    let phoneNumber = "+525585850001";
     let url = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(url, "_blank");
   };

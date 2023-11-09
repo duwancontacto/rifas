@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import fondoDestacada from "@/assets/img/bg-iconos-rifa-destacada.jpg";
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";

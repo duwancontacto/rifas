@@ -3,13 +3,13 @@ exports.id = 962;
 exports.ids = [962];
 exports.modules = {
 
-/***/ 9037:
+/***/ 3037:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/logoRifas.106db5b6.svg","height":114,"width":130,"blurWidth":0,"blurHeight":0});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/logoRifas.3a88c166.jpeg","height":599,"width":689,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAcACAMBIgACEQEDEQH/xAAnAAEBAAAAAAAAAAAAAAAAAAAABwEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAqwP/xAAcEAABAwUAAAAAAAAAAAAAAAARABITAgMhMlH/2gAIAQEAAT8AF2YvpjbqMnpX/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAgEBPwB//8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAwEBPwB//9k=","blurWidth":8,"blurHeight":7});
 
 /***/ }),
 
@@ -240,7 +240,7 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
             return;
         }
         const preview = URL.createObjectURL(file);
-        customChange({
+        customChange && customChange({
             setValue,
             newValue: [
                 ...files,
@@ -263,7 +263,7 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
     };
     const onDelete = (index)=>{
         setValue(name, files.filter((_, key)=>key !== index));
-        customChange({
+        customChange && customChange({
             setValue,
             newValue: files.filter((_, key)=>key !== index),
             values
@@ -278,7 +278,7 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
         setValue(name, files);
         const previews = values[name].map((image)=>{
             if (typeof image !== "string") return URL.createObjectURL(image);
-            return (0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://www.api.rifaconcausa.org"}${image}`;
+            return (0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://gasa1296.pythonanywhere.com"}${image}`;
         });
         setPreviews(previews);
     };
@@ -584,7 +584,7 @@ function InputRange({ label , name , error , maxRange =10 , setValue , register 
                     ] || 0,
                     onChange: (valuesChange)=>{
                         setValue(name, valuesChange[0]);
-                        customChange({
+                        customChange && customChange({
                             setValue,
                             newValue: valuesChange[0],
                             values
@@ -664,8 +664,8 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(997);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./src/assets/img/logoRifas.svg
-var logoRifas = __webpack_require__(9037);
+// EXTERNAL MODULE: ./src/assets/img/logoRifas.jpeg
+var logoRifas = __webpack_require__(3037);
 // EXTERNAL MODULE: ./src/utils/ParseNumber.ts
 var ParseNumber = __webpack_require__(6843);
 // EXTERNAL MODULE: ./node_modules/next/image.js
@@ -924,7 +924,7 @@ function InputSliser({ label , name , error , setValue , register , required , m
     const values = watch();
     const handleChange = (value)=>{
         setValue(name, marks[value]);
-        customChange({
+        customChange && customChange({
             setValue,
             newValue: marks[value],
             values
@@ -1273,7 +1273,7 @@ function isHttp(url) {
 }
 async function urlToFile(url, mimeType) {
     if (typeof url !== "string") return url;
-    const httpUrl = isHttp(url) ? url : `${"https://www.api.rifaconcausa.org"}${url}`;
+    const httpUrl = isHttp(url) ? url : `${"https://gasa1296.pythonanywhere.com"}${url}`;
     const res = await fetch(httpUrl);
     const buf = await res.arrayBuffer();
     const file = new File([
@@ -1309,7 +1309,7 @@ const parseNumber = (number)=>{
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
     };
-    return number.toLocaleString("es-ES", options); //
+    return `${number.toLocaleString("es-ES", options)}.00`; //
 };
 
 

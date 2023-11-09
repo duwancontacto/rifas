@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import LogoRifas from "@/assets/img/logoRifas.svg";
+import LogoRifas from "@/assets/img/logoRifas.jpeg";
 import Image from "next/image";
 
 import { usePremioStore } from "@/store/zustand/PremioStore";

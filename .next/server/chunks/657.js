@@ -1,7 +1,17 @@
 "use strict";
-exports.id = 682;
-exports.ids = [682];
+exports.id = 657;
+exports.ids = [657];
 exports.modules = {
+
+/***/ 9338:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/gente-rifada.5e869620.png","height":396,"width":506,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAA0UlEQVR4nAHGADn/AZXG+wDRIQQLIc3mFCgJ9i0U9BbrtvAOIBsRAKkH580EAfjLlAD/48xNxOYcPhEMGfAqKgUgusXCAFCaGXwA14vpAfCx2i3k0bG2GltPGNnd5gTfyLQAJDU189/K0a9Xf4aFAcNvlY4ke15xEPfyALyxo/8pQkT+/dXw/+UAAgQC7e6ZAc3U7ZcXFQdoGOq4/QIA1QMBEBcA5sz//usmWQIHEQqrAcHC0ZT36OVrFQvc+xAO/QIA/vwA7PAL/e7+KwYJDgmL0QNd/a5xEd0AAAAASUVORK5CYII=","blurWidth":8,"blurHeight":6});
+
+/***/ }),
 
 /***/ 8682:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
@@ -23,7 +33,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_icons_md__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_md__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(1853);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(9037);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(3037);
 /* harmony import */ var _utils_ParseNumber__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(6843);
 /* harmony import */ var _utils_getDays__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(2514);
 /* harmony import */ var _store_zustand_RaffleStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(1047);
@@ -84,7 +94,7 @@ function Rifa({ all  }) {
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                             className: "col-lg-6  position-relative m-0 ",
                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                src: raffle.image || _assets_img_logoRifas_svg__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z,
+                                src: raffle.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z,
                                 alt: "fondo",
                                 className: " w-100 h-100 ",
                                 width: 100,

@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillCamera, AiFillDelete, AiFillCloseCircle } from "react-icons/ai";
 import fondoAllRifas from "@/assets/img/gal-microsite-apac1.jpg";
+import historiasFondo from "@/assets/img/gente-rifada.png";
 import Image from "next/image";
 import Rifa from "./Rifa";
 import RifasActivas from "./RifasActivas";
@@ -18,7 +19,7 @@ export default function AllRifas() {
         </div>
         <div className="mx-0 mx-lg-5 mt-2 col-12 col-lg-5 ">
           <Image
-            src={fondoAllRifas}
+            src={historiasFondo}
             alt="fondoAllrifas"
             className="w-100 h-100 "
           />
