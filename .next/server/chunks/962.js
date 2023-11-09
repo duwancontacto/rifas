@@ -278,7 +278,7 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
         setValue(name, files);
         const previews = values[name].map((image)=>{
             if (typeof image !== "string") return URL.createObjectURL(image);
-            return (0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://gasa1296.pythonanywhere.com"}${image}`;
+            return (0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://www.api.rifaconcausa.org"}${image}`;
         });
         setPreviews(previews);
     };
@@ -1273,7 +1273,7 @@ function isHttp(url) {
 }
 async function urlToFile(url, mimeType) {
     if (typeof url !== "string") return url;
-    const httpUrl = isHttp(url) ? url : `${"https://gasa1296.pythonanywhere.com"}${url}`;
+    const httpUrl = isHttp(url) ? url : `${"https://www.api.rifaconcausa.org"}${url}`;
     const res = await fetch(httpUrl);
     const buf = await res.arrayBuffer();
     const file = new File([
