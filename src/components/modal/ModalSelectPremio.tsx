@@ -16,6 +16,7 @@ export default function ModalSelectPremio({ handleSubmit }: any) {
     paginacion,
     setFilterPremios,
     filterPremios,
+    resetPremio,
   } = usePremioStore();
   const [search, setSearch] = useState("");
   const [ref, inView] = useInView({
@@ -29,6 +30,12 @@ export default function ModalSelectPremio({ handleSubmit }: any) {
 
     //eslint-disable-next-line
   }, [inView]);
+
+  useEffect(() => {
+    return () => {
+      resetPremio();
+    };
+  }, []);
   const allPremios = search === "" ? premio : filterPremios;
 
   return (
@@ -58,6 +65,7 @@ export default function ModalSelectPremio({ handleSubmit }: any) {
                   src={premio.image || LogoRifas}
                   alt="fondo"
                   className=" rounded "
+                  style={{ objectFit: "contain" }}
                   width={160}
                   height={160}
                 />

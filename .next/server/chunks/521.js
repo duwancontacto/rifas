@@ -32,9 +32,11 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(6022);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _store_slices_raffles__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(9818);
-/* harmony import */ var _utils_ParseNumber__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(6843);
+/* harmony import */ var _utils_ParseNumber__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(6843);
+/* harmony import */ var _utils_truncateText__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(97);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_store_slices_raffles__WEBPACK_IMPORTED_MODULE_11__]);
 _store_slices_raffles__WEBPACK_IMPORTED_MODULE_11__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
 
 
 
@@ -80,7 +82,7 @@ function RifasActivas({ all  }) {
             }
         ]
     };
-    const filterRaffles = raffles.filter((raffle)=>(!selectedCategory || raffle.categories[0].id === selectedCategory) && raffle.status === 1);
+    let filterRaffles = raffles.filter((raffle)=>(!selectedCategory || raffle.categories[0].id === selectedCategory) && raffle.status === 1);
     const getPercetRaised = (raffle)=>{
         const meta = Number(raffle?.ticket_number) * Number(raffle?.ticket_price);
         const raisedPercent = (raffle?.raised || 0) * 100 / meta;
@@ -132,7 +134,71 @@ function RifasActivas({ all  }) {
                             }, index))
                     ]
                 }),
-                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                all ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                    className: "d-flex flex-wrap justify-content-between ",
+                    children: filterRaffles.map((raffle, index)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                            className: "col-3 col-lg-3  mt-4  mx-0 shadow card-raffle",
+                            style: {
+                                maxWidth: "309px",
+                                width: "100%",
+                                height: "100%"
+                            },
+                            children: [
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_5___default()), {
+                                    width: 100,
+                                    height: 100,
+                                    src: raffle.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z,
+                                    className: "w-100 h-100",
+                                    style: {
+                                        maxHeight: "200px",
+                                        objectFit: "contain"
+                                    },
+                                    alt: ""
+                                }),
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "p-3 px-3",
+                                    children: [
+                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h6", {
+                                            className: "raffles-title-card  ",
+                                            children: [
+                                                " ",
+                                                (0,_utils_truncateText__WEBPACK_IMPORTED_MODULE_12__/* .truncateText */ .a)(raffle.name, 40)
+                                            ]
+                                        }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                            className: "card-text raffles-subtitle-card lh-sm",
+                                            children: (0,_utils_truncateText__WEBPACK_IMPORTED_MODULE_12__/* .truncateText */ .a)(raffle.description, 70)
+                                        }),
+                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                            className: "card-text  raffles-subtitle-card  p-0  ",
+                                            children: [
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_md__WEBPACK_IMPORTED_MODULE_6__.MdAccessTime, {
+                                                    size: 20,
+                                                    className: "mb-1 me-2 opacity-75 "
+                                                }),
+                                                getPercetRaised(raffle),
+                                                "%",
+                                                " ",
+                                                (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_13__/* .parseNumber */ .p)(raffle?.raised || 0),
+                                                " recaudado"
+                                            ]
+                                        }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                            disabled: Number(getPercetRaised(raffle)) === 100,
+                                            onClick: ()=>router.push(`/rifas/${raffle.id}`),
+                                            className: "btn fs-6 btn-pink w-100",
+                                            children: "Comprar boleto"
+                                        }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                            className: "btn fs-6 btn-border-pink w-100 mt-2",
+                                            onClick: ()=>router.push(`/rifas/detalles/${raffle.id}`),
+                                            children: "Ver detalles"
+                                        })
+                                    ]
+                                })
+                            ]
+                        }, index))
+                }) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                     className: "px-2 px-md-5 position-relative  ",
                     children: [
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
@@ -148,34 +214,36 @@ function RifasActivas({ all  }) {
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((react_slick__WEBPACK_IMPORTED_MODULE_2___default()), {
                             ref: slider,
                             ...settings,
-                            className: " ",
+                            className: "  ",
                             children: filterRaffles.map((raffle, index)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                    className: "col-3 col-lg-2   mt-4 mt-md-0 py-3  ",
-                                    style: {
-                                        maxWidth: "309px",
-                                        width: "100%",
-                                        height: ""
-                                    },
+                                    className: "slide-container-raffle mt-4 mt-md-0 py-3",
                                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                        className: "mx-2 shadow",
+                                        className: "mx-2 shadow card-raffle-slide",
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_5___default()), {
                                                 width: 100,
                                                 height: 100,
                                                 src: raffle.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z,
-                                                className: "w-100 h-50",
+                                                className: "w-100 h-100",
+                                                style: {
+                                                    maxHeight: "200px",
+                                                    objectFit: "contain"
+                                                },
                                                 alt: ""
                                             }),
                                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                                                 className: "p-3 px-3",
                                                 children: [
-                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h6", {
+                                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h6", {
                                                         className: "raffles-title-card  ",
-                                                        children: raffle.name
+                                                        children: [
+                                                            " ",
+                                                            (0,_utils_truncateText__WEBPACK_IMPORTED_MODULE_12__/* .truncateText */ .a)(raffle.name, 40)
+                                                        ]
                                                     }),
                                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                         className: "card-text raffles-subtitle-card lh-sm",
-                                                        children: raffle.description
+                                                        children: (0,_utils_truncateText__WEBPACK_IMPORTED_MODULE_12__/* .truncateText */ .a)(raffle.description, 70)
                                                     }),
                                                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                                                         className: "card-text  raffles-subtitle-card  p-0  ",
@@ -187,14 +255,20 @@ function RifasActivas({ all  }) {
                                                             getPercetRaised(raffle),
                                                             "%",
                                                             " ",
-                                                            (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_12__/* .parseNumber */ .p)(raffle?.raised || 0),
+                                                            (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_13__/* .parseNumber */ .p)(raffle?.raised || 0),
                                                             " recaudado"
                                                         ]
                                                     }),
                                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                        disabled: Number(getPercetRaised(raffle)) === 100,
                                                         onClick: ()=>router.push(`/rifas/${raffle.id}`),
                                                         className: "btn fs-6 btn-pink w-100",
                                                         children: "Comprar boleto"
+                                                    }),
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                        className: "btn fs-6 btn-border-pink w-100 mt-2",
+                                                        onClick: ()=>router.push(`/rifas/detalles/${raffle.id}`),
+                                                        children: "Ver detalles"
                                                     })
                                                 ]
                                             })
@@ -221,6 +295,20 @@ function RifasActivas({ all  }) {
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 97:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "a": () => (/* binding */ truncateText)
+/* harmony export */ });
+const truncateText = (text, maxLength)=>{
+    // Si el texto es más largo que maxLength, cortarlo y añadir puntos suspensivos.
+    return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+};
+
 
 /***/ })
 

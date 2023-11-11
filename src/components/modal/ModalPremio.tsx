@@ -9,18 +9,21 @@ import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesPrize, selectRaffleState } from "@/store/slices/raffles";
 import ModalSelectPremio from "./ModalSelectPremio";
 import { usePremioStore } from "@/store/zustand/PremioStore";
+import ModalEditRafflePremio from "./ModalEditRafflePremio";
 
 export default function ModalPremio({
   show,
   handleClose,
   handleSubmit,
   activeSelect,
+  setSelected,
 }: any) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const { prizesCategories } = useSelector(selectRaffleState);
   const { associations } = useSelector(selectRaffleState);
   const getPremio = usePremioStore((state) => state.getPremio);
+  const setCreatedPrizes = usePremioStore((state) => state.setCreatedPrizes);
 
   const fields: Field[] = [
     {
@@ -82,15 +85,30 @@ export default function ModalPremio({
   const submitData = async (data: any) => {
     setLoading(true);
     const { payload } = await dispatch(createRafflesPrize(data) as any);
+    console.log("TEst", payload)
     setLoading(false);
     if (payload) {
       getPremio(1);
+      setCreatedPrizes(payload.id);
       return handleSubmit({
         type: "prize",
         ...payload,
       });
     }
   };
+
+  if (typeof show !== "boolean")
+    return (
+      <ModalEditRafflePremio
+        associations={associations}
+        show={show}
+        setShow={handleClose}
+        handleReset={(data: any) => {
+          setSelected({ ...data, type: "prize" });
+          getPremio(1);
+        }}
+      />
+    );
 
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal ">

@@ -11,11 +11,11 @@ import { RafflesI } from "@/types/Model/Raffle";
 import { selectAuthState } from "@/store/slices/auth";
 
 import { useRouter } from "next/router";
+import { usePremioStore } from "@/store/zustand/PremioStore";
 import CreateAsociacion from "@/components/Registro/CrearAsociacion";
 import ConfiguraRifa from "@/components/Rifas/ConfiguraRifa";
 import DefinicionRifa from "@/components/Rifas/DefinicionRifa";
 import ConfirmacionRifa from "@/components/Rifas/ConfirmacionRifa";
-import { useRaffleStoreDashboard } from "@/store/zustand/DashboardStore";
 <div></div>;
 
 const StepIcon = (step: number, currentStep: number) => {
@@ -23,16 +23,13 @@ const StepIcon = (step: number, currentStep: number) => {
   return <MdKeyboardArrowDown size={30} />;
 };
 
-export default function CreateRifaDashboard({
-  nextStep,
-  backStep,
-  disable,
-  handleClose,
-}: any) {
+export default function CreateRifa({ nextStep, backStep, disable }: any) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [raffle, setRaffle] = useState({});
-  const getRaffle = useRaffleStoreDashboard((state) => state.getRaffle);
+
+  const getPremio = usePremioStore((state) => state.getPremio);
+
   const dispatch = useDispatch();
   const { profile } = useSelector(selectAuthState);
   const canCreateRaffle = profile?.role === 1;
@@ -44,17 +41,12 @@ export default function CreateRifaDashboard({
 
   const handleSubmit = async () => {
     const { payload } = await dispatch(createRaffle(raffle as RafflesI) as any);
-    await getRaffle(router.query.id as string);
-    handleClose();
 
-    if (!payload) setStep(1);
+    if (!payload) return setStep(1);
+
+    getPremio(1);
+    nextStep();
   };
-
-  useEffect(() => {
-    if (step === 3) handleSubmit();
-
-    //eslint-disable-next-line
-  }, [step]);
 
   const resetRaffle = () => {
     setStep(1);
@@ -65,12 +57,17 @@ export default function CreateRifaDashboard({
 
   return (
     <div className="mx-4">
+      <h2 className="title-page-rifaRegistro my-4">
+        ¡Es momento de rifarnos {profile?.full_name}!
+      </h2>
+
       <div className="  bg-white mb-3 col-12 col-lg-8 m-auto  ">
         <div
           className=" d-flex justify-content-between align-items-center    "
           onClick={() => {}}
         >
           <button
+            onClick={() => step > 1 && setStep(1)}
             className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${
               step === 1 ? " opacity-50 " : " opacity-100  "
             }`}
@@ -82,12 +79,13 @@ export default function CreateRifaDashboard({
             <div className="m-0">{StepIcon(step, 1)}</div>
           </button>
         </div>
-        {step === 1 && (
+        <div className={`${step !== 1 && "d-none"}`}>
           <ConfiguraRifa handleChangeRaffle={handleChangeRaffle} />
-        )}
+        </div>
 
         <div className=" d-flex justify-content-between align-items-center  mt-4  ">
           <button
+            onClick={() => step > 2 && setStep(2)}
             className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
               step === 2 ? " opacity-50 " : " opacity-100  "
             }`}
@@ -99,9 +97,9 @@ export default function CreateRifaDashboard({
           </button>
         </div>
 
-        {step === 2 && (
+        <div className={`${step !== 2 && "d-none"}`}>
           <DefinicionRifa handleChangeRaffle={handleChangeRaffle} />
-        )}
+        </div>
 
         <div className=" d-flex justify-content-around align-items-center   mt-4   ">
           <button
@@ -115,9 +113,14 @@ export default function CreateRifaDashboard({
             <div className="m-0">{StepIcon(step, 3)}</div>
           </button>
         </div>
-        {step === 3 && (
-          <ConfirmacionRifa resetRaffle={resetRaffle} raffle={raffle} />
-        )}
+
+        <div className={`${step !== 3 && "d-none"}`}>
+          <ConfirmacionRifa
+            handleSubmit={handleSubmit}
+            resetRaffle={resetRaffle}
+            raffle={raffle}
+          />
+        </div>
       </div>
     </div>
   );

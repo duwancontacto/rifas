@@ -14,7 +14,7 @@ export const getSeachCause = (search: string) => {
 };
 export const getSeachPremios = (search: string) => {
   return Api({
-    endpoint: `/prizes/search/?name=${search}`,
+    endpoint: `/prizes/search/?name=${search}&isFree=true`,
     method: "GET",
   });
 };

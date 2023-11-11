@@ -361,6 +361,10 @@ function Nav() {
     const handleShow = ()=>setShow(true);
     const options = [
         {
+            label: "Inicio",
+            path: "/"
+        },
+        {
             label: "Rifas",
             path: "/rifas"
         },
@@ -380,6 +384,10 @@ function Nav() {
     ];
     const authOptions = [
         {
+            label: "Inicio",
+            path: "/"
+        },
+        {
             label: "Rifas",
             path: "/rifas"
         },
@@ -390,6 +398,10 @@ function Nav() {
         {
             label: "Crear Rifa",
             path: "/rifas/crear_rifas"
+        },
+        {
+            label: "Registrar AC",
+            path: "/crear_asociacion"
         },
         {
             label: "Nosotros",

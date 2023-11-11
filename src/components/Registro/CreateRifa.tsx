@@ -14,6 +14,7 @@ import { RafflesI } from "@/types/Model/Raffle";
 import { selectAuthState } from "@/store/slices/auth";
 import CreateAsociacion from "./CrearAsociacion";
 import { useRouter } from "next/router";
+import { usePremioStore } from "@/store/zustand/PremioStore";
 <div></div>;
 
 const StepIcon = (step: number, currentStep: number) => {
@@ -25,6 +26,8 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [raffle, setRaffle] = useState({});
+
+  const getPremio = usePremioStore((state) => state.getPremio);
 
   const dispatch = useDispatch();
   const { profile } = useSelector(selectAuthState);
@@ -39,6 +42,8 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
     const { payload } = await dispatch(createRaffle(raffle as RafflesI) as any);
 
     if (!payload) return setStep(1);
+
+    getPremio(1);
     nextStep();
   };
 

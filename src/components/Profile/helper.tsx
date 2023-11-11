@@ -4,7 +4,7 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { FaGift, FaBriefcase } from "react-icons/fa";
-
+import { FaWallet } from "react-icons/fa";
 import ProfileResume from "./ProfileScreens/ProfileResumen";
 import ProfileCartera from "./ProfileScreens/ProfileCartera";
 import ProfilePerfil from "./ProfileScreens/ProfilePerfil";
@@ -30,7 +30,7 @@ export const optionsSidebar = [
   {
     label: "Cartera",
     value: "4",
-    icon: <FaBriefcase />,
+    icon: <FaWallet />,
   },
   {
     label: "Perfil",

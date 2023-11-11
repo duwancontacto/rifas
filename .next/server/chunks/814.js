@@ -113,62 +113,47 @@ function HomeRifate() {
             }),
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)((external_react_slick_default()), {
                 ...settings,
-                className: "d-flex justify-content-between mx-0 mx-lg-0 ",
+                className: " mx-0 mx-lg-0 ",
                 children: [
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "w-100",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: emprendedor2018,
-                                className: "w-50 h-25   mx-auto",
-                                alt: "..."
-                            }),
-                            " "
-                        ]
+                        children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                            src: emprendedor2018,
+                            className: "w-50 h-25   mx-auto",
+                            alt: "..."
+                        })
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "w-100",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: emprendedor_1,
-                                className: "w-50 h-25   mx-auto",
-                                alt: "..."
-                            }),
-                            " "
-                        ]
+                        children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                            src: emprendedor_1,
+                            className: "w-50 h-25   mx-auto",
+                            alt: "..."
+                        })
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "w-100",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: emprendedor_2,
-                                className: "w-50 h-25   mx-auto",
-                                alt: "..."
-                            }),
-                            " "
-                        ]
+                        children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                            src: emprendedor_2,
+                            className: "w-50 h-25   mx-auto",
+                            alt: "..."
+                        })
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "w-100",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: emprendedor_3,
-                                className: "w-50 h-25   mx-auto",
-                                alt: "..."
-                            }),
-                            " "
-                        ]
+                        children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                            src: emprendedor_3,
+                            className: "w-50 h-25   mx-auto",
+                            alt: "..."
+                        })
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "w-100",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: emprendedor_4,
-                                className: "w-50 h-25   mx-auto",
-                                alt: "..."
-                            }),
-                            " "
-                        ]
+                        children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                            src: emprendedor_4,
+                            className: "w-50 h-25   mx-auto",
+                            alt: "..."
+                        })
                     })
                 ]
             })

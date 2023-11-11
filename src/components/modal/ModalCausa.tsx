@@ -5,23 +5,23 @@ import Button from "react-bootstrap/Button";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
-import { Auth } from "@/types/Model/Profile";
-import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesCause, selectRaffleState } from "@/store/slices/raffles";
 import ModalSelectCausa from "./ModalSelectCausa";
 import { useCausesStore } from "@/store/zustand/CausesStore";
+import ModalEditRaffleCausa from "./ModalEditRaffleCause";
 
 export default function ModalCausa({
   show,
-  setShow,
   handleSubmit,
   handleClose,
   activeSelect,
+  setSelected,
 }: any) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 
   const getCauses = useCausesStore((state) => state.getCauses);
+  const setCreatedCauses = useCausesStore((state) => state.setCreatedCauses);
   const { causesCategories, associations } = useSelector(selectRaffleState);
 
   const fields: Field[] = [
@@ -78,12 +78,28 @@ export default function ModalCausa({
     if (payload) {
       getCauses(1);
 
+      setCreatedCauses(payload.id);
+
       return handleSubmit({
         type: "cause",
         ...payload,
       });
     }
   };
+
+  if (typeof show !== "boolean")
+    return (
+      <ModalEditRaffleCausa
+        associations={associations}
+        show={show}
+        setShow={handleClose}
+        handleReset={(data: any) => {
+          setSelected(data);
+          getCauses(1);
+        }}
+      />
+    );
+
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">

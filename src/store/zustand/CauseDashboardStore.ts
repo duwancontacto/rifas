@@ -1,10 +1,15 @@
 import { create } from "zustand";
-import { getDashboardCause, setEditCauses } from "@/services/dashboard";
+import {
+  getDashboardCause,
+  setDeleteImageCause,
+  setEditCauses,
+} from "@/services/dashboard";
 
 import {
   createCause,
   createCauseGallery,
   deleteImageGalleryRaffle,
+  getCausesById,
   updateGalleryCause,
 } from "@/services/raffles";
 
@@ -14,7 +19,7 @@ interface CreateCausesStoreDasboard {
   error: boolean;
   getCause: (id: string, pagination: number) => Promise<void>;
   createCause: (cause: any) => Promise<void>;
-  updateCause: (causeId: number, cause: any, oldData: any) => Promise<void>;
+  updateCause: (causeId: number, cause: any, oldData: any) => Promise<any>;
   pagination: number | null;
 }
 
@@ -53,9 +58,10 @@ export const useCauseDashboardStore = create<CreateCausesStoreDasboard>(
 
       cause.categories = [Number(cause.categories)];
       cause.association = Number(cause.association);
-      await setEditCauses(causeId, cause);
 
-      /////
+      await setDeleteImageCause(causeId);
+      let newCause: any;
+      newCause = await setEditCauses(causeId, cause);
 
       let resultGallery = [];
 
@@ -68,7 +74,7 @@ export const useCauseDashboardStore = create<CreateCausesStoreDasboard>(
 
         resultGallery = await Promise.all(petitions);
 
-        await updateGalleryCause(causeId.toString(), {
+        newCause = await updateGalleryCause(causeId.toString(), {
           gallery: resultGallery.map((gallery) => gallery.data.id),
           goal: cause.goal,
           association: cause.association,
@@ -88,6 +94,10 @@ export const useCauseDashboardStore = create<CreateCausesStoreDasboard>(
         //cause: data,
         isLoading: false,
       });
+
+      newCause = await getCausesById(causeId);
+
+      return newCause?.data || {};
     },
   })
 );

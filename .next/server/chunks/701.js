@@ -278,12 +278,13 @@ const createRafflesCause = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.crea
             Number(cause.categories)
         ];
         cause.association = Number(cause.association);
-        const result = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createCause */ .Wi)(cause);
+        let result;
+        result = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createCause */ .Wi)(cause);
         const petitions = [];
-        if (cause.image && cause.image.length > 1) {
+        if (cause.image && cause.image.length > 0) {
             cause.image.map((gallery)=>petitions.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createCauseGallery */ .V2)(gallery, result.data.id)));
             const resultGallery = await Promise.all(petitions);
-            await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .updateGalleryCause */ .Uj)(result.data.id, {
+            result = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .updateGalleryCause */ .Uj)(result.data.id, {
                 gallery: resultGallery.map((gallery)=>gallery.data.id),
                 goal: cause.goal,
                 association: cause.association,
@@ -302,12 +303,13 @@ const createRafflesPrize = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.crea
         prize.association = Number(prize.association);
         if (prize.association === 0 || prize.association === undefined) delete prize.association;
         prize.category = Number(prize.category);
-        const result = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createDonations */ .Bk)(prize);
-        if (prize.image && prize.image.length > 1) {
+        let result;
+        result = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createDonations */ .Bk)(prize);
+        if (prize.image && prize.image.length > 0) {
             const petitions = [];
             prize.image.map((gallery)=>petitions.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .createPrizeGallery */ .J2)(gallery, result.data.id)));
             const resultGallery = await Promise.all(petitions);
-            await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .updateGalleryPrize */ .cW)(result.data.id, {
+            result = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_0__/* .updateGalleryPrize */ .cW)(result.data.id, {
                 gallery: resultGallery.map((gallery)=>gallery.data.id),
                 name: prize.name,
                 value: prize.value

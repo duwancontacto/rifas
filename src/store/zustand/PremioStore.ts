@@ -10,7 +10,9 @@ interface PremioStore {
   getPremio: (pagination: number) => Promise<void>;
   setFilterPremios: (search: string) => Promise<void>;
   resetPremio: () => void;
+  setCreatedPrizes: (id: number) => void;
   paginacion: number | null;
+  createdPrizes: number[];
 }
 
 export const usePremioStore = create<PremioStore>((set) => ({
@@ -19,6 +21,7 @@ export const usePremioStore = create<PremioStore>((set) => ({
   error: false,
   filterPremios: [],
   paginacion: 1,
+  createdPrizes: [],
   getPremio: async (pagination: number) => {
     set({ isLoading: true });
 
@@ -36,6 +39,13 @@ export const usePremioStore = create<PremioStore>((set) => ({
   resetPremio: () => {
     set({ premio: [], paginacion: 1 });
   },
+
+  setCreatedPrizes: (id: number) => {
+    set((state) => ({
+      createdPrizes: [...state.createdPrizes, id],
+    }));
+  },
+
   setFilterPremios: async (search: string) => {
     set({ isLoading: true });
 

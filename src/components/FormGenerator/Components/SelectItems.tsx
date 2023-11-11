@@ -1,4 +1,6 @@
 import LogoRifas from "@/assets/img/logoRifas.jpeg";
+import { useCausesStore } from "@/store/zustand/CausesStore";
+import { usePremioStore } from "@/store/zustand/PremioStore";
 import { SelectedItems } from "@/types/Component/FormGenerator";
 import { parseNumber } from "@/utils/ParseNumber";
 import Image from "next/image";
@@ -17,6 +19,11 @@ export const Cause = ({
   handleSelect,
   handleShow,
 }: Props) => {
+  const createdCauses = useCausesStore((state) => state.createdCauses);
+
+  const findPrize = createdCauses.find((prize) => prize === selectedItem.id);
+
+  console.log("TEst", findPrize);
   return (
     <div>
       <p className="m-0 mt-2">Causa seleccionada</p>
@@ -26,7 +33,7 @@ export const Cause = ({
           alt="logorifas"
           width={150}
           height={150}
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }}
           className="rounded"
         />
         <div className="ms-3">
@@ -48,7 +55,7 @@ export const Cause = ({
             Cambiar causa
           </button>
           <button
-            className="btn btn-outline-pink  mt-3 mx-2  mb-4"
+            className="btn btn-outline-pink  mt-3 ms-2  mb-4"
             onClick={(e) => {
               e.preventDefault();
               resetValue();
@@ -57,6 +64,18 @@ export const Cause = ({
           >
             Crear nueva Causa
           </button>
+          {findPrize && (
+            <button
+              className="btn btn-outline-pink  mt-3 ms-2  mb-4"
+              onClick={(e) => {
+                e.preventDefault();
+                // resetValue();
+                handleShow(e, selectedItem);
+              }}
+            >
+              Editar Causa
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -69,6 +88,9 @@ export const Prize = ({
   handleSelect,
   handleShow,
 }: Props) => {
+  const createdPrizes = usePremioStore((state) => state.createdPrizes);
+
+  const findPrize = createdPrizes.find((prize) => prize === selectedItem.id);
   return (
     <div>
       <p className="m-0 mt-2">Premio seleccionado</p>
@@ -78,7 +100,7 @@ export const Prize = ({
           alt="logorifas2"
           width={150}
           height={150}
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }}
           className="rounded"
         />
         <div className="ms-3">
@@ -102,7 +124,7 @@ export const Prize = ({
             Cambiar premio
           </button>
           <button
-            className="btn btn-outline-pink  mt-3 mx-2 mb-4"
+            className="btn btn-outline-pink  mt-3 ms-2 mb-4"
             onClick={(e) => {
               e.preventDefault();
               resetValue();
@@ -111,6 +133,18 @@ export const Prize = ({
           >
             Crear nuevo Premio
           </button>
+          {findPrize && (
+            <button
+              className="btn btn-outline-pink  mt-3 ms-2 mb-4"
+              onClick={(e) => {
+                e.preventDefault();
+                resetValue();
+                handleShow(e, selectedItem);
+              }}
+            >
+              Editar Premio
+            </button>
+          )}
         </div>
       </div>
     </div>

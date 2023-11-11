@@ -529,7 +529,8 @@ function ConfirmacionRifa({ raffle , resetRaffle , handleSubmit  }) {
                                                 alt: "fondoDescription",
                                                 className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
                                                 style: {
-                                                    maxHeight: "300px"
+                                                    maxHeight: "300px",
+                                                    objectFit: "contain"
                                                 },
                                                 width: 160,
                                                 height: 160
@@ -624,7 +625,8 @@ function ConfirmacionRifa({ raffle , resetRaffle , handleSubmit  }) {
                                                 alt: "fondoDescription",
                                                 className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
                                                 style: {
-                                                    maxHeight: "300px"
+                                                    maxHeight: "300px",
+                                                    objectFit: "contain"
                                                 },
                                                 width: 160,
                                                 height: 160
@@ -653,6 +655,10 @@ function ConfirmacionRifa({ raffle , resetRaffle , handleSubmit  }) {
                                                 src: raffle?.prize?.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z,
                                                 alt: "fondoDescription",
                                                 className: " d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 ",
+                                                style: {
+                                                    maxHeight: "300px",
+                                                    objectFit: "contain"
+                                                },
                                                 width: 160,
                                                 height: 160
                                             })
@@ -869,7 +875,7 @@ function ResumeRaffle({ register , label , name , required , error , watch  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                         className: "m-0 value-calculadora-boletos",
-                        children: (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_2__/* .parseNumber */ .p)(values.ticket_number)
+                        children: (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_2__/* .parseNumber */ .p)(values.ticket_number, false)
                     })
                 ]
             }),
@@ -988,8 +994,9 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9818);
 /* harmony import */ var _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(3904);
 /* harmony import */ var _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5140);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__]);
-([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _ModalEditRaffleCause__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(1646);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__, _ModalEditRaffleCause__WEBPACK_IMPORTED_MODULE_9__]);
+([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectCausa__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__, _ModalEditRaffleCause__WEBPACK_IMPORTED_MODULE_9__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
 
@@ -999,10 +1006,12 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_For
 
 
 
-function ModalCausa({ show , setShow , handleSubmit , handleClose , activeSelect  }) {
+
+function ModalCausa({ show , handleSubmit , handleClose , activeSelect , setSelected  }) {
     const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
     const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const getCauses = (0,_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__/* .useCausesStore */ .e)((state)=>state.getCauses);
+    const setCreatedCauses = (0,_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_8__/* .useCausesStore */ .e)((state)=>state.setCreatedCauses);
     const { causesCategories , associations  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .selectRaffleState */ .VB);
     const fields = [
         {
@@ -1056,12 +1065,22 @@ function ModalCausa({ show , setShow , handleSubmit , handleClose , activeSelect
         setLoading(false);
         if (payload) {
             getCauses(1);
+            setCreatedCauses(payload.id);
             return handleSubmit({
                 type: "cause",
                 ...payload
             });
         }
     };
+    if (typeof show !== "boolean") return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_ModalEditRaffleCause__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+        associations: associations,
+        show: show,
+        setShow: handleClose,
+        handleReset: (data)=>{
+            setSelected(data);
+            getCauses(1);
+        }
+    });
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2___default()), {
         show: show,
         onHide: handleClose,
@@ -1150,6 +1169,317 @@ __webpack_async_result__();
 
 /***/ }),
 
+/***/ 1646:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ ModalEditRaffleCausa)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(358);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _FormGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7488);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6022);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9818);
+/* harmony import */ var _store_zustand_CauseDashboardStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8110);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_3__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__, _store_zustand_CauseDashboardStore__WEBPACK_IMPORTED_MODULE_6__]);
+([_FormGenerator__WEBPACK_IMPORTED_MODULE_3__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__, _store_zustand_CauseDashboardStore__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+
+
+
+
+
+function ModalEditRaffleCausa({ show , setShow , associations , handleReset  }) {
+    const updateCause = (0,_store_zustand_CauseDashboardStore__WEBPACK_IMPORTED_MODULE_6__/* .useCauseDashboardStore */ .a)((state)=>state.updateCause);
+    const isLoading = (0,_store_zustand_CauseDashboardStore__WEBPACK_IMPORTED_MODULE_6__/* .useCauseDashboardStore */ .a)((state)=>state.isLoading);
+    const { causesCategories  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__/* .selectRaffleState */ .VB);
+    const submitData = async (data)=>{
+        const result = await updateCause(show.id, data, show);
+        handleReset(result);
+        setShow(false);
+    };
+    const gallery = show?.images && show?.images?.length > 0 ? show?.images?.map((image)=>image.file) : [];
+    const fields = [
+        {
+            label: "\xbfCu\xe1l es el nombre de la causa? ",
+            name: "name",
+            required: true,
+            type: "text",
+            default: show?.name
+        },
+        {
+            label: "\xbfCu\xe1l es la descripci\xf3n de la causa?*",
+            name: "description",
+            required: true,
+            type: "text",
+            default: show?.description
+        },
+        {
+            label: "\xbfQu\xe9 categor\xeda describe mejor tu causa?*",
+            name: "categories",
+            required: true,
+            type: "select",
+            options: causesCategories.map((prize)=>({
+                    label: prize.name,
+                    value: prize.id
+                })),
+            default: show.categories && show?.categories[0]
+        },
+        {
+            label: "\xbfCu\xe1l es el monto a recaudar (pesos MXN)?*",
+            name: "goal",
+            required: true,
+            type: "number",
+            default: show?.goal
+        },
+        {
+            label: "\xbfQuieres asignar tu premio a alguna Asociaci\xf3n?",
+            name: "association",
+            required: true,
+            type: "select",
+            options: associations.map((association)=>({
+                    label: association.association_name,
+                    value: association.id
+                })),
+            default: show?.association
+        },
+        {
+            label: "Agrega las fotos de tu causa",
+            name: "image",
+            required: false,
+            type: "file",
+            default: [
+                ...gallery
+            ]
+        }
+    ];
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: show ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__.Modal, {
+                className: "custom-modal",
+                show: show,
+                setShowScreen: ()=>setShow(false),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__.Modal.Body, {
+                    className: "px-4",
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                            className: "m-auto mb-4",
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h4", {
+                                className: "text-secondary text-center m-0",
+                                children: "Editar Causa"
+                            })
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                            style: {
+                                cursor: "pointer"
+                            },
+                            className: "fs-4 text-secondary position-absolute top-0 end-0 mx-3 my-2",
+                            onClick: ()=>setShow(false),
+                            children: "X"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_FormGenerator__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+                            buttonText: "Guardar Causa",
+                            fields: fields,
+                            submitData: submitData,
+                            renderButton: (handleSubmit)=>{
+                                return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                        className: "btn btn-pink w-100 my-4",
+                                        onClick: (e)=>{
+                                            e.preventDefault();
+                                            handleSubmit();
+                                        },
+                                        children: "Guardar Causa"
+                                    })
+                                });
+                            },
+                            loading: isLoading
+                        })
+                    ]
+                })
+            })
+        }) : null
+    });
+}
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 7508:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ ModalEditRafflePremio)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(358);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _FormGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7488);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6022);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9818);
+/* harmony import */ var _store_zustand_PrizesDashboardStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5539);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(1853);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_3__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__, _store_zustand_PrizesDashboardStore__WEBPACK_IMPORTED_MODULE_6__]);
+([_FormGenerator__WEBPACK_IMPORTED_MODULE_3__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__, _store_zustand_PrizesDashboardStore__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+
+
+
+
+
+
+function ModalEditRafflePremio({ show , setShow , handleReset , associations  }) {
+    const { loading  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__/* .selectRaffleState */ .VB);
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_7__.useRouter)();
+    const updatePrize = (0,_store_zustand_PrizesDashboardStore__WEBPACK_IMPORTED_MODULE_6__/* .usePrizeStoreDashboard */ .E)((state)=>state.updatePrize);
+    const { prizesCategories  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_5__/* .selectRaffleState */ .VB);
+    const submitData = async (data)=>{
+        const result = await updatePrize(show.id, data, show);
+        setShow(false);
+        handleReset(result);
+    };
+    console.log("TEst", show);
+    const gallery = show?.images && show?.images?.length > 0 ? show?.images?.map((image)=>image.file) : [];
+    const fields = [
+        {
+            label: " \xbfCu\xe1l es el nombre del premio?",
+            name: "name",
+            required: true,
+            type: "text",
+            default: show?.name
+        },
+        {
+            label: "\xbfCu\xe1l es la descripci\xf3n del  premio?*",
+            name: "description",
+            required: true,
+            type: "textarea",
+            default: show?.description
+        },
+        {
+            label: "\xbfQu\xe9 categor\xeda describe tu producto?*",
+            name: "category",
+            required: true,
+            type: "select",
+            options: prizesCategories.map((prize)=>({
+                    label: prize.name,
+                    value: prize.id
+                })),
+            default: show?.categories ? show?.categories[0] : show?.category
+        },
+        {
+            label: "\xbfCu\xe1l es el precio de tu producto (pesos MXN)?*",
+            name: "value",
+            required: true,
+            type: "number",
+            default: show?.value
+        },
+        {
+            label: "\xbfQuieres asignar tu premio a alguna Asociaci\xf3n?",
+            name: "association",
+            required: false,
+            type: "select",
+            options: associations.map((association)=>({
+                    label: association.association_name,
+                    value: association.id
+                })),
+            default: show?.association
+        },
+        {
+            label: "\xbfCu\xe1l es la condici\xf3n de tu producto?*",
+            name: "status",
+            required: true,
+            type: "radioButton",
+            options: [
+                {
+                    label: "Nuevo",
+                    value: "nuevo"
+                },
+                {
+                    label: "Usado",
+                    value: "usado"
+                }
+            ],
+            default: "nuevo"
+        },
+        {
+            label: "Agrega las fotos de tu premio",
+            name: "image",
+            required: false,
+            type: "file",
+            default: [
+                ...gallery
+            ]
+        }
+    ];
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: show ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__.Modal, {
+                className: "custom-modal",
+                show: show,
+                setShowScreen: ()=>setShow(false),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__.Modal.Body, {
+                    className: "px-4",
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                            className: "m-auto mb-4",
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h4", {
+                                className: "text-secondary text-center m-0",
+                                children: "Editar Premio"
+                            })
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                            style: {
+                                cursor: "pointer"
+                            },
+                            className: "fs-4 text-secondary position-absolute top-0 end-0 mx-3 my-2",
+                            onClick: ()=>setShow(false),
+                            children: "X"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_FormGenerator__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+                            buttonText: "Guardar Causa",
+                            fields: fields,
+                            submitData: submitData,
+                            renderButton: (handleSubmit)=>{
+                                return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                        className: "btn btn-pink w-100 my-4",
+                                        onClick: (e)=>{
+                                            e.preventDefault();
+                                            handleSubmit();
+                                        },
+                                        children: "Guardar Premio"
+                                    })
+                                });
+                            }
+                        })
+                    ]
+                })
+            })
+        }) : null
+    });
+}
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 9997:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -1171,8 +1501,9 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9818);
 /* harmony import */ var _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(5951);
 /* harmony import */ var _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9899);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__]);
-([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _ModalEditRafflePremio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7508);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__, _ModalEditRafflePremio__WEBPACK_IMPORTED_MODULE_9__]);
+([_FormGenerator__WEBPACK_IMPORTED_MODULE_4__, _store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__, _ModalSelectPremio__WEBPACK_IMPORTED_MODULE_7__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__, _ModalEditRafflePremio__WEBPACK_IMPORTED_MODULE_9__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
 
@@ -1182,12 +1513,14 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_For
 
 
 
-function ModalPremio({ show , handleClose , handleSubmit , activeSelect  }) {
+
+function ModalPremio({ show , handleClose , handleSubmit , activeSelect , setSelected  }) {
     const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
     const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const { prizesCategories  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .selectRaffleState */ .VB);
     const { associations  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .selectRaffleState */ .VB);
     const getPremio = (0,_store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__/* .usePremioStore */ .Z)((state)=>state.getPremio);
+    const setCreatedPrizes = (0,_store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_8__/* .usePremioStore */ .Z)((state)=>state.setCreatedPrizes);
     const fields = [
         {
             label: " \xbfCu\xe1l es el nombre del premio?*",
@@ -1253,15 +1586,29 @@ function ModalPremio({ show , handleClose , handleSubmit , activeSelect  }) {
     const submitData = async (data)=>{
         setLoading(true);
         const { payload  } = await dispatch((0,_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .createRafflesPrize */ .FL)(data));
+        console.log("TEst", payload);
         setLoading(false);
         if (payload) {
             getPremio(1);
+            setCreatedPrizes(payload.id);
             return handleSubmit({
                 type: "prize",
                 ...payload
             });
         }
     };
+    if (typeof show !== "boolean") return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_ModalEditRafflePremio__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+        associations: associations,
+        show: show,
+        setShow: handleClose,
+        handleReset: (data)=>{
+            setSelected({
+                ...data,
+                type: "prize"
+            });
+            getPremio(1);
+        }
+    });
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_2___default()), {
         show: show,
         onHide: handleClose,
@@ -1372,7 +1719,7 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_sto
 
 
 function ModalSelectCausa({ handleSubmit  }) {
-    const { isLoading , error , causes , getCauses , paginacion , setFilterCauses , filterCauses  } = (0,_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_4__/* .useCausesStore */ .e)();
+    const { isLoading , error , causes , getCauses , paginacion , setFilterCauses , filterCauses , resetCauses  } = (0,_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_4__/* .useCausesStore */ .e)();
     const [search, setSearch] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
     const [ref, inView] = (0,react_intersection_observer__WEBPACK_IMPORTED_MODULE_5__.useInView)({
         triggerOnce: false
@@ -1386,6 +1733,11 @@ function ModalSelectCausa({ handleSubmit  }) {
         inView
     ]);
     const allCauses = search === "" ? causes : filterCauses;
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        return ()=>{
+            resetCauses();
+        };
+    }, []);
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
         className: "",
         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -1419,6 +1771,9 @@ function ModalSelectCausa({ handleSubmit  }) {
                                     alt: "fondo",
                                     className: " rounded ",
                                     width: 160,
+                                    style: {
+                                        objectFit: "contain"
+                                    },
                                     height: 160
                                 })
                             }),
@@ -1489,7 +1844,7 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_sto
 
 
 function ModalSelectPremio({ handleSubmit  }) {
-    const { isLoading , error , premio , getPremio , paginacion , setFilterPremios , filterPremios  } = (0,_store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_4__/* .usePremioStore */ .Z)();
+    const { isLoading , error , premio , getPremio , paginacion , setFilterPremios , filterPremios , resetPremio  } = (0,_store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_4__/* .usePremioStore */ .Z)();
     const [search, setSearch] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
     const [ref, inView] = (0,react_intersection_observer__WEBPACK_IMPORTED_MODULE_5__.useInView)({
         triggerOnce: false
@@ -1502,6 +1857,11 @@ function ModalSelectPremio({ handleSubmit  }) {
     }, [
         inView
     ]);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        return ()=>{
+            resetPremio();
+        };
+    }, []);
     const allPremios = search === "" ? premio : filterPremios;
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -1534,6 +1894,9 @@ function ModalSelectPremio({ handleSubmit  }) {
                                     src: premio.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z,
                                     alt: "fondo",
                                     className: " rounded ",
+                                    style: {
+                                        objectFit: "contain"
+                                    },
                                     width: 160,
                                     height: 160
                                 })
@@ -1594,114 +1957,84 @@ __webpack_async_result__();
 
 /***/ }),
 
-/***/ 265:
+/***/ 8110:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "F7": () => (/* binding */ getCausesStore),
-/* harmony export */   "I": () => (/* binding */ getSeachPremios),
-/* harmony export */   "KZ": () => (/* binding */ getSeachCause)
+/* harmony export */   "a": () => (/* binding */ useCauseDashboardStore)
 /* harmony export */ });
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(444);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___WEBPACK_IMPORTED_MODULE_0__]);
-___WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
-
-const getCausesStore = (pagination)=>{
-    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
-        endpoint: `/causes/my_causes/?page=${pagination}`,
-        method: "GET"
-    });
-};
-const getSeachCause = (search)=>{
-    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
-        endpoint: `/causes/search/?name=${search}`,
-        method: "GET"
-    });
-};
-const getSeachPremios = (search)=>{
-    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
-        endpoint: `/prizes/search/?name=${search}`,
-        method: "GET"
-    });
-};
-
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } });
-
-/***/ }),
-
-/***/ 2251:
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "q": () => (/* binding */ getPremioStore)
-/* harmony export */ });
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(444);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___WEBPACK_IMPORTED_MODULE_0__]);
-___WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
-
-const getPremioStore = (pagination)=>{
-    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
-        endpoint: `/prizes/?page=${pagination}`,
-        method: "GET"
-    });
-};
-
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } });
-
-/***/ }),
-
-/***/ 5140:
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "e": () => (/* binding */ useCausesStore)
-/* harmony export */ });
-/* harmony import */ var _services_getCauses__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(265);
-/* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6912);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, zustand__WEBPACK_IMPORTED_MODULE_1__]);
-([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, zustand__WEBPACK_IMPORTED_MODULE_1__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6912);
+/* harmony import */ var _services_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3697);
+/* harmony import */ var _services_raffles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3843);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([zustand__WEBPACK_IMPORTED_MODULE_0__, _services_dashboard__WEBPACK_IMPORTED_MODULE_1__, _services_raffles__WEBPACK_IMPORTED_MODULE_2__]);
+([zustand__WEBPACK_IMPORTED_MODULE_0__, _services_dashboard__WEBPACK_IMPORTED_MODULE_1__, _services_raffles__WEBPACK_IMPORTED_MODULE_2__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
-const useCausesStore = (0,zustand__WEBPACK_IMPORTED_MODULE_1__.create)((set)=>({
+
+const useCauseDashboardStore = (0,zustand__WEBPACK_IMPORTED_MODULE_0__.create)((set)=>({
         isLoading: false,
-        causes: [],
-        filterCauses: [],
+        cause: [],
         error: false,
-        paginacion: 1,
-        getCauses: async (pagination)=>{
+        pagination: 1,
+        getCause: async (id, pagination)=>{
             set({
                 isLoading: true
             });
-            const { data  } = await (0,_services_getCauses__WEBPACK_IMPORTED_MODULE_0__/* .getCausesStore */ .F7)(pagination || 1);
+            const { data  } = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_1__/* .getDashboardCause */ .p6)(id, pagination);
             const nextPagination = data.next ? pagination + 1 : null;
             set((state)=>({
-                    causes: pagination === 1 ? data.results : [
-                        ...state.causes,
+                    cause: pagination === 1 ? data.results : [
+                        ...state.cause,
                         ...data.results
                     ],
                     isLoading: false,
-                    paginacion: nextPagination
+                    pagination: nextPagination
                 }));
         },
-        resetCauses: ()=>{
-            set({
-                causes: []
-            });
-        },
-        setFilterCauses: async (search)=>{
+        createCause: async (cause)=>{
             set({
                 isLoading: true
             });
-            const { data  } = await (0,_services_getCauses__WEBPACK_IMPORTED_MODULE_0__/* .getSeachCause */ .KZ)(search);
-            set((state)=>({
-                    filterCauses: data.results,
-                    isLoading: false
-                }));
+            const { data  } = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_2__/* .createCause */ .Wi)(cause);
+            set({
+                cause: data,
+                isLoading: false
+            });
+        },
+        updateCause: async (causeId, cause, oldData)=>{
+            set({
+                isLoading: true
+            });
+            cause.categories = [
+                Number(cause.categories)
+            ];
+            cause.association = Number(cause.association);
+            await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_1__/* .setDeleteImageCause */ .sX)(causeId);
+            let newCause;
+            newCause = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_1__/* .setEditCauses */ .xU)(causeId, cause);
+            let resultGallery = [];
+            if (cause.image && cause.image.length > 0) {
+                const petitions = [];
+                cause.image.map((gallery)=>petitions.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_2__/* .createCauseGallery */ .V2)(gallery, causeId.toString())));
+                resultGallery = await Promise.all(petitions);
+                newCause = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_2__/* .updateGalleryCause */ .Uj)(causeId.toString(), {
+                    gallery: resultGallery.map((gallery)=>gallery.data.id),
+                    goal: cause.goal,
+                    association: cause.association,
+                    name: cause.name,
+                    categories: cause.categories
+                });
+            }
+            const petitionsOld = [];
+            oldData.images.map((image)=>petitionsOld.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_2__/* .deleteImageGalleryRaffle */ .Z2)(image.id)));
+            await Promise.all(petitionsOld);
+            set({
+                //cause: data,
+                isLoading: false
+            });
+            newCause = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_2__/* .getCausesById */ .cf)(causeId);
+            return newCause?.data || {};
         }
     }));
 
@@ -1710,57 +2043,89 @@ __webpack_async_result__();
 
 /***/ }),
 
-/***/ 9899:
+/***/ 5539:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ usePremioStore)
+/* harmony export */   "E": () => (/* binding */ usePrizeStoreDashboard)
 /* harmony export */ });
-/* harmony import */ var _services_getCauses__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(265);
-/* harmony import */ var _services_getPremio__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2251);
+/* harmony import */ var _services_dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3697);
+/* harmony import */ var _services_raffles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3843);
 /* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6912);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, _services_getPremio__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__]);
-([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, _services_getPremio__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_dashboard__WEBPACK_IMPORTED_MODULE_0__, _services_raffles__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__]);
+([_services_dashboard__WEBPACK_IMPORTED_MODULE_0__, _services_raffles__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
 
-const usePremioStore = (0,zustand__WEBPACK_IMPORTED_MODULE_2__.create)((set)=>({
+const usePrizeStoreDashboard = (0,zustand__WEBPACK_IMPORTED_MODULE_2__.create)((set)=>({
         isLoading: false,
-        premio: [],
+        prize: [],
         error: false,
-        filterPremios: [],
-        paginacion: 1,
-        getPremio: async (pagination)=>{
+        pagination: 1,
+        prizeUser: [],
+        paginationUser: 1,
+        getPrize: async (id, pagination)=>{
             set({
                 isLoading: true
             });
-            const { data  } = await (0,_services_getPremio__WEBPACK_IMPORTED_MODULE_1__/* .getPremioStore */ .q)(pagination || 1);
+            const { data  } = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_0__/* .getDashboardPrize */ .Hd)(id, pagination);
             const nextPagination = data.next ? pagination + 1 : null;
             set((state)=>({
-                    premio: pagination === 1 ? data.results : [
-                        ...state.premio,
+                    prize: pagination === 1 ? data.results : [
+                        ...state.prize,
                         ...data.results
                     ],
                     isLoading: false,
-                    paginacion: nextPagination
+                    pagination: nextPagination
                 }));
         },
-        resetPremio: ()=>{
-            set({
-                premio: [],
-                paginacion: 1
-            });
-        },
-        setFilterPremios: async (search)=>{
+        getPrizeUser: async (pagination)=>{
             set({
                 isLoading: true
             });
-            const { data  } = await (0,_services_getCauses__WEBPACK_IMPORTED_MODULE_0__/* .getSeachPremios */ .I)(search);
+            const { data  } = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_0__/* .getDashboardPrizeUser */ .Ab)(pagination);
+            const nextPagination = data.next ? pagination + 1 : null;
             set((state)=>({
-                    filterPremios: data.results,
-                    isLoading: false
+                    prizeUser: pagination === 1 ? data.results : [
+                        ...state.prizeUser,
+                        ...data.results
+                    ],
+                    isLoading: false,
+                    paginationUser: nextPagination
                 }));
+        },
+        updatePrize: async (prizeId, prize, oldData)=>{
+            set({
+                isLoading: true
+            });
+            prize.status = prize.status === "usado" ? 1 : 0;
+            prize.association = Number(prize.association);
+            if (prize.association === 0 || prize.association === undefined) delete prize.association;
+            prize.category = Number(prize.category);
+            await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_0__/* .setDeleteImagePrize */ .LG)(prizeId);
+            let newPrize;
+            newPrize = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_0__/* .editPrize */ .SB)(prizeId, prize);
+            let resultGallery = [];
+            if (prize.image && prize.image.length > 0) {
+                const petitions = [];
+                prize.image.map((gallery)=>petitions.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_1__/* .createPrizeGallery */ .J2)(gallery, prizeId.toString())));
+                resultGallery = await Promise.all(petitions);
+                newPrize = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_1__/* .updateGalleryPrize */ .cW)(prizeId.toString(), {
+                    gallery: resultGallery.map((gallery)=>gallery.data.id),
+                    name: prize.name,
+                    value: prize.value
+                });
+            }
+            const petitionsOld = [];
+            oldData.images.map((image)=>petitionsOld.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_1__/* .deleteImageGallery */ .dY)(image.id)));
+            await Promise.all(petitionsOld);
+            newPrize = await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_1__/* .getPrizebyId */ .DK)(prizeId.toString());
+            set({
+                //prize: data,
+                isLoading: false
+            });
+            return newPrize?.data || {};
         }
     }));
 

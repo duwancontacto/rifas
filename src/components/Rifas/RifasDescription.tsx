@@ -40,9 +40,10 @@ export default function RifasDescription() {
             <Image
               src={raffle?.prizeData?.image || LogoRifas}
               alt="fondoDescription"
-              className="w-100 h-75 d-block mx-auto mx-lg-0"
-              width={100}
-              height={100}
+              className=" d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 "
+              style={{ maxHeight: "300px", objectFit: "contain" }}
+              width={160}
+              height={160}
             />
           </div>
           <p className="col-12 col-lg-8 mt-4 mt-md-0 opacity-75 text-rifaDescription mb-5 ">

@@ -10,6 +10,7 @@ import {
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { BiHeartCircle } from "react-icons/bi";
 import LogoRifas from "@/assets/img/logoRifas.jpeg";
+import { useRouter } from "next/router";
 
 export default function DonacionesValidacion({
   nextStep,
@@ -17,6 +18,7 @@ export default function DonacionesValidacion({
   initialStep,
 }: any) {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const { donationFrom2 } = useSelector(selectRaffleState);
 
@@ -105,10 +107,6 @@ export default function DonacionesValidacion({
           </p>
 
           <div className="d-flex justify-content-between  mw-md-50  mt-5 ">
-            {/*  <button className="btn btn-border-pink btn-sm w-50 mx-2 fs-6">
-              {" "}
-              Ver catálogo de premios
-            </button> */}
             <button
               className="btn btn-pink btn-sm w-50 mx-2 fs-6"
               onClick={() => {
@@ -117,6 +115,12 @@ export default function DonacionesValidacion({
               }}
             >
               Ir a donar otro premio
+            </button>
+            <button
+              onClick={() => router.push("/rifas")}
+              className="btn btn-border-pink btn-sm w-50 mx-2 fs-6"
+            >
+              Participar en una rifa
             </button>
           </div>
         </div>

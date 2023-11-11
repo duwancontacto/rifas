@@ -2,10 +2,13 @@ import {
   editPrize,
   getDashboardPrize,
   getDashboardPrizeUser,
+  setDeleteImagePrize,
 } from "@/services/dashboard";
 import {
   createPrizeGallery,
   deleteImageGallery,
+  getCausesById,
+  getPrizebyId,
   updateGalleryPrize,
 } from "@/services/raffles";
 import { create } from "zustand";
@@ -69,7 +72,10 @@ export const usePrizeStoreDashboard = create<PrizeStoreDasboard>((set) => ({
 
     prize.category = Number(prize.category);
 
-    await editPrize(prizeId, prize);
+    await setDeleteImagePrize(prizeId);
+
+    let newPrize: any;
+    newPrize = await editPrize(prizeId, prize);
 
     let resultGallery = [];
 
@@ -82,7 +88,7 @@ export const usePrizeStoreDashboard = create<PrizeStoreDasboard>((set) => ({
 
       resultGallery = await Promise.all(petitions);
 
-      await updateGalleryPrize(prizeId.toString(), {
+      newPrize = await updateGalleryPrize(prizeId.toString(), {
         gallery: resultGallery.map((gallery) => gallery.data.id),
         name: prize.name,
         value: prize.value,
@@ -96,9 +102,13 @@ export const usePrizeStoreDashboard = create<PrizeStoreDasboard>((set) => ({
     );
     await Promise.all(petitionsOld);
 
+    newPrize = await getPrizebyId(prizeId.toString());
+
     set({
       //prize: data,
       isLoading: false,
     });
+
+    return newPrize?.data || {};
   },
 }));

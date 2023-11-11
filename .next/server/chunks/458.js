@@ -1,6 +1,6 @@
 "use strict";
-exports.id = 421;
-exports.ids = [421];
+exports.id = 458;
+exports.ids = [458];
 exports.modules = {
 
 /***/ 7896:
@@ -18,7 +18,7 @@ exports.modules = {
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ CreateRifaDashboard)
+/* harmony export */   "Z": () => (/* binding */ CreateRifa)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
@@ -38,13 +38,13 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _store_slices_auth__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9403);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(1853);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(5616);
-/* harmony import */ var _components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(8644);
-/* harmony import */ var _components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(3316);
-/* harmony import */ var _components_Rifas_ConfirmacionRifa__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(6968);
-/* harmony import */ var _store_zustand_DashboardStore__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(4568);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_store_slices_raffles__WEBPACK_IMPORTED_MODULE_7__, _store_slices_auth__WEBPACK_IMPORTED_MODULE_8__, _components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_10__, _components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_11__, _components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_12__, _store_zustand_DashboardStore__WEBPACK_IMPORTED_MODULE_14__]);
-([_store_slices_raffles__WEBPACK_IMPORTED_MODULE_7__, _store_slices_auth__WEBPACK_IMPORTED_MODULE_8__, _components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_10__, _components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_11__, _components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_12__, _store_zustand_DashboardStore__WEBPACK_IMPORTED_MODULE_14__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(9899);
+/* harmony import */ var _components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(5616);
+/* harmony import */ var _components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(8644);
+/* harmony import */ var _components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(3316);
+/* harmony import */ var _components_Rifas_ConfirmacionRifa__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(6968);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_store_slices_raffles__WEBPACK_IMPORTED_MODULE_7__, _store_slices_auth__WEBPACK_IMPORTED_MODULE_8__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_10__, _components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_11__, _components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_12__, _components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_13__]);
+([_store_slices_raffles__WEBPACK_IMPORTED_MODULE_7__, _store_slices_auth__WEBPACK_IMPORTED_MODULE_8__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_10__, _components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_11__, _components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_12__, _components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_13__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
 
@@ -69,11 +69,11 @@ const StepIcon = (step, currentStep)=>{
         size: 30
     });
 };
-function CreateRifaDashboard({ nextStep , backStep , disable , handleClose  }) {
+function CreateRifa({ nextStep , backStep , disable  }) {
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_9__.useRouter)();
     const [step, setStep] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1);
     const [raffle, setRaffle] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({});
-    const getRaffle = (0,_store_zustand_DashboardStore__WEBPACK_IMPORTED_MODULE_14__/* .useRaffleStoreDashboard */ .p)((state)=>state.getRaffle);
+    const getPremio = (0,_store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_10__/* .usePremioStore */ .Z)((state)=>state.getPremio);
     const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useDispatch)();
     const { profile  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(_store_slices_auth__WEBPACK_IMPORTED_MODULE_8__/* .selectAuthState */ ._9);
     const canCreateRaffle = profile?.role === 1;
@@ -86,97 +86,113 @@ function CreateRifaDashboard({ nextStep , backStep , disable , handleClose  }) {
     };
     const handleSubmit = async ()=>{
         const { payload  } = await dispatch((0,_store_slices_raffles__WEBPACK_IMPORTED_MODULE_7__/* .createRaffle */ .ni)(raffle));
-        await getRaffle(router.query.id);
-        handleClose();
-        if (!payload) setStep(1);
+        if (!payload) return setStep(1);
+        getPremio(1);
+        nextStep();
     };
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
-        if (step === 3) handleSubmit();
-    //eslint-disable-next-line
-    }, [
-        step
-    ]);
     const resetRaffle = ()=>{
         setStep(1);
         setRaffle({});
     };
-    if (!canCreateRaffle && !disable) return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {});
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+    if (!canCreateRaffle && !disable) return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Registro_CrearAsociacion__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {});
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "mx-4",
-        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "  bg-white mb-3 col-12 col-lg-8 m-auto  ",
-            children: [
-                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                    className: " d-flex justify-content-between align-items-center    ",
-                    onClick: ()=>{},
-                    children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
-                        className: ` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "}`,
-                        children: [
-                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                className: "text-fondo-container",
-                                children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_ai__WEBPACK_IMPORTED_MODULE_3__.AiFillDollarCircle, {
-                                        size: 25,
-                                        className: "me-2"
-                                    }),
-                                    "Configura el premio tu rifa"
-                                ]
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                className: "m-0",
-                                children: StepIcon(step, 1)
-                            })
-                        ]
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h2", {
+                className: "title-page-rifaRegistro my-4",
+                children: [
+                    "\xa1Es momento de rifarnos ",
+                    profile?.full_name,
+                    "!"
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "  bg-white mb-3 col-12 col-lg-8 m-auto  ",
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: " d-flex justify-content-between align-items-center    ",
+                        onClick: ()=>{},
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+                            onClick: ()=>step > 1 && setStep(1),
+                            className: ` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "}`,
+                            children: [
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "text-fondo-container",
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_ai__WEBPACK_IMPORTED_MODULE_3__.AiFillDollarCircle, {
+                                            size: 25,
+                                            className: "me-2"
+                                        }),
+                                        "Configura el premio tu rifa"
+                                    ]
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                    className: "m-0",
+                                    children: StepIcon(step, 1)
+                                })
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: `${step !== 1 && "d-none"}`,
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
+                            handleChangeRaffle: handleChangeRaffle
+                        })
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: " d-flex justify-content-between align-items-center  mt-4  ",
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+                            onClick: ()=>step > 2 && setStep(2),
+                            className: ` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "}`,
+                            children: [
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiOutlineClipboardList, {}),
+                                        " Define los datos de tu rifa"
+                                    ]
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                    className: "m-0",
+                                    children: StepIcon(step, 2)
+                                })
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: `${step !== 2 && "d-none"}`,
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+                            handleChangeRaffle: handleChangeRaffle
+                        })
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: " d-flex justify-content-around align-items-center   mt-4   ",
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+                            className: ` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "}`,
+                            children: [
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaHandHoldingHeart, {}),
+                                        " Confirmaci\xf3n de la rifa"
+                                    ]
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                    className: "m-0",
+                                    children: StepIcon(step, 3)
+                                })
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: `${step !== 3 && "d-none"}`,
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Rifas_ConfirmacionRifa__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+                            handleSubmit: handleSubmit,
+                            resetRaffle: resetRaffle,
+                            raffle: raffle
+                        })
                     })
-                }),
-                step === 1 && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Rifas_ConfiguraRifa__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
-                    handleChangeRaffle: handleChangeRaffle
-                }),
-                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                    className: " d-flex justify-content-between align-items-center  mt-4  ",
-                    children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
-                        className: ` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "}`,
-                        children: [
-                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiOutlineClipboardList, {}),
-                                    " Define los datos de tu rifa"
-                                ]
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                className: "m-0",
-                                children: StepIcon(step, 2)
-                            })
-                        ]
-                    })
-                }),
-                step === 2 && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Rifas_DefinicionRifa__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
-                    handleChangeRaffle: handleChangeRaffle
-                }),
-                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                    className: " d-flex justify-content-around align-items-center   mt-4   ",
-                    children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
-                        className: ` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "}`,
-                        children: [
-                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaHandHoldingHeart, {}),
-                                    " Confirmaci\xf3n de la rifa"
-                                ]
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                className: "m-0",
-                                children: StepIcon(step, 3)
-                            })
-                        ]
-                    })
-                }),
-                step === 3 && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Rifas_ConfirmacionRifa__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
-                    resetRaffle: resetRaffle,
-                    raffle: raffle
-                })
-            ]
-        })
+                ]
+            })
+        ]
     });
 }
 
@@ -1239,93 +1255,6 @@ __webpack_async_result__();
 
 /***/ }),
 
-/***/ 5539:
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "E": () => (/* binding */ usePrizeStoreDashboard)
-/* harmony export */ });
-/* harmony import */ var _services_dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3697);
-/* harmony import */ var _services_raffles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3843);
-/* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6912);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_dashboard__WEBPACK_IMPORTED_MODULE_0__, _services_raffles__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__]);
-([_services_dashboard__WEBPACK_IMPORTED_MODULE_0__, _services_raffles__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-
-
-
-const usePrizeStoreDashboard = (0,zustand__WEBPACK_IMPORTED_MODULE_2__.create)((set)=>({
-        isLoading: false,
-        prize: [],
-        error: false,
-        pagination: 1,
-        prizeUser: [],
-        paginationUser: 1,
-        getPrize: async (id, pagination)=>{
-            set({
-                isLoading: true
-            });
-            const { data  } = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_0__/* .getDashboardPrize */ .Hd)(id, pagination);
-            const nextPagination = data.next ? pagination + 1 : null;
-            set((state)=>({
-                    prize: pagination === 1 ? data.results : [
-                        ...state.prize,
-                        ...data.results
-                    ],
-                    isLoading: false,
-                    pagination: nextPagination
-                }));
-        },
-        getPrizeUser: async (pagination)=>{
-            set({
-                isLoading: true
-            });
-            const { data  } = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_0__/* .getDashboardPrizeUser */ .Ab)(pagination);
-            const nextPagination = data.next ? pagination + 1 : null;
-            set((state)=>({
-                    prizeUser: pagination === 1 ? data.results : [
-                        ...state.prizeUser,
-                        ...data.results
-                    ],
-                    isLoading: false,
-                    paginationUser: nextPagination
-                }));
-        },
-        updatePrize: async (prizeId, prize, oldData)=>{
-            set({
-                isLoading: true
-            });
-            prize.status = prize.status === "usado" ? 1 : 0;
-            prize.association = Number(prize.association);
-            if (prize.association === 0 || prize.association === undefined) delete prize.association;
-            prize.category = Number(prize.category);
-            await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_0__/* .editPrize */ .SB)(prizeId, prize);
-            let resultGallery = [];
-            if (prize.image && prize.image.length > 0) {
-                const petitions = [];
-                prize.image.map((gallery)=>petitions.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_1__/* .createPrizeGallery */ .J2)(gallery, prizeId.toString())));
-                resultGallery = await Promise.all(petitions);
-                await (0,_services_raffles__WEBPACK_IMPORTED_MODULE_1__/* .updateGalleryPrize */ .cW)(prizeId.toString(), {
-                    gallery: resultGallery.map((gallery)=>gallery.data.id),
-                    name: prize.name,
-                    value: prize.value
-                });
-            }
-            const petitionsOld = [];
-            oldData.images.map((image)=>petitionsOld.push((0,_services_raffles__WEBPACK_IMPORTED_MODULE_1__/* .deleteImageGallery */ .dY)(image.id)));
-            await Promise.all(petitionsOld);
-            set({
-                //prize: data,
-                isLoading: false
-            });
-        }
-    }));
-
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } });
-
-/***/ }),
-
 /***/ 5913:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1393,6 +1322,26 @@ const getStatusValuePrizes = (status)=>{
             return "Usado";
         default:
             return "status-vigente";
+    }
+};
+
+
+/***/ }),
+
+/***/ 8858:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "K": () => (/* binding */ getStatusOptions)
+/* harmony export */ });
+const getStatusOptions = (status)=>{
+    switch(status){
+        case "Canjeado":
+            return "#C3286D";
+        case "Abonado":
+            return "#00A650";
+        default:
+            return "#C3286D";
     }
 };
 

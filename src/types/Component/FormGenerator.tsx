@@ -70,4 +70,5 @@ export interface SelectedItems {
   goal: number;
   value: number;
   image?: string;
+  id: number;
 }

@@ -13,6 +13,7 @@ export default function ModalSelectCausa({ handleSubmit }: any) {
     paginacion,
     setFilterCauses,
     filterCauses,
+    resetCauses,
   } = useCausesStore();
   const [search, setSearch] = useState("");
 
@@ -29,6 +30,12 @@ export default function ModalSelectCausa({ handleSubmit }: any) {
   }, [inView]);
 
   const allCauses = search === "" ? causes : filterCauses;
+
+  useEffect(() => {
+    return () => {
+      resetCauses();
+    };
+  }, []);
 
   return (
     <section className="">
@@ -58,6 +65,7 @@ export default function ModalSelectCausa({ handleSubmit }: any) {
                   alt="fondo"
                   className=" rounded "
                   width={160}
+                  style={{ objectFit: "contain" }}
                   height={160}
                 />
               </div>

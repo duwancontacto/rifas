@@ -45,22 +45,6 @@ function DashboardCartera() {
   return (
     <section className=" ">
       <HeaderDashboard screen="Cartera" />
-      {/*  <div className="pt-3 background-dashboard mt-3 px-3">
-        <div className="d-flex container-cartera  p-3 mt-2">
-          <div className="ms-4 text-center">
-            <FaBriefcase color="#784B5F" size={30} />
-            <p className="value-Cartera mt-2">$1600.00</p>
-          </div>
-
-          <div className="ms-4">
-            <p className="m-0 saldo-Cartera">Saldo de tu cartera</p>
-            <p className="m-0 information-Saldo">
-              Este es el saldo aplicado a tu cuenta, no tiene vencimiento y lo
-              puedes ocupar para comprar boletos para cualquier rifa.
-            </p>
-          </div>
-        </div>
-      </div> */}
 
       <DashboardTable
         title="Detalle de movimientos"

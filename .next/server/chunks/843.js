@@ -22,6 +22,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */   "bl": () => (/* binding */ getRaffleTickets),
 /* harmony export */   "cF": () => (/* binding */ getTestimonies),
 /* harmony export */   "cW": () => (/* binding */ updateGalleryPrize),
+/* harmony export */   "cf": () => (/* binding */ getCausesById),
 /* harmony export */   "dY": () => (/* binding */ deleteImageGallery),
 /* harmony export */   "fM": () => (/* binding */ getAssociationsApproveds),
 /* harmony export */   "fk": () => (/* binding */ validateApplyCoupon),
@@ -177,6 +178,12 @@ const deleteImageGalleryRaffle = (id)=>{
     return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
         endpoint: `/causes_gallery/${id}`,
         method: "DELETE"
+    });
+};
+const getCausesById = (id)=>{
+    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
+        endpoint: `/causes/${id}`,
+        method: "GET"
     });
 };
 const getCausesCategories = ()=>{

@@ -155,7 +155,7 @@ function Rifa({ all  }) {
                                                     className: " raffle-container-value fw-semibold  ",
                                                     children: [
                                                         "$",
-                                                        raffle.ticket_price
+                                                        (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_11__/* .parseNumber */ .p)(Number(raffle.ticket_price))
                                                     ]
                                                 })
                                             ]
@@ -178,6 +178,7 @@ function Rifa({ all  }) {
                                     className: "d-flex justify-content-start ",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                            disabled: raisedPercent === 100,
                                             className: "btn btn-pink btn-sm border col-6 button-rifaDestacada  ",
                                             onClick: ()=>router.push(`/rifas/${raffle.id}`),
                                             children: "Comprar boletos"

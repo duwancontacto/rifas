@@ -3,14 +3,9 @@ import {
   AiFillDollarCircle,
   AiOutlineUser,
 } from "react-icons/ai";
-import {
-  FaHandHoldingHeart,
-  FaGift,
-  FaBriefcase,
-  FaUsers,
-} from "react-icons/fa";
+import { FaHandHoldingHeart, FaGift, FaUsers } from "react-icons/fa";
 import { BsWindowSidebar } from "react-icons/bs";
-
+import { FaWallet } from "react-icons/fa";
 import DashboardResumen from "./DashboardScreens/DashboardResumen";
 import DashboadrRifas from "./DashboardScreens/DashboadrRifas";
 import DashboardCausas from "./DashboardScreens/DashboardCausas";
@@ -44,7 +39,7 @@ export const optionsSidebar = [
   {
     label: "Cartera",
     value: "5",
-    icon: <FaBriefcase />,
+    icon: <FaWallet />,
   },
   {
     label: "Micrositio",

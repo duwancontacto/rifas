@@ -15,6 +15,12 @@ export const getDashboardWallet = (id: string, pagination: number) => {
     method: "GET",
   });
 };
+export const getProfileWallet = (pagination: number) => {
+  return Api({
+    endpoint: `/buying/refunds/?page=${pagination}`,
+    method: "GET",
+  });
+};
 
 export const getDashboardPrize = (id: string, pagination: number) => {
   return Api({
@@ -185,6 +191,20 @@ export const setDashboardDeleteUser = (id: string, userId: string) => {
   });
 };
 
+export const setDeleteImageCause = (id: number) => {
+  return Api({
+    endpoint: `/causes/${id}/delete_image/`,
+    method: "PUT",
+  });
+};
+
+export const setDeleteImagePrize = (id: number) => {
+  return Api({
+    endpoint: `/prizes/${id}/delete_image/`,
+    method: "PUT",
+  });
+};
+
 export const setEditCauses = (id: number, cause: any) => {
   const formData = new FormData();
   formData.append("name", cause.name);
@@ -193,6 +213,7 @@ export const setEditCauses = (id: number, cause: any) => {
   formData.append("goal", cause.goal);
   formData.append("association", cause.association);
   if (cause.image[0]) formData.append("image", cause.image[0]);
+  else formData.append("image", "");
 
   return axios.put(baseUrl + `/causes/${id}/`, formData, {
     headers: {

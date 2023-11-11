@@ -126,17 +126,18 @@ export const createRafflesCause = createAsyncThunk(
       cause.categories = [Number(cause.categories)];
       cause.association = Number(cause.association);
 
-      const result = await createCause(cause);
+      let result: any;
+      result = await createCause(cause);
 
       const petitions: any[] = [];
-      if (cause.image && cause.image.length > 1) {
+      if (cause.image && cause.image.length > 0) {
         cause.image.map((gallery: any) =>
           petitions.push(createCauseGallery(gallery, result.data.id))
         );
 
         const resultGallery = await Promise.all(petitions);
 
-        await updateGalleryCause(result.data.id, {
+        result = await updateGalleryCause(result.data.id, {
           gallery: resultGallery.map((gallery) => gallery.data.id),
           goal: cause.goal,
           association: cause.association,
@@ -165,9 +166,10 @@ export const createRafflesPrize = createAsyncThunk(
 
       prize.category = Number(prize.category);
 
-      const result = await createDonations(prize);
+      let result: any;
+      result = await createDonations(prize);
 
-      if (prize.image && prize.image.length > 1) {
+      if (prize.image && prize.image.length > 0) {
         const petitions: any[] = [];
         prize.image.map((gallery: any) =>
           petitions.push(createPrizeGallery(gallery, result.data.id))
@@ -175,7 +177,7 @@ export const createRafflesPrize = createAsyncThunk(
 
         const resultGallery = await Promise.all(petitions);
 
-        await updateGalleryPrize(result.data.id, {
+        result = await updateGalleryPrize(result.data.id, {
           gallery: resultGallery.map((gallery) => gallery.data.id),
           name: prize.name,
           value: prize.value,

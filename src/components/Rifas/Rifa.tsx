@@ -91,7 +91,7 @@ export default function Rifa({ all }: { all?: boolean }) {
                   Costo por boleto
                 </h6>
                 <p className=" raffle-container-value fw-semibold  ">
-                  ${raffle.ticket_price}
+                  ${parseNumber(Number(raffle.ticket_price))}
                 </p>
               </div>
               <div>
@@ -105,6 +105,7 @@ export default function Rifa({ all }: { all?: boolean }) {
             </div>
             <div className="d-flex justify-content-start ">
               <button
+                disabled={raisedPercent === 100}
                 className="btn btn-pink btn-sm border col-6 button-rifaDestacada  "
                 onClick={() => router.push(`/rifas/${raffle.id}`)}
               >

@@ -9,8 +9,10 @@ interface CausesStore {
   error: boolean;
   getCauses: (pagination: number) => Promise<void>;
   setFilterCauses: (search: string) => Promise<void>;
+  setCreatedCauses: (id: number) => void;
   resetCauses: () => void;
   paginacion: number | null;
+  createdCauses: number[];
 }
 
 export const useCausesStore = create<CausesStore>((set) => ({
@@ -19,6 +21,7 @@ export const useCausesStore = create<CausesStore>((set) => ({
   filterCauses: [],
   error: false,
   paginacion: 1,
+  createdCauses: [],
   getCauses: async (pagination: number) => {
     set({ isLoading: true });
 
@@ -36,6 +39,13 @@ export const useCausesStore = create<CausesStore>((set) => ({
   resetCauses: () => {
     set({ causes: [] });
   },
+
+  setCreatedCauses: (id: number) => {
+    set((state) => ({
+      createdCauses: [...state.createdCauses, id],
+    }));
+  },
+
   setFilterCauses: async (search: string) => {
     set({ isLoading: true });
 

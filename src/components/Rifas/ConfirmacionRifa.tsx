@@ -49,7 +49,7 @@ export default function ConfirmacionRifa({
                   src={preview || LogoRifas}
                   alt="fondoDescription"
                   className=" d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 "
-                  style={{ maxHeight: "300px" }}
+                  style={{ maxHeight: "300px", objectFit: "contain" }}
                   width={160}
                   height={160}
                 />
@@ -98,7 +98,7 @@ export default function ConfirmacionRifa({
                   src={raffle?.cause?.image || LogoRifas}
                   alt="fondoDescription"
                   className=" d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 "
-                  style={{ maxHeight: "300px" }}
+                  style={{ maxHeight: "300px", objectFit: "contain" }}
                   width={160}
                   height={160}
                 />
@@ -119,6 +119,7 @@ export default function ConfirmacionRifa({
                   src={raffle?.prize?.image || LogoRifas}
                   alt="fondoDescription"
                   className=" d-block w-100 h-auto mx-auto mx-lg-0 rounded-1 "
+                  style={{ maxHeight: "300px", objectFit: "contain" }}
                   width={160}
                   height={160}
                 />

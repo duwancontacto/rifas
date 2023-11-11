@@ -42,24 +42,21 @@ export default function HomeRifate() {
       <p className=" my-2 home-text-rifate  text-center">
         ¡Te estamos esperando,al Igual que ellos nos apoyaran!
       </p>
-      <Slider
-        {...settings}
-        className="d-flex justify-content-between mx-0 mx-lg-0 "
-      >
+      <Slider {...settings} className=" mx-0 mx-lg-0 ">
         <div className="w-100">
-          <Image src={fondo} className="w-50 h-25   mx-auto" alt="..." />{" "}
+          <Image src={fondo} className="w-50 h-25   mx-auto" alt="..." />
         </div>
         <div className="w-100">
-          <Image src={fondo1} className="w-50 h-25   mx-auto" alt="..." />{" "}
+          <Image src={fondo1} className="w-50 h-25   mx-auto" alt="..." />
         </div>
         <div className="w-100">
-          <Image src={fondo2} className="w-50 h-25   mx-auto" alt="..." />{" "}
+          <Image src={fondo2} className="w-50 h-25   mx-auto" alt="..." />
         </div>
         <div className="w-100">
-          <Image src={fondo3} className="w-50 h-25   mx-auto" alt="..." />{" "}
+          <Image src={fondo3} className="w-50 h-25   mx-auto" alt="..." />
         </div>
         <div className="w-100">
-          <Image src={fondo4} className="w-50 h-25   mx-auto" alt="..." />{" "}
+          <Image src={fondo4} className="w-50 h-25   mx-auto" alt="..." />
         </div>
       </Slider>
     </section>

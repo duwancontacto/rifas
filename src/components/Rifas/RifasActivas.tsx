@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
 import { parseNumber } from "@/utils/ParseNumber";
+import { truncateText } from "@/utils/truncateText";
 
 export default function RifasActivas({ all }: { all?: boolean }) {
   const slider = React.useRef<any>(null);
@@ -47,7 +48,7 @@ export default function RifasActivas({ all }: { all?: boolean }) {
     ],
   };
 
-  const filterRaffles = raffles.filter(
+  let filterRaffles = raffles.filter(
     (raffle) =>
       (!selectedCategory || raffle.categories[0].id === selectedCategory) &&
       raffle.status === 1
@@ -97,64 +98,128 @@ export default function RifasActivas({ all }: { all?: boolean }) {
             </p>
           ))}
         </div>
-        <div className="px-2 px-md-5 position-relative  ">
-          <button
-            className="position-absolute  buttonPrevious-RifasActivas "
-            onClick={() => {
-              slider?.current?.slickPrev();
-            }}
-          >
-            <IoIosArrowBack color="#C3286D" className="iconPreviousNext" />
-          </button>
-          <Slider ref={slider} {...settings} className=" ">
+
+        {all ? (
+          <div className="d-flex flex-wrap justify-content-between ">
             {filterRaffles.map((raffle: RafflesI, index: number) => (
               <div
                 key={index}
-                className="col-3 col-lg-2   mt-4 mt-md-0 py-3  "
-                style={{ maxWidth: "309px", width: "100%", height: "" }}
+                className="col-3 col-lg-3  mt-4  mx-0 shadow card-raffle"
+                style={{ maxWidth: "309px", width: "100%", height: "100%" }}
               >
-                <div className="mx-2 shadow">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={raffle.image || LogoRifas}
-                    className="w-100 h-50"
-                    alt=""
-                  />
-                  <div className="p-3 px-3">
-                    <h6 className="raffles-title-card  ">{raffle.name}</h6>
-                    <p className="card-text raffles-subtitle-card lh-sm">
-                      {raffle.description}
-                    </p>
+                <Image
+                  width={100}
+                  height={100}
+                  src={raffle.image || LogoRifas}
+                  className="w-100 h-100"
+                  style={{ maxHeight: "200px", objectFit: "contain" }}
+                  alt=""
+                />
+                <div className="p-3 px-3">
+                  <h6 className="raffles-title-card  ">
+                    {" "}
+                    {truncateText(raffle.name, 40)}
+                  </h6>
+                  <p className="card-text raffles-subtitle-card lh-sm">
+                    {truncateText(raffle.description, 70)}
+                  </p>
 
-                    <p className="card-text  raffles-subtitle-card  p-0  ">
-                      <MdAccessTime
-                        size={20}
-                        className="mb-1 me-2 opacity-75 "
-                      />
-                      {getPercetRaised(raffle)}%{" "}
-                      {parseNumber(raffle?.raised || 0)} recaudado
-                    </p>
-                    <button
-                      onClick={() => router.push(`/rifas/${raffle.id}`)}
-                      className="btn fs-6 btn-pink w-100"
-                    >
-                      Comprar boleto
-                    </button>
-                  </div>
+                  <p className="card-text  raffles-subtitle-card  p-0  ">
+                    <MdAccessTime size={20} className="mb-1 me-2 opacity-75 " />
+                    {getPercetRaised(raffle)}%{" "}
+                    {parseNumber(raffle?.raised || 0)} recaudado
+                  </p>
+                  <button
+                    disabled={Number(getPercetRaised(raffle)) === 100}
+                    onClick={() => router.push(`/rifas/${raffle.id}`)}
+                    className="btn fs-6 btn-pink w-100"
+                  >
+                    Comprar boleto
+                  </button>
+
+                  <button
+                    className="btn fs-6 btn-border-pink w-100 mt-2"
+                    onClick={() => router.push(`/rifas/detalles/${raffle.id}`)}
+                  >
+                    Ver detalles
+                  </button>
                 </div>
               </div>
             ))}
-          </Slider>
-          <button
-            className="position-absolute  buttonNext-RifasActivas "
-            onClick={() => {
-              slider?.current?.slickNext();
-            }}
-          >
-            <IoIosArrowForward color="#C3286D" className="iconPreviousNext" />
-          </button>
-        </div>
+          </div>
+        ) : (
+          <div className="px-2 px-md-5 position-relative  ">
+            <button
+              className="position-absolute  buttonPrevious-RifasActivas "
+              onClick={() => {
+                slider?.current?.slickPrev();
+              }}
+            >
+              <IoIosArrowBack color="#C3286D" className="iconPreviousNext" />
+            </button>
+            <Slider ref={slider} {...settings} className="  ">
+              {filterRaffles.map((raffle: RafflesI, index: number) => (
+                <div
+                  key={index}
+                  className="slide-container-raffle mt-4 mt-md-0 py-3"
+                >
+                  <div className="mx-2 shadow card-raffle-slide">
+                    <Image
+                      width={100}
+                      height={100}
+                      src={raffle.image || LogoRifas}
+                      className="w-100 h-100"
+                      style={{ maxHeight: "200px", objectFit: "contain" }}
+                      alt=""
+                    />
+                    <div className="p-3 px-3">
+                      <h6 className="raffles-title-card  ">
+                        {" "}
+                        {truncateText(raffle.name, 40)}
+                      </h6>
+                      <p className="card-text raffles-subtitle-card lh-sm">
+                        {truncateText(raffle.description, 70)}
+                      </p>
+
+                      <p className="card-text  raffles-subtitle-card  p-0  ">
+                        <MdAccessTime
+                          size={20}
+                          className="mb-1 me-2 opacity-75 "
+                        />
+                        {getPercetRaised(raffle)}%{" "}
+                        {parseNumber(raffle?.raised || 0)} recaudado
+                      </p>
+                      <button
+                        disabled={Number(getPercetRaised(raffle)) === 100}
+                        onClick={() => router.push(`/rifas/${raffle.id}`)}
+                        className="btn fs-6 btn-pink w-100"
+                      >
+                        Comprar boleto
+                      </button>
+
+                      <button
+                        className="btn fs-6 btn-border-pink w-100 mt-2"
+                        onClick={() =>
+                          router.push(`/rifas/detalles/${raffle.id}`)
+                        }
+                      >
+                        Ver detalles
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+            <button
+              className="position-absolute  buttonNext-RifasActivas "
+              onClick={() => {
+                slider?.current?.slickNext();
+              }}
+            >
+              <IoIosArrowForward color="#C3286D" className="iconPreviousNext" />
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );

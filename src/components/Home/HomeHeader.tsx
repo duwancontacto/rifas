@@ -71,12 +71,22 @@ export default function HomeHeader() {
                       {parseNumber(rafflesFeature[0]?.raised || 0)} recaudado
                     </p>
                     <button
-                      className="btn fs-6 btn-pink w-75"
+                      disabled={Number(raisedPercent) === 100}
+                      className="btn fs-6 btn-pink w-100"
                       onClick={() =>
                         router.push(`/rifas/${rafflesFeature[0]?.id}`)
                       }
                     >
                       Comprar boleto
+                    </button>
+
+                    <button
+                      className="btn fs-6 btn-border-pink w-100 mt-2"
+                      onClick={() =>
+                        router.push(`/rifas/detalles/${rafflesFeature[0]?.id}`)
+                      }
+                    >
+                      Ver detalles
                     </button>
                   </div>
                 )}
@@ -96,12 +106,21 @@ export default function HomeHeader() {
                       {parseNumber(rafflesFeature[1]?.raised || 0)} recaudado
                     </p>
                     <button
-                      className="btn fs-6 btn-pink w-75"
+                      disabled={Number(raisedPercent2) === 100}
+                      className="btn fs-6 btn-pink w-100"
                       onClick={() =>
                         router.push(`/rifas/${rafflesFeature[1]?.id}`)
                       }
                     >
                       Comprar boleto
+                    </button>
+                    <button
+                      className="btn fs-6 btn-border-pink w-100 mt-2"
+                      onClick={() =>
+                        router.push(`/rifas/detalles/${rafflesFeature[1]?.id}`)
+                      }
+                    >
+                      Ver detalles
                     </button>
                   </div>
                 )}
@@ -112,6 +131,7 @@ export default function HomeHeader() {
                 src={imagenHeader}
                 className=" w-100 h-100 mx-auto d-block "
                 alt="..."
+                style={{ objectFit: "contain" }}
               />
             </div>
           </div>

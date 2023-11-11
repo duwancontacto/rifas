@@ -157,6 +157,13 @@ export const deleteImageGalleryRaffle = (id: number) => {
   });
 };
 
+export const getCausesById = (id: number) => {
+  return Api({
+    endpoint: `/causes/${id}`,
+    method: "GET",
+  });
+};
+
 export const getCausesCategories = () => {
   return Api({
     endpoint: "/cause_category/",

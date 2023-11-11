@@ -37,15 +37,18 @@ export default function Nav() {
   const handleShow = () => setShow(true);
 
   const options = [
+    { label: "Inicio", path: "/" },
     { label: "Rifas", path: "/rifas" },
     { label: "Nosotros", path: "/nosotros" },
     { label: "Ingreso", path: "/", onClick: handleShow },
     { label: "Registro", path: "/registro" },
   ];
   const authOptions = [
+    { label: "Inicio", path: "/" },
     { label: "Rifas", path: "/rifas" },
     { label: "Donaciones", path: "/donaciones" },
     { label: "Crear Rifa", path: "/rifas/crear_rifas" },
+    { label: "Registrar AC", path: "/crear_asociacion" },
     { label: "Nosotros", path: "/nosotros" },
     {
       label: "Perfil",

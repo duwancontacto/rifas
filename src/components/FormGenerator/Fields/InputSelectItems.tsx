@@ -41,10 +41,10 @@ export default function InputSelectItems({
     setShow(false);
     setActiveSelect(false);
   };
-  const handleShow = (e: any) => {
+  const handleShow = (e: any, payload?: any) => {
     e.preventDefault();
 
-    setShow(true);
+    setShow(payload || true);
   };
 
   const handleSubmit = (data: any) => {
@@ -83,6 +83,7 @@ export default function InputSelectItems({
         activeSelect={activeSelect}
         handleSubmit={handleSubmit}
         show={show}
+        setSelected={setSelected}
         handleClose={handleClose}
       />
       {selected ? (

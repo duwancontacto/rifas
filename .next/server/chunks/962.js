@@ -13,6 +13,199 @@ exports.modules = {
 
 /***/ }),
 
+/***/ 6039:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "d": () => (/* binding */ Cause),
+/* harmony export */   "p": () => (/* binding */ Prize)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3037);
+/* harmony import */ var _store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5140);
+/* harmony import */ var _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9899);
+/* harmony import */ var _utils_ParseNumber__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6843);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5675);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_4__);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_2__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_3__]);
+([_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_2__, _store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_3__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+
+
+
+
+const Cause = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
+    const createdCauses = (0,_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_2__/* .useCausesStore */ .e)((state)=>state.createdCauses);
+    const findPrize = createdCauses.find((prize)=>prize === selectedItem.id);
+    console.log("TEst", findPrize);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        children: [
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                className: "m-0 mt-2",
+                children: "Causa seleccionada"
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "d-flex mt-2  ",
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_4___default()), {
+                        src: selectedItem.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z,
+                        alt: "logorifas",
+                        width: 150,
+                        height: 150,
+                        style: {
+                            objectFit: "contain"
+                        },
+                        className: "rounded"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        className: "ms-3",
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h6", {
+                                className: "lh-1  fw-bold",
+                                children: selectedItem.name
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                className: "m-0 lh-sm",
+                                children: selectedItem?.description
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                className: "m-0 lh-sm pt-1",
+                                children: [
+                                    "Monto a recaudar:",
+                                    " ",
+                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                                        className: "fw-bold",
+                                        children: [
+                                            "$",
+                                            (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_5__/* .parseNumber */ .p)(selectedItem?.goal)
+                                        ]
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                className: "btn btn-pink  mt-3  mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    resetValue();
+                                    handleSelect(e);
+                                },
+                                children: "Cambiar causa"
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                className: "btn btn-outline-pink  mt-3 ms-2  mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    resetValue();
+                                    handleShow(e);
+                                },
+                                children: "Crear nueva Causa"
+                            }),
+                            findPrize && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                className: "btn btn-outline-pink  mt-3 ms-2  mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    // resetValue();
+                                    handleShow(e, selectedItem);
+                                },
+                                children: "Editar Causa"
+                            })
+                        ]
+                    })
+                ]
+            })
+        ]
+    });
+};
+const Prize = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
+    const createdPrizes = (0,_store_zustand_PremioStore__WEBPACK_IMPORTED_MODULE_3__/* .usePremioStore */ .Z)((state)=>state.createdPrizes);
+    const findPrize = createdPrizes.find((prize)=>prize === selectedItem.id);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        children: [
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                className: "m-0 mt-2",
+                children: "Premio seleccionado"
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "d-flex mt-2  ",
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_4___default()), {
+                        src: selectedItem.image || _assets_img_logoRifas_jpeg__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z,
+                        alt: "logorifas2",
+                        width: 150,
+                        height: 150,
+                        style: {
+                            objectFit: "contain"
+                        },
+                        className: "rounded"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        className: "ms-3",
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h6", {
+                                className: "lh-1 fw-bold ",
+                                children: selectedItem.name
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                className: "m-0 lh-sm",
+                                children: selectedItem?.description
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                className: "m-0 lh-sm pt-1",
+                                children: [
+                                    "Monto a recaudar:",
+                                    " ",
+                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                                        className: "fw-bold",
+                                        children: [
+                                            "$",
+                                            (0,_utils_ParseNumber__WEBPACK_IMPORTED_MODULE_5__/* .parseNumber */ .p)(Number(selectedItem?.value))
+                                        ]
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                className: "btn btn-pink  mt-3  mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    resetValue();
+                                    handleSelect(e);
+                                },
+                                children: "Cambiar premio"
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                className: "btn btn-outline-pink  mt-3 ms-2 mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    resetValue();
+                                    handleShow(e);
+                                },
+                                children: "Crear nuevo Premio"
+                            }),
+                            findPrize && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                className: "btn btn-outline-pink  mt-3 ms-2 mb-4",
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    resetValue();
+                                    handleShow(e, selectedItem);
+                                },
+                                children: "Editar Premio"
+                            })
+                        ]
+                    })
+                ]
+            })
+        ]
+    });
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 6764:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -651,192 +844,39 @@ function InputRange({ label , name , error , maxRange =10 , setValue , register 
 
 /***/ }),
 
-/***/ 6597:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 7367:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ InputSelectItems)
-});
-
-// EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(997);
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./src/assets/img/logoRifas.jpeg
-var logoRifas = __webpack_require__(3037);
-// EXTERNAL MODULE: ./src/utils/ParseNumber.ts
-var ParseNumber = __webpack_require__(6843);
-// EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__(5675);
-var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
-;// CONCATENATED MODULE: ./src/components/FormGenerator/Components/SelectItems.tsx
-
-
-
-
-const Cause = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                className: "m-0 mt-2",
-                children: "Causa seleccionada"
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "d-flex mt-2  ",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                        src: selectedItem.image || logoRifas/* default */.Z,
-                        alt: "logorifas",
-                        width: 150,
-                        height: 150,
-                        style: {
-                            objectFit: "cover"
-                        },
-                        className: "rounded"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        className: "ms-3",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("h6", {
-                                className: "lh-1  fw-bold",
-                                children: selectedItem.name
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "m-0 lh-sm",
-                                children: selectedItem?.description
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                className: "m-0 lh-sm pt-1",
-                                children: [
-                                    "Monto a recaudar:",
-                                    " ",
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
-                                        className: "fw-bold",
-                                        children: [
-                                            "$",
-                                            (0,ParseNumber/* parseNumber */.p)(selectedItem?.goal)
-                                        ]
-                                    })
-                                ]
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                                className: "btn btn-pink  mt-3  mb-4",
-                                onClick: (e)=>{
-                                    e.preventDefault();
-                                    resetValue();
-                                    handleSelect(e);
-                                },
-                                children: "Cambiar causa"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                                className: "btn btn-outline-pink  mt-3 mx-2  mb-4",
-                                onClick: (e)=>{
-                                    e.preventDefault();
-                                    resetValue();
-                                    handleShow(e);
-                                },
-                                children: "Crear nueva Causa"
-                            })
-                        ]
-                    })
-                ]
-            })
-        ]
-    });
-};
-const Prize = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                className: "m-0 mt-2",
-                children: "Premio seleccionado"
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "d-flex mt-2  ",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                        src: selectedItem.image || logoRifas/* default */.Z,
-                        alt: "logorifas2",
-                        width: 150,
-                        height: 150,
-                        style: {
-                            objectFit: "cover"
-                        },
-                        className: "rounded"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        className: "ms-3",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("h6", {
-                                className: "lh-1 fw-bold ",
-                                children: selectedItem.name
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "m-0 lh-sm",
-                                children: selectedItem?.description
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                className: "m-0 lh-sm pt-1",
-                                children: [
-                                    "Monto a recaudar:",
-                                    " ",
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
-                                        className: "fw-bold",
-                                        children: [
-                                            "$",
-                                            (0,ParseNumber/* parseNumber */.p)(Number(selectedItem?.value))
-                                        ]
-                                    })
-                                ]
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                                className: "btn btn-pink  mt-3  mb-4",
-                                onClick: (e)=>{
-                                    e.preventDefault();
-                                    resetValue();
-                                    handleSelect(e);
-                                },
-                                children: "Cambiar premio"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                                className: "btn btn-outline-pink  mt-3 mx-2 mb-4",
-                                onClick: (e)=>{
-                                    e.preventDefault();
-                                    resetValue();
-                                    handleShow(e);
-                                },
-                                children: "Crear nuevo Premio"
-                            })
-                        ]
-                    })
-                ]
-            })
-        ]
-    });
-};
-
-;// CONCATENATED MODULE: ./src/components/FormGenerator/Fields/InputSelectItems.tsx
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ InputSelectItems)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Components_SelectItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6039);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_Components_SelectItems__WEBPACK_IMPORTED_MODULE_2__]);
+_Components_SelectItems__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 
 
 const types = {
-    cause: Cause,
-    prize: Prize
+    cause: _Components_SelectItems__WEBPACK_IMPORTED_MODULE_2__/* .Cause */ .d,
+    prize: _Components_SelectItems__WEBPACK_IMPORTED_MODULE_2__/* .Prize */ .p
 };
 function InputSelectItems({ register , label , name , required , error , ModalComponent , createTitle , selectTitle , setValue  }) {
-    const [show, setShow] = (0,external_react_.useState)(false);
-    const [activeSelect, setActiveSelect] = (0,external_react_.useState)(false);
-    const [selected, setSelected] = (0,external_react_.useState)(null);
+    const [show, setShow] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [activeSelect, setActiveSelect] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [selected, setSelected] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
     const SelectedComponent = types[selected?.type || "cause"];
     const handleClose = ()=>{
         setShow(false);
         setActiveSelect(false);
     };
-    const handleShow = (e)=>{
+    const handleShow = (e, payload)=>{
         e.preventDefault();
-        setShow(true);
+        setShow(payload || true);
     };
     const handleSubmit = (data)=>{
         setSelected(data);
@@ -852,15 +892,15 @@ function InputSelectItems({ register , label , name , required , error , ModalCo
         handleShow(e);
         setActiveSelect(true);
     };
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "",
         children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("label", {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
                 className: `${error && "text-danger"} opacity-75 mt-3 fs-4 fw-medium `,
                 htmlFor: name,
                 children: label
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx("input", {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                 id: name,
                 name: name,
                 type: "text",
@@ -869,26 +909,27 @@ function InputSelectItems({ register , label , name , required , error , ModalCo
                 }),
                 className: "d-none"
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx(ModalComponent, {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(ModalComponent, {
                 activeSelect: activeSelect,
                 handleSubmit: handleSubmit,
                 show: show,
+                setSelected: setSelected,
                 handleClose: handleClose
             }),
-            selected ? /*#__PURE__*/ jsx_runtime_.jsx(SelectedComponent, {
+            selected ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(SelectedComponent, {
                 selectedItem: selected,
                 resetValue: resetValue,
                 handleSelect: handleSelect,
                 handleShow: handleShow
-            }) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+            }) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                 className: "d-lg-flex col-12  m-auto mb-3 mt-2  ",
                 children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                         onClick: handleSelect,
                         className: " btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 ",
                         children: selectTitle
                     }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                         className: " mx-0 mx-lg-2 btn btn-withe  col-12 col-lg-6 mt-lg-0 my-0 my-lg-4",
                         onClick: handleShow,
                         children: createTitle
@@ -899,6 +940,8 @@ function InputSelectItems({ register , label , name , required , error , ModalCo
     });
 }
 
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
 
 /***/ }),
 
@@ -1213,7 +1256,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _Fields_inputSelect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(211);
 /* harmony import */ var _Fields_InputFile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4743);
 /* harmony import */ var _Fields_InputTextarea__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7599);
-/* harmony import */ var _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(6597);
+/* harmony import */ var _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(7367);
 /* harmony import */ var _Fields_InputSubtitle__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(5938);
 /* harmony import */ var _Fields_InputSliser__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(2536);
 /* harmony import */ var _Fields_InputDate__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(5343);
@@ -1221,8 +1264,8 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _Fields_InputRange__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(140);
 /* harmony import */ var _Fields_Captchap__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(6764);
 /* harmony import */ var _Fields_InputTextSlug__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(8168);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_Fields_InputFile__WEBPACK_IMPORTED_MODULE_8__]);
-_Fields_InputFile__WEBPACK_IMPORTED_MODULE_8__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_Fields_InputFile__WEBPACK_IMPORTED_MODULE_8__, _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__]);
+([_Fields_InputFile__WEBPACK_IMPORTED_MODULE_8__, _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
 
@@ -1297,19 +1340,222 @@ __webpack_async_result__();
 
 /***/ }),
 
+/***/ 265:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "F7": () => (/* binding */ getCausesStore),
+/* harmony export */   "I": () => (/* binding */ getSeachPremios),
+/* harmony export */   "KZ": () => (/* binding */ getSeachCause)
+/* harmony export */ });
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(444);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___WEBPACK_IMPORTED_MODULE_0__]);
+___WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+const getCausesStore = (pagination)=>{
+    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
+        endpoint: `/causes/my_causes/?page=${pagination}`,
+        method: "GET"
+    });
+};
+const getSeachCause = (search)=>{
+    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
+        endpoint: `/causes/search/?name=${search}`,
+        method: "GET"
+    });
+};
+const getSeachPremios = (search)=>{
+    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
+        endpoint: `/prizes/search/?name=${search}&isFree=true`,
+        method: "GET"
+    });
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 2251:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "q": () => (/* binding */ getPremioStore)
+/* harmony export */ });
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(444);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___WEBPACK_IMPORTED_MODULE_0__]);
+___WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+const getPremioStore = (pagination)=>{
+    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
+        endpoint: `/prizes/?page=${pagination}&isFree=true`,
+        method: "GET"
+    });
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 5140:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "e": () => (/* binding */ useCausesStore)
+/* harmony export */ });
+/* harmony import */ var _services_getCauses__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(265);
+/* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6912);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, zustand__WEBPACK_IMPORTED_MODULE_1__]);
+([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, zustand__WEBPACK_IMPORTED_MODULE_1__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+const useCausesStore = (0,zustand__WEBPACK_IMPORTED_MODULE_1__.create)((set)=>({
+        isLoading: false,
+        causes: [],
+        filterCauses: [],
+        error: false,
+        paginacion: 1,
+        createdCauses: [],
+        getCauses: async (pagination)=>{
+            set({
+                isLoading: true
+            });
+            const { data  } = await (0,_services_getCauses__WEBPACK_IMPORTED_MODULE_0__/* .getCausesStore */ .F7)(pagination || 1);
+            const nextPagination = data.next ? pagination + 1 : null;
+            set((state)=>({
+                    causes: pagination === 1 ? data.results : [
+                        ...state.causes,
+                        ...data.results
+                    ],
+                    isLoading: false,
+                    paginacion: nextPagination
+                }));
+        },
+        resetCauses: ()=>{
+            set({
+                causes: []
+            });
+        },
+        setCreatedCauses: (id)=>{
+            set((state)=>({
+                    createdCauses: [
+                        ...state.createdCauses,
+                        id
+                    ]
+                }));
+        },
+        setFilterCauses: async (search)=>{
+            set({
+                isLoading: true
+            });
+            const { data  } = await (0,_services_getCauses__WEBPACK_IMPORTED_MODULE_0__/* .getSeachCause */ .KZ)(search);
+            set((state)=>({
+                    filterCauses: data.results,
+                    isLoading: false
+                }));
+        }
+    }));
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 9899:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ usePremioStore)
+/* harmony export */ });
+/* harmony import */ var _services_getCauses__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(265);
+/* harmony import */ var _services_getPremio__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2251);
+/* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6912);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, _services_getPremio__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__]);
+([_services_getCauses__WEBPACK_IMPORTED_MODULE_0__, _services_getPremio__WEBPACK_IMPORTED_MODULE_1__, zustand__WEBPACK_IMPORTED_MODULE_2__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+
+const usePremioStore = (0,zustand__WEBPACK_IMPORTED_MODULE_2__.create)((set)=>({
+        isLoading: false,
+        premio: [],
+        error: false,
+        filterPremios: [],
+        paginacion: 1,
+        createdPrizes: [],
+        getPremio: async (pagination)=>{
+            set({
+                isLoading: true
+            });
+            const { data  } = await (0,_services_getPremio__WEBPACK_IMPORTED_MODULE_1__/* .getPremioStore */ .q)(pagination || 1);
+            const nextPagination = data.next ? pagination + 1 : null;
+            set((state)=>({
+                    premio: pagination === 1 ? data.results : [
+                        ...state.premio,
+                        ...data.results
+                    ],
+                    isLoading: false,
+                    paginacion: nextPagination
+                }));
+        },
+        resetPremio: ()=>{
+            set({
+                premio: [],
+                paginacion: 1
+            });
+        },
+        setCreatedPrizes: (id)=>{
+            set((state)=>({
+                    createdPrizes: [
+                        ...state.createdPrizes,
+                        id
+                    ]
+                }));
+        },
+        setFilterPremios: async (search)=>{
+            set({
+                isLoading: true
+            });
+            const { data  } = await (0,_services_getCauses__WEBPACK_IMPORTED_MODULE_0__/* .getSeachPremios */ .I)(search);
+            set((state)=>({
+                    filterPremios: data.results,
+                    isLoading: false
+                }));
+        }
+    }));
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 6843:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "p": () => (/* binding */ parseNumber)
 /* harmony export */ });
-const parseNumber = (number)=>{
+const parseNumber = (number, decimal = true)=>{
+    // Convertir el input a un número para manejar correctamente la entrada.
     number = Number(number);
+    // Opciones para toLocaleString que excluyen los decimales (por ahora).
     const options = {
         minimumFractionDigits: 0,
-        maximumFractionDigits: 0
+        maximumFractionDigits: 0,
+        useGrouping: true
     };
-    return `${number.toLocaleString("es-ES", options)}.00`; //
+    // Convertir el número a formato local con las opciones de formato definidas.
+    // Esta parte se encargará de manejar los separadores de miles (comas).
+    let formattedNumber = number.toLocaleString("en-US", options);
+    // Añadir ".00" si decimal es true, o nada si es false.
+    if (decimal) {
+        formattedNumber += ".00";
+    }
+    return formattedNumber;
 };
 
 

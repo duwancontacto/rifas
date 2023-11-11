@@ -26,7 +26,7 @@ export default function ResumeRaffle({
       <div className="d-flex justify-content-between  border-bottom  text-secondary  shadow-sm p-2  ">
         <p className="m-0 text-calculadora-boletos">Número de boletos</p>
         <p className="m-0 value-calculadora-boletos">
-          {parseNumber(values.ticket_number)}
+          {parseNumber(values.ticket_number, false)}
         </p>
       </div>
       <div className="d-flex justify-content-between  border-bottom  text-secondary shadow-sm p-2  ">

@@ -16,6 +16,7 @@ import {
   createImagesGallery,
   deleteImagesGallery,
   getSite,
+  getProfileWallet,
 } from "@/services/dashboard";
 import { getDashboardPrize } from "@/services/dashboard";
 import {
@@ -81,6 +82,7 @@ interface AsociationsStoreDasboard {
   error: boolean;
   getAsociations: () => Promise<void>;
   getWallet: (id: string, pagination: number) => Promise<void>;
+  getWalletProfile: (pagination: number) => Promise<void>;
   getResumen: (id: string) => Promise<void>;
   getMicrosite: (id: string) => Promise<void>;
   getSite: (id: string) => Promise<void>;
@@ -92,7 +94,9 @@ interface AsociationsStoreDasboard {
   setEditUser: (id: string, payload: any) => Promise<boolean>;
   setRemoveUser: (id: string, email: string) => Promise<boolean>;
   pagination: number | null;
+  paginationProfile: number | null;
   wallets: any[];
+  walletsProfile: any[];
   microsite: any;
   site: any;
   resumen: any;
@@ -108,10 +112,12 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
     error: false,
     wallets: [],
     pagination: 1,
+    paginationProfile: 1,
     user: [],
     resumenProfile: [],
     microsite: null,
     site: null,
+    walletsProfile: [],
 
     getAsociations: async () => {
       set({ isLoading: true });
@@ -133,6 +139,22 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
           pagination === 1 ? data.results : [...state.wallets, ...data.results],
         isLoading: false,
         pagination: nextPagination,
+      }));
+    },
+
+    getWalletProfile: async (pagination: number) => {
+      set({ isLoading: true });
+
+      const { data } = await getProfileWallet(pagination);
+      const nextPagination = data.next ? pagination + 1 : null;
+
+      set((state) => ({
+        walletsProfile:
+          pagination === 1
+            ? data.results
+            : [...state.walletsProfile, ...data.results],
+        isLoading: false,
+        paginationProfile: nextPagination,
       }));
     },
 
