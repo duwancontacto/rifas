@@ -136,9 +136,9 @@ function RifasActivas({ all , rafflesCustom  }) {
                     ]
                 }),
                 all ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                    className: "d-flex flex-wrap justify-content-between ",
+                    className: "d-flex flex-wrap justify-content-start ",
                     children: filterRaffles.map((raffle, index)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                            className: "col-3 col-lg-3  mt-4  mx-0 shadow card-raffle",
+                            className: "col-3 col-lg-3  mt-4  mx-0 shadow card-raffle mx-2",
                             style: {
                                 maxWidth: "309px",
                                 width: "100%",

@@ -108,11 +108,11 @@ export default function RifasActivas({
         </div>
 
         {all ? (
-          <div className="d-flex flex-wrap justify-content-between ">
+          <div className="d-flex flex-wrap justify-content-start ">
             {filterRaffles.map((raffle: RafflesI, index: number) => (
               <div
                 key={index}
-                className="col-3 col-lg-3  mt-4  mx-0 shadow card-raffle"
+                className="col-3 col-lg-3  mt-4  mx-0 shadow card-raffle mx-2"
                 style={{ maxWidth: "309px", width: "100%", height: "100%" }}
               >
                 <Image
