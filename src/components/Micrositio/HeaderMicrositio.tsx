@@ -4,6 +4,7 @@ import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 import LogoRifas from "@/assets/img/logoRifas.jpeg";
 export default function HeaderMicrositio() {
   const site = useAsociatonsStoreDashboard((state) => state.site);
+  console.log("test", site);
   return (
     <section className="row  py-5  d-block  d-lg-flex justify-content-center  fondoHeader-micrositio text-center text-lg-start mx-0 mx-lg-0  ">
       <div className="col-12 col-lg-4   p-0 ">
@@ -13,7 +14,11 @@ export default function HeaderMicrositio() {
           height={50}
           alt="fondo"
           className="w-100 h-100 d rounded d-block mx-auto "
-          style={{ maxWidth: "585px", maxHeight: "585px" }}
+          style={{
+            maxWidth: "585px",
+            maxHeight: "585px",
+            objectFit: "contain",
+          }}
         />
       </div>
 

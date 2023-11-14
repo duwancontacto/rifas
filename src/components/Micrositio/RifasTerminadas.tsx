@@ -14,7 +14,13 @@ import { selectRaffleState } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
 import { parseNumber } from "@/utils/ParseNumber";
 
-export default function RifasTerminadas({ all }: { all?: boolean }) {
+export default function RifasTerminadas({
+  all,
+  rafflesCustom,
+}: {
+  all?: boolean;
+  rafflesCustom: any;
+}) {
   const slider = React.useRef<any>(null);
   const { raffles, causesCategories } = useSelector(selectRaffleState);
   const router = useRouter();
@@ -47,8 +53,8 @@ export default function RifasTerminadas({ all }: { all?: boolean }) {
     ],
   };
 
-  const filterRaffles = raffles.filter(
-    (raffle) =>
+  const filterRaffles = (rafflesCustom || raffles).filter(
+    (raffle: any) =>
       (!selectedCategory || raffle.categories[0].id === selectedCategory) &&
       raffle.status === 1
   );
@@ -58,6 +64,9 @@ export default function RifasTerminadas({ all }: { all?: boolean }) {
     const raisedPercent = ((raffle?.raised || 0) * 100) / meta;
     return raisedPercent.toFixed(2);
   };
+
+  if (!(rafflesCustom || raffles).length) return <></>;
+
   return (
     <div className="mt-3 mx-3 mx-lg-0  ">
       <section

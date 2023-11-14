@@ -107,7 +107,7 @@ export const Prize = ({
           <h6 className="lh-1 fw-bold ">{selectedItem.name}</h6>
           <p className="m-0 lh-sm">{selectedItem?.description}</p>
           <p className="m-0 lh-sm pt-1">
-            Monto a recaudar:{" "}
+            Valor del premio:{" "}
             <span className="fw-bold">
               ${parseNumber(Number(selectedItem?.value))}
             </span>

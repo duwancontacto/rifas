@@ -108,10 +108,18 @@ export const updateMicrosite = (asociationId: string, asociacion: any) => {
   formData.append("linkedin", asociacion.linkedin);
   formData.append("pinterest", asociacion.pinterest);
 
-  if (asociacion.image[0] && typeof asociacion.image[0] !== "string")
+  if (
+    asociacion.image &&
+    asociacion.image[0] &&
+    typeof asociacion.image[0] !== "string"
+  )
     formData.append("image", asociacion.image[0]);
 
-  if (asociacion.main_image[0] && typeof asociacion.main_image[0] !== "string")
+  if (
+    asociacion.main_image &&
+    asociacion.main_image[0] &&
+    typeof asociacion.main_image[0] !== "string"
+  )
     formData.append("main_image", asociacion.main_image[0]);
 
   return axios.put(baseUrl + `/associations/${asociationId}/`, formData, {

@@ -155,7 +155,7 @@ const Prize = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                                 className: "m-0 lh-sm pt-1",
                                 children: [
-                                    "Monto a recaudar:",
+                                    "Valor del premio:",
                                     " ",
                                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                                         className: "fw-bold",
@@ -423,11 +423,17 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
     const [files, setFiles] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]);
     const [previews, setPreviews] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]);
     const MAX_UPLOAD_ITEMS = maxFile || 5;
+    const MAX_SIZE_FILE = 10;
     const fileRef = (0,react__WEBPACK_IMPORTED_MODULE_2__.useRef)(null);
     const onChangeFile = (event)=>{
         const { files: inputFiles  } = event.target;
         if (!inputFiles?.length || !inputFiles) return;
         const file = inputFiles[0];
+        //validate file size
+        if (file.size > MAX_SIZE_FILE * 1024 * 1024) {
+            react_hot_toast__WEBPACK_IMPORTED_MODULE_3__.toast.error(`El peso maximo por foto es de ${MAX_SIZE_FILE}MB`);
+            return;
+        }
         if (previews?.length === MAX_UPLOAD_ITEMS) {
             react_hot_toast__WEBPACK_IMPORTED_MODULE_3__.toast.error(`Solo puedes subir ${MAX_UPLOAD_ITEMS} ${MAX_UPLOAD_ITEMS > 1 ? "fotos" : "foto"} `);
             return;
@@ -483,10 +489,13 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
     }, []);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("label", {
                 className: `${error && "text-danger"} title-form-generator  mt-2`,
                 htmlFor: name,
-                children: label
+                children: [
+                    label,
+                    " (Peso maximo por foto 10MB)"
+                ]
             }),
             subLabel === "" ? null : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                 className: "  fs-6 mb-0",
@@ -844,7 +853,7 @@ function InputRange({ label , name , error , maxRange =10 , setValue , register 
 
 /***/ }),
 
-/***/ 7367:
+/***/ 5955:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
@@ -1256,7 +1265,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _Fields_inputSelect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(211);
 /* harmony import */ var _Fields_InputFile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4743);
 /* harmony import */ var _Fields_InputTextarea__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7599);
-/* harmony import */ var _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(7367);
+/* harmony import */ var _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(5955);
 /* harmony import */ var _Fields_InputSubtitle__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(5938);
 /* harmony import */ var _Fields_InputSliser__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(2536);
 /* harmony import */ var _Fields_InputDate__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(5343);

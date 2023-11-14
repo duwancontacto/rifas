@@ -257,15 +257,18 @@ const useAsociatonsStoreDashboard = (0,zustand__WEBPACK_IMPORTED_MODULE_0__.crea
                     payload.images = resultGallery.map((gallery)=>gallery.data.id);
                 }
                 const petitionsOld = [];
-                payload.oldImages.map((image)=>petitionsOld.push((0,_services_dashboard__WEBPACK_IMPORTED_MODULE_1__/* .deleteImagesGallery */ .EH)(image.id)));
-                await Promise.all(petitionsOld);
+                payload?.oldImages?.map((image)=>petitionsOld.push((0,_services_dashboard__WEBPACK_IMPORTED_MODULE_1__/* .deleteImagesGallery */ .EH)(image.id)));
+                petitionsOld.length && await Promise.all(petitionsOld);
                 const { data  } = await (0,_services_dashboard__WEBPACK_IMPORTED_MODULE_1__/* .updateMicrosite */ .gR)(asociationId, payload);
                 react_hot_toast__WEBPACK_IMPORTED_MODULE_4__["default"].success("Se actualizo el micrositio con exito!!");
                 set({
                     microsite: data,
                     isLoading: false
                 });
-            } catch (error) {}
+            } catch (error) {
+                react_hot_toast__WEBPACK_IMPORTED_MODULE_4__["default"].error("Error al actualizar el micrositio");
+                console.log("Test", error);
+            }
         }
     }));
 

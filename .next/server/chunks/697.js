@@ -133,8 +133,8 @@ const updateMicrosite = (asociationId, asociacion)=>{
     formData.append("vimeo", asociacion.vimeo);
     formData.append("linkedin", asociacion.linkedin);
     formData.append("pinterest", asociacion.pinterest);
-    if (asociacion.image[0] && typeof asociacion.image[0] !== "string") formData.append("image", asociacion.image[0]);
-    if (asociacion.main_image[0] && typeof asociacion.main_image[0] !== "string") formData.append("main_image", asociacion.main_image[0]);
+    if (asociacion.image && asociacion.image[0] && typeof asociacion.image[0] !== "string") formData.append("image", asociacion.image[0]);
+    if (asociacion.main_image && asociacion.main_image[0] && typeof asociacion.main_image[0] !== "string") formData.append("main_image", asociacion.main_image[0]);
     return axios__WEBPACK_IMPORTED_MODULE_1__["default"].put(baseUrl + `/associations/${asociationId}/`, formData, {
         headers: {
             "Content-Type": "multipart/form-data",

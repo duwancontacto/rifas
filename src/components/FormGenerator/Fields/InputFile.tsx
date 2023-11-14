@@ -30,13 +30,20 @@ export default function InputFile({
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const MAX_UPLOAD_ITEMS: number = maxFile || 5;
-
+  const MAX_SIZE_FILE = 10;
   const fileRef = useRef<HTMLInputElement>(null);
 
   const onChangeFile = (event: ChangeEvent<HTMLInputElement>): void => {
     const { files: inputFiles } = event.target;
+
     if (!inputFiles?.length || !inputFiles) return;
     const file = inputFiles[0];
+
+    //validate file size
+    if (file.size > MAX_SIZE_FILE * 1024 * 1024) {
+      toast.error(`El peso maximo por foto es de ${MAX_SIZE_FILE}MB`);
+      return;
+    }
 
     if (previews?.length === MAX_UPLOAD_ITEMS) {
       toast.error(
@@ -100,7 +107,7 @@ export default function InputFile({
         className={`${error && "text-danger"} title-form-generator  mt-2`}
         htmlFor={name}
       >
-        {label}
+        {label} (Peso maximo por foto 10MB)
       </label>
       {subLabel === "" ? null : <p className="  fs-6 mb-0">{subLabel}</p>}
       <input

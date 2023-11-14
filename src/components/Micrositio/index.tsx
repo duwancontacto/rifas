@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 export default function Microsite() {
   const router = useRouter();
   const getSite = useAsociatonsStoreDashboard((state) => state.getSite);
+  const site = useAsociatonsStoreDashboard((state) => state.site);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -26,8 +27,8 @@ export default function Microsite() {
     <section>
       <NavMicrositio />
       <HeaderMicrositio />
-      <RifasActivas all />
-      <RifasTerminadas all />
+      <RifasActivas rafflesCustom={site.raffles} />
+      <RifasTerminadas rafflesCustom={site.raffles} />
       <GalleryMicrositio />
       <FooterMicrositio />
     </section>

@@ -23,7 +23,7 @@ export default function CarteraOptionProfile({ option, index }: any) {
         </div>
       </th>
       <td>
-        <h6 className="text-cartera ">{option.name}</h6>
+        <h6 className="text-cartera ">{option?.raffle?.name}</h6>
         <p className="parraf-cartera">{option.informacion}</p>
       </td>
       <td className="number-dashboardRifas">

@@ -313,10 +313,11 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
 
         const petitionsOld: any[] = [];
 
-        payload.oldImages.map((image: any) =>
+        payload?.oldImages?.map((image: any) =>
           petitionsOld.push(deleteImagesGallery(image.id))
         );
-        await Promise.all(petitionsOld);
+
+        petitionsOld.length && (await Promise.all(petitionsOld));
 
         const { data } = await updateMicrosite(asociationId, payload);
 
@@ -326,7 +327,10 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
           microsite: data,
           isLoading: false,
         });
-      } catch (error) {}
+      } catch (error) {
+        toast.error("Error al actualizar el micrositio");
+        console.log("Test", error);
+      }
     },
   })
 );

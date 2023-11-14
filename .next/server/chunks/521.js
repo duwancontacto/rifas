@@ -50,7 +50,7 @@ _store_slices_raffles__WEBPACK_IMPORTED_MODULE_11__ = (__webpack_async_dependenc
 
 
 
-function RifasActivas({ all  }) {
+function RifasActivas({ all , rafflesCustom  }) {
     const slider = react__WEBPACK_IMPORTED_MODULE_1___default().useRef(null);
     const { raffles , causesCategories  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useSelector)(_store_slices_raffles__WEBPACK_IMPORTED_MODULE_11__/* .selectRaffleState */ .VB);
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_9__.useRouter)();
@@ -82,12 +82,13 @@ function RifasActivas({ all  }) {
             }
         ]
     };
-    let filterRaffles = raffles.filter((raffle)=>(!selectedCategory || raffle.categories[0].id === selectedCategory) && raffle.status === 1);
+    let filterRaffles = (rafflesCustom || raffles).filter((raffle)=>(!selectedCategory || raffle.categories[0].id === selectedCategory) && raffle.status === 1);
     const getPercetRaised = (raffle)=>{
         const meta = Number(raffle?.ticket_number) * Number(raffle?.ticket_price);
         const raisedPercent = (raffle?.raised || 0) * 100 / meta;
         return raisedPercent.toFixed(2);
     };
+    if (!(rafflesCustom || raffles).length) return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
         className: "mt-3 mx-3 mx-lg-0  ",
         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
