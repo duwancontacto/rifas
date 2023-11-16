@@ -85,7 +85,6 @@ export default function ModalPremio({
   const submitData = async (data: any) => {
     setLoading(true);
     const { payload } = await dispatch(createRafflesPrize(data) as any);
-    console.log("TEst", payload)
     setLoading(false);
     if (payload) {
       getPremio(1);

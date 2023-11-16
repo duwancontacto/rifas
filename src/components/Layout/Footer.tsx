@@ -93,7 +93,7 @@ export default function Footer() {
                 className="button-contacto"
                 onClick={() => router.push("/frequentQuestions")}
               >
-                Preguntan frecuentes
+                Preguntas frecuentes
               </li>
               <li
                 onClick={() => router.push("/contacto")}

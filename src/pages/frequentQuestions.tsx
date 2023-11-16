@@ -1,7 +1,30 @@
 import Layout from "@/components/Layout";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { useFaqStore } from "@/store/zustand/faqStore";
+import { FaRegQuestionCircle } from "react-icons/fa";
 
-export default function frequentQuestions() {
+export default function FrequentQuestions() {
+  const [step, setStep] = useState(0);
+
+  const handleStep = (newStep: number) =>
+    setStep(newStep === step ? -1 : newStep);
+
+  const { faq, getFaq } = useFaqStore((state) => state);
+
+  const StepIcon = (step: number, currentStep: number) => {
+    if (step === currentStep) return <MdKeyboardArrowUp size={30} />;
+    return <MdKeyboardArrowDown size={30} />;
+  };
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      getFaq();
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <Layout>
       <div className=" col-12 text-center row container-Pivacy pt-4 m-auto pb-5 mt-3 mt-md-0 ">
@@ -15,88 +38,31 @@ export default function frequentQuestions() {
 
           <div className="  m-auto containerText-questions  mt-2   p-3 p-md-5 ">
             <h5 className="subtitle-questions lh-1">Información General</h5>
-            <div className="horizontal-bar mb-2"></div>
+            <div className="horizontal-bar mb-2 mb-4"></div>
 
-            <h6 className="subtitles-QuestionsFrequent mt-3 ">
-              ¿Por qué mi usuario está bloqueado?
-            </h6>
-            <p className="text-Questions">
-              En caso de ingresar y que su usuario se encuentre bloqueado es
-              indispensable que se comunique al área de Crédito y Cobranza al
-              teléfono 5345-6000 con Rodolfo Sánchez Moreno Ext. 6540 o Mara
-              López Méndez Ext. 6017 quienes le proporcionaran mayor
-              información.
-            </p>
-            <h6 className="subtitles-QuestionsFrequent">
-              ¿Qué puedo hacer si olvide mi contraseña?
-            </h6>
-            <p className="text-Questions">
-              En la página principal debajo de los datos de usuario y
-              contraseña, se ubica la liga que dice “He olvidado mi contraseña”,
-              debe dar clic y el sistema le dará las indicaciones que debe
-              seguir para recuperarla
-            </p>
-            <h6 className="subtitles-QuestionsFrequent">
-              ¿A quién me dirijo para solicitar una aclaración de mi estado de
-              cuenta?
-            </h6>
-            <p className="text-Questions">
-              Para cualquier aclaración se podrá contactar con Rodolfo Sánchez
-              Moreno Ext. 6540 quien con gusto le apoyará
-            </p>
-            <h6 className="subtitles-QuestionsFrequent">
-              ¿Qué puedo hacer si mi crédito está suspendido?
-            </h6>
-            <p className="text-Questions">
-              Puede enviar mensaje a través del portal con la finalidad de que
-              se le indique el motivo de la suspensión de la cuenta y poderle
-              indicar que necesita para habilitarla nuevamente o marcar
-              directamente a Rodolfo Sánchez Moreno al teléfono 5345-6000 ext.
-              6540 quién podrá orientarlo
-            </p>
-            <h6 className="subtitles-QuestionsFrequent">
-              {" "}
-              ¿Cómo puedo consultar una cuenta especifica de todas las de mi
-              grupo?
-            </h6>
-            <p className="text-Questions">
-              En la pantalla inicial que le muestra un resumen de su cuenta en
-              el lado superior derecho se ubica una barra que despliega la lista
-              de todas las cuentas de su grupo, ahí podrá seleccionar la cuenta
-              o cuentas que necesita visualizar
-            </p>
-            <h6 className="subtitles-QuestionsFrequent">
-              ¿Cómo puedo visualizar el detalle de los documentos que integran
-              mi estado de cuenta?
-            </h6>
-            <p className="text-Questions">
-              En el resumen de su estado de cuenta usted pueda dar clic sobre el
-              importe del cual necesita el detalle y este será mostrado en
-              pantalla. Otra opción es dar clic sobre los iconos que se
-              encuentran en la parte superior de página principal (facturas,
-              notas de crédito y pagos) lo que le mostrara el detalle de su
-              cuenta
-            </p>
-            <h6 className="subtitles-QuestionsFrequent">
-              ¿Por qué se puede suspender mi cuenta?
-            </h6>
-            <ul className="text-Questions">
-              Existen varios motivos de suspensión
-              <li> 1.- Saldo Vencido.</li>
-              <li>2.- Que haya agotado su línea de crédito</li>
-              <li>3.- Negociaciones incumplidas.</li>
-              <li>4.- Aclaraciones pendientes</li>
-              <li>5.- Expediente incompleto</li>
-              <li>6.- No ha tenido movimientos en el ultimo año.</li>
-            </ul>
-            <h6 className="subtitles-QuestionsFrequent">
-              ¿Cómo puedo tramitar una ampliación de crédito?
-            </h6>
-            <p className="text-Questions">
-              Es necesario que se ponga en contacto con su representante de
-              ventas quien le proporcionara la información del proceso de debe
-              seguir su solicitud.
-            </p>
+            {faq?.map((question, index) => (
+              <div className="mb-2" key={index}>
+                <div className=" d-flex justify-content-between align-items-center    ">
+                  <button
+                    onClick={() => {
+                      handleStep(index);
+                    }}
+                    className={` fs-4 text-light  faq-container d-flex justify-content-between align-item-center  ${
+                      step !== index ? " opacity-50 " : " opacity-100  "
+                    }`}
+                  >
+                    <div className="text-fondo-container">
+                      <FaRegQuestionCircle size={25} className="me-2" />
+                      {question.title}
+                    </div>
+                    <div className="m-0">{StepIcon(step, index)}</div>
+                  </button>
+                </div>
+                {step === index && (
+                  <p className="p-3 pb-0"> {question.message}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>

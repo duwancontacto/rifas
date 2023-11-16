@@ -24,7 +24,6 @@ export default function ModalEditRafflePremio({
     setShow(false);
     handleReset(result);
   };
-  console.log("TEst", show);
   const gallery =
     show?.images && show?.images?.length > 0
       ? show?.images?.map((image: any) => image.file)

@@ -23,7 +23,6 @@ export const Cause = ({
 
   const findPrize = createdCauses.find((prize) => prize === selectedItem.id);
 
-  console.log("TEst", findPrize);
   return (
     <div>
       <p className="m-0 mt-2">Causa seleccionada</p>

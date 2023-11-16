@@ -92,7 +92,6 @@ export default function DasboardUsers() {
         pagination={pagination}
         head={head}
         getRequest={(pagination: number) => {
-          console.log("TEst asdads");
           getUser(router.query.id as string, pagination);
         }}
         options={user}

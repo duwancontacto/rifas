@@ -1385,7 +1385,6 @@ function ModalEditRafflePremio({ show , setShow , handleReset , associations  })
         setShow(false);
         handleReset(result);
     };
-    console.log("TEst", show);
     const gallery = show?.images && show?.images?.length > 0 ? show?.images?.map((image)=>image.file) : [];
     const fields = [
         {
@@ -1617,7 +1616,6 @@ function ModalPremio({ show , handleClose , handleSubmit , activeSelect , setSel
     const submitData = async (data)=>{
         setLoading(true);
         const { payload  } = await dispatch((0,_store_slices_raffles__WEBPACK_IMPORTED_MODULE_6__/* .createRafflesPrize */ .FL)(data));
-        console.log("TEst", payload);
         setLoading(false);
         if (payload) {
             getPremio(1);

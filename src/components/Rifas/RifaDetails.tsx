@@ -30,6 +30,34 @@ export default function RifaDetails() {
   const meta = Number(raffle.ticket_number) * Number(raffle.ticket_price);
   const raisedPercent = (raffle.raised * 100) / meta;
 
+  function getEmbedUrl(videoUrl: string) {
+    try {
+      // Analizar la URL para obtener hostname y path
+      const urlObj = new URL(videoUrl);
+
+      if (urlObj.hostname.toLowerCase().includes("youtube.com")) {
+        // Extraer el ID del video de YouTube
+        const videoId = urlObj.searchParams.get("v");
+        // Retornar la URL de incrustación de YouTube
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+      } else if (urlObj.hostname.toLowerCase().includes("youtu.be")) {
+        // Extraer el ID del video de una URL acortada de YouTube (youtu.be)
+        const videoId = urlObj.pathname.split("/")[1];
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+      } else if (urlObj.hostname.toLowerCase().includes("vimeo.com")) {
+        // Extraer el ID del video de Vimeo
+        const videoId = urlObj.pathname.split("/")[1];
+        // Retornar la URL de incrustación de Vimeo
+        return videoId ? `https://player.vimeo.com/video/${videoId}` : null;
+      }
+    } catch (error) {
+      console.error("Error al extraer la URL de incrustación:", error);
+    }
+
+    // Retornar null si la URL no se reconoce o hay un error
+    return null;
+  }
+
   return (
     <section className="mx-3 mx-lg-5 py-3">
       <h3 className="  mt-5 mt-md-3 title-RifaDetails">{raffle.name}</h3>
@@ -42,11 +70,11 @@ export default function RifaDetails() {
             <iframe
               width="100%"
               height="450"
-              src={raffle.video}
+              src={getEmbedUrl(raffle.video) || ""}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              title="Video de YouTube"
+              title="Videos"
             ></iframe>
           ) : (
             <Image

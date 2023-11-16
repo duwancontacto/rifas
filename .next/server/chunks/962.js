@@ -40,7 +40,6 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_sto
 const Cause = ({ selectedItem , resetValue , handleSelect , handleShow  })=>{
     const createdCauses = (0,_store_zustand_CausesStore__WEBPACK_IMPORTED_MODULE_2__/* .useCausesStore */ .e)((state)=>state.createdCauses);
     const findPrize = createdCauses.find((prize)=>prize === selectedItem.id);
-    console.log("TEst", findPrize);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {

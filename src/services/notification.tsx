@@ -13,3 +13,10 @@ export const setContacto = (payload: any) => {
     _data: payload,
   });
 };
+
+export const getFaq = () => {
+  return Api({
+    endpoint: `/faq/`,
+    method: "GET",
+  });
+};

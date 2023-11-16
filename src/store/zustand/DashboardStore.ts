@@ -299,7 +299,7 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
       try {
         set({ isLoading: true });
 
-        if (payload.images.length > 0) {
+        if (payload.images.length > 0 && payload?.oldImages) {
           const petitions: any[] = [];
 
           payload.images.map((gallery: any) =>
@@ -329,7 +329,6 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
         });
       } catch (error) {
         toast.error("Error al actualizar el micrositio");
-        console.log("Test", error);
       }
     },
   })

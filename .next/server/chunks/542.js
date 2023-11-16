@@ -181,8 +181,9 @@ __webpack_async_result__();
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "A": () => (/* binding */ setContacto),
-/* harmony export */   "k": () => (/* binding */ getAllNotifications)
+/* harmony export */   "AE": () => (/* binding */ setContacto),
+/* harmony export */   "QR": () => (/* binding */ getFaq),
+/* harmony export */   "kW": () => (/* binding */ getAllNotifications)
 /* harmony export */ });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(444);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___WEBPACK_IMPORTED_MODULE_0__]);
@@ -199,6 +200,12 @@ const setContacto = (payload)=>{
         endpoint: `/notifications/contact_form/`,
         method: "POST",
         _data: payload
+    });
+};
+const getFaq = ()=>{
+    return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
+        endpoint: `/faq/`,
+        method: "GET"
     });
 };
 
@@ -511,7 +518,7 @@ const useNotificationStore = (0,zustand__WEBPACK_IMPORTED_MODULE_1__.create)((se
             set({
                 isLoading: true
             });
-            const { data  } = await (0,_services_notification__WEBPACK_IMPORTED_MODULE_0__/* .getAllNotifications */ .k)();
+            const { data  } = await (0,_services_notification__WEBPACK_IMPORTED_MODULE_0__/* .getAllNotifications */ .kW)();
             set({
                 notifications: data,
                 notificationsSize: data.length,

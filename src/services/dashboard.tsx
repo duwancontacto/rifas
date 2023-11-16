@@ -122,6 +122,21 @@ export const updateMicrosite = (asociationId: string, asociacion: any) => {
   )
     formData.append("main_image", asociacion.main_image[0]);
 
+  if (
+    asociacion.main_image &&
+    typeof asociacion.main_image === "object" &&
+    !asociacion.main_image.length
+  ) {
+    formData.append("main_image", "");
+  }
+
+  if (
+    asociacion.image &&
+    typeof asociacion.image === "object" &&
+    !asociacion.image.length
+  ) {
+    formData.append("image", "");
+  }
   return axios.put(baseUrl + `/associations/${asociationId}/`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",

@@ -250,7 +250,7 @@ const useAsociatonsStoreDashboard = (0,zustand__WEBPACK_IMPORTED_MODULE_0__.crea
                 set({
                     isLoading: true
                 });
-                if (payload.images.length > 0) {
+                if (payload.images.length > 0 && payload?.oldImages) {
                     const petitions = [];
                     payload.images.map((gallery)=>petitions.push((0,_services_dashboard__WEBPACK_IMPORTED_MODULE_1__/* .createImagesGallery */ .qA)(gallery, payload.id.toString())));
                     const resultGallery = await Promise.all(petitions);
@@ -267,7 +267,6 @@ const useAsociatonsStoreDashboard = (0,zustand__WEBPACK_IMPORTED_MODULE_0__.crea
                 });
             } catch (error) {
                 react_hot_toast__WEBPACK_IMPORTED_MODULE_4__["default"].error("Error al actualizar el micrositio");
-                console.log("Test", error);
             }
         }
     }));

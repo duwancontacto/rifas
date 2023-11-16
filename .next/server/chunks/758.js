@@ -222,7 +222,7 @@ function Footer() {
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                             className: "button-contacto",
                                             onClick: ()=>router.push("/frequentQuestions"),
-                                            children: "Preguntan frecuentes"
+                                            children: "Preguntas frecuentes"
                                         }),
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                             onClick: ()=>router.push("/contacto"),
