@@ -38,13 +38,25 @@ export default function RifaDetails() {
       </p>
       <div className="d-flex justify-content-between row mt-4">
         <div className="col-lg-6  position-relative m-0 ">
-          <Image
-            width={100}
-            height={100}
-            src={raffle.image || LogoRifas}
-            alt="fondo"
-            className=" w-100 h-100 "
-          />
+          {raffle.video ? (
+            <iframe
+              width="100%"
+              height="450"
+              src={raffle.video}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Video de YouTube"
+            ></iframe>
+          ) : (
+            <Image
+              width={100}
+              height={100}
+              src={raffle.image || LogoRifas}
+              alt="fondo"
+              className="w-100 h-100"
+            />
+          )}
         </div>
         <div className=" col-lg-6  ">
           <p className="fs-3 mt-4 mt-md-0 raffle-container-title">Recaudado</p>

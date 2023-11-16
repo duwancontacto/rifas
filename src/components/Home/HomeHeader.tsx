@@ -1,11 +1,8 @@
 import React from "react";
-import Header from "@/assets/img/Header-bg.jpg";
-import historiasFondo from "@/assets/img/Historias-img.jpg";
-import rifate from "@/assets/img/Rífate_con_amor.png";
+
 import imagenHeader from "@/assets/img/Portada-Header-nosotros.png";
 import { MdAccessTime } from "react-icons/md";
 
-import { BsWhatsapp } from "react-icons/bs";
 import Image from "next/image";
 import HomeHistory from "./HomeHistory";
 import { useRaffleStore } from "@/store/zustand/RaffleStore";
@@ -16,14 +13,6 @@ export default function HomeHeader() {
   const router = useRouter();
 
   const rafflesFeature = useRaffleStore((state) => state.rafflesFeature);
-  const openWhatsApp = () => {
-    let message = encodeURIComponent(
-      "¡Hola! Me gustaría hacer una consulta sobre Rifa con causa."
-    );
-    let phoneNumber = "+525585850001";
-    let url = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(url, "_blank");
-  };
 
   const meta =
     Number(rafflesFeature[0]?.ticket_number) *
@@ -134,10 +123,6 @@ export default function HomeHeader() {
                 style={{ objectFit: "contain" }}
               />
             </div>
-          </div>
-
-          <div onClick={openWhatsApp} className="icon-whatsapp ">
-            <BsWhatsapp color=" white" size={30} className="header-icono " />
           </div>
         </section>
       </section>

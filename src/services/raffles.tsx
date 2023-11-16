@@ -191,6 +191,7 @@ export const createNewRaffle = (raffle: RafflesI) => {
   formData.append("start_date", raffle.start_date);
   formData.append("ticket_number", raffle.ticket_number);
   formData.append("ticket_price", raffle.ticket_price);
+  formData.append("video", raffle.video);
 
   if (raffle.banner[0]) formData.append("banner", raffle.banner[0]);
   if (raffle.image[0]) formData.append("image", raffle.image[0]);

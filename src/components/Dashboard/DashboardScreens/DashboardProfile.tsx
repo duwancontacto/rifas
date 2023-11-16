@@ -29,10 +29,10 @@ export default function DashboardProfile({ nextStep }: any) {
   };
 
   const getFiscalAddress =
-    filterAssociation?.address ||
-    filterAssociation?.zip ||
-    filterAssociation?.stage ||
-    filterAssociation?.province;
+    filterAssociation?.association_address ||
+    filterAssociation?.association_zip ||
+    filterAssociation?.association_stage ||
+    filterAssociation?.association_province;
 
   const fields: Field[] = [
     {
@@ -132,6 +132,34 @@ export default function DashboardProfile({ nextStep }: any) {
       type: "title",
     },
     {
+      label: "Calle y número*",
+      required: false,
+      name: "address",
+      type: "text",
+      default: filterAssociation?.address,
+    },
+    {
+      label: "Código postal*",
+      required: false,
+      name: "zip",
+      type: "number",
+      default: filterAssociation?.zip,
+    },
+    {
+      label: "Estado*",
+      required: false,
+      name: "state",
+      type: "text",
+      default: filterAssociation?.state,
+    },
+    {
+      label: "Municipio*",
+      required: false,
+      name: "province",
+      type: "text",
+      default: filterAssociation?.province,
+    },
+    {
       label: " ¿La dirección de la asociación es diferente a la fiscal?",
       required: false,
       name: "fiscal_address2",
@@ -143,42 +171,35 @@ export default function DashboardProfile({ nextStep }: any) {
     {
       label: "Calle y número*",
       required: false,
-      name: "address",
+      name: "association_address",
       type: "text",
       visible: "fiscal_address2",
-      default: filterAssociation?.address,
+      default: filterAssociation?.association_address,
     },
     {
       label: "Código postal*",
       required: false,
-      name: "zip",
+      name: "association_zip",
       type: "number",
       visible: "fiscal_address2",
-      default: filterAssociation?.zip,
+      default: filterAssociation?.association_zip,
     },
     {
       label: "Estado*",
       required: false,
-      name: "state",
+      name: "association_state",
       type: "text",
       visible: "fiscal_address2",
-      default: filterAssociation?.state,
+      default: filterAssociation?.association_state,
     },
     {
       label: "Municipio*",
       required: false,
-      name: "province",
+      name: "association_province",
       type: "text",
       visible: "fiscal_address2",
-      default: filterAssociation?.province,
+      default: filterAssociation?.association_province,
     },
-    /*  {
-      label: "RFC*",
-      required: false,
-      name: "rfc2",
-      type: "text",
-      default: filterAssociation?.rfc2,
-    }, */
   ];
 
   return (

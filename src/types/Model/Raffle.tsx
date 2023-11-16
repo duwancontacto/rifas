@@ -21,6 +21,7 @@ export interface RafflesI {
   raised: number;
   status: number;
   categories: Category[];
+  video: string;
 }
 
 export interface Cause {

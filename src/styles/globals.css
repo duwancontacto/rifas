@@ -253,10 +253,14 @@ margin-top: 280px;
 
 .icon-whatsapp {
   position: fixed;
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
   right: 20px;
   bottom: 20px;
   width: 50px;
+  height: 50px;
   cursor: pointer;
   background:#00C851 ;
   padding: 7px;
@@ -2101,4 +2105,26 @@ font-family: 'Montserrat', sans-serif  !important;
   background: #E7E7E7;
   
 
+}
+.slide {
+  height: 100%;
+}
+.slick-current > div{
+
+  height: 100%;
+
+}
+.slick-active > div{
+
+  height: 100%;
+
+}
+.slick-track
+{
+    display: flex !important;
+}
+
+.slick-slide
+{
+    height: inherit !important;
 }

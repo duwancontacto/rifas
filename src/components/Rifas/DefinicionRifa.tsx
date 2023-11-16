@@ -118,6 +118,13 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
       name: "banner",
       type: "file",
     },
+    {
+      label: "",
+      subLabel: "Puedes agregar la url de un video",
+      name: "video",
+      //required: true,
+      type: "text",
+    },
   ];
 
   return (

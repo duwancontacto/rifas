@@ -64,6 +64,15 @@ function RifasActivas({ all , rafflesCustom  }) {
         initialSlide: 1,
         responsive: [
             {
+                breakpoint: 1300,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    dots: true
+                }
+            },
+            {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 1,
@@ -136,13 +145,13 @@ function RifasActivas({ all , rafflesCustom  }) {
                     ]
                 }),
                 all ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                    className: "d-flex flex-wrap justify-content-start ",
+                    className: "d-flex flex-wrap justify-content-center justify-content-lg-start  ",
                     children: filterRaffles.map((raffle, index)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                            className: "col-3 col-lg-3  mt-4  mx-0 shadow card-raffle mx-2",
+                            className: " mt-4  mx-0 shadow mx-2 position-relative  ",
                             style: {
                                 maxWidth: "309px",
                                 width: "100%",
-                                height: "100%"
+                                paddingBottom: 70
                             },
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_5___default()), {
@@ -157,7 +166,7 @@ function RifasActivas({ all , rafflesCustom  }) {
                                     alt: ""
                                 }),
                                 /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                    className: "p-3 px-3",
+                                    className: "p-3 px-3 ",
                                     children: [
                                         /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h6", {
                                             className: "raffles-title-card  ",
@@ -184,16 +193,28 @@ function RifasActivas({ all , rafflesCustom  }) {
                                                 " recaudado"
                                             ]
                                         }),
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                            disabled: Number(getPercetRaised(raffle)) === 100,
-                                            onClick: ()=>router.push(`/rifas/${raffle.id}`),
-                                            className: "btn fs-6 btn-pink w-100",
-                                            children: "Comprar boleto"
-                                        }),
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                            className: "btn fs-6 btn-border-pink w-100 mt-2",
-                                            onClick: ()=>router.push(`/rifas/detalles/${raffle.id}`),
-                                            children: "Ver detalles"
+                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                            className: "position-absolute ",
+                                            style: {
+                                                bottom: 10,
+                                                left: 0,
+                                                right: 0,
+                                                margin: "0 auto",
+                                                width: "90%"
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                    disabled: Number(getPercetRaised(raffle)) === 100,
+                                                    onClick: ()=>router.push(`/rifas/${raffle.id}`),
+                                                    className: "btn fs-6 btn-pink w-100",
+                                                    children: "Comprar boleto"
+                                                }),
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                    className: "btn fs-6 btn-border-pink w-100 mt-2",
+                                                    onClick: ()=>router.push(`/rifas/detalles/${raffle.id}`),
+                                                    children: "Ver detalles"
+                                                })
+                                            ]
                                         })
                                     ]
                                 })
@@ -215,11 +236,14 @@ function RifasActivas({ all , rafflesCustom  }) {
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((react_slick__WEBPACK_IMPORTED_MODULE_2___default()), {
                             ref: slider,
                             ...settings,
-                            className: "  ",
+                            className: "  h-100 ",
                             children: filterRaffles.map((raffle, index)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                    className: "slide-container-raffle mt-4 mt-md-0 py-3",
+                                    className: " mt-4 mt-md-0 py-3  h-100  ",
                                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                        className: "mx-2 shadow card-raffle-slide",
+                                        className: "mx-2 shadow card-raffle-slide h-100 position-relative ",
+                                        style: {
+                                            paddingBottom: 80
+                                        },
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_5___default()), {
                                                 width: 100,
@@ -260,16 +284,28 @@ function RifasActivas({ all , rafflesCustom  }) {
                                                             " recaudado"
                                                         ]
                                                     }),
-                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                                        disabled: Number(getPercetRaised(raffle)) === 100,
-                                                        onClick: ()=>router.push(`/rifas/${raffle.id}`),
-                                                        className: "btn fs-6 btn-pink w-100",
-                                                        children: "Comprar boleto"
-                                                    }),
-                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                                        className: "btn fs-6 btn-border-pink w-100 mt-2",
-                                                        onClick: ()=>router.push(`/rifas/detalles/${raffle.id}`),
-                                                        children: "Ver detalles"
+                                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                                        className: "position-absolute ",
+                                                        style: {
+                                                            bottom: 20,
+                                                            width: "90%",
+                                                            left: 0,
+                                                            right: 0,
+                                                            margin: "0 auto"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                                disabled: Number(getPercetRaised(raffle)) === 100,
+                                                                onClick: ()=>router.push(`/rifas/${raffle.id}`),
+                                                                className: "btn fs-6 btn-pink w-100",
+                                                                children: "Comprar boleto"
+                                                            }),
+                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                                className: "btn fs-6 btn-border-pink w-100 mt-2",
+                                                                onClick: ()=>router.push(`/rifas/detalles/${raffle.id}`),
+                                                                children: "Ver detalles"
+                                                            })
+                                                        ]
                                                     })
                                                 ]
                                             })

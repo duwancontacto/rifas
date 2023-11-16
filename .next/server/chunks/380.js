@@ -278,6 +278,30 @@ const registerFields = [
         type: "title"
     },
     {
+        label: "Calle y n\xfamero*",
+        required: true,
+        name: "address",
+        type: "text"
+    },
+    {
+        label: "C\xf3digo postal*",
+        required: true,
+        name: "zip",
+        type: "number"
+    },
+    {
+        label: "Estado*",
+        required: true,
+        name: "state",
+        type: "text"
+    },
+    {
+        label: "Municipio*",
+        required: true,
+        name: "province",
+        type: "text"
+    },
+    {
         label: " \xbfLa direcci\xf3n de la asociaci\xf3n es diferente a la fiscal?",
         required: false,
         name: "fiscal_address2",
@@ -286,28 +310,28 @@ const registerFields = [
     {
         label: "Calle y n\xfamero*",
         required: true,
-        name: "address",
+        name: "association_address",
         type: "text",
         visible: "fiscal_address2"
     },
     {
         label: "C\xf3digo postal*",
         required: true,
-        name: "zip",
+        name: "association_zip",
         type: "number",
         visible: "fiscal_address2"
     },
     {
         label: "Estado*",
         required: true,
-        name: "state",
+        name: "association_state",
         type: "text",
         visible: "fiscal_address2"
     },
     {
         label: "Municipio*",
         required: true,
-        name: "province",
+        name: "association_province",
         type: "text",
         visible: "fiscal_address2"
     }
@@ -822,6 +846,13 @@ function DefinicionRifa({ handleChangeRaffle  }) {
             required: true,
             name: "banner",
             type: "file"
+        },
+        {
+            label: "",
+            subLabel: "Puedes agregar la url de un video",
+            name: "video",
+            //required: true,
+            type: "text"
         }
     ];
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {

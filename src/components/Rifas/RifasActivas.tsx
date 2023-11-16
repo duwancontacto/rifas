@@ -35,6 +35,15 @@ export default function RifasActivas({
     initialSlide: 1,
     responsive: [
       {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: false,
+          dots: true,
+        },
+      },
+      {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
@@ -108,12 +117,16 @@ export default function RifasActivas({
         </div>
 
         {all ? (
-          <div className="d-flex flex-wrap justify-content-start ">
+          <div className="d-flex flex-wrap justify-content-center justify-content-lg-start  ">
             {filterRaffles.map((raffle: RafflesI, index: number) => (
               <div
                 key={index}
-                className="col-3 col-lg-3  mt-4  mx-0 shadow card-raffle mx-2"
-                style={{ maxWidth: "309px", width: "100%", height: "100%" }}
+                className=" mt-4  mx-0 shadow mx-2 position-relative  "
+                style={{
+                  maxWidth: "309px",
+                  width: "100%",
+                  paddingBottom: 70,
+                }}
               >
                 <Image
                   width={100}
@@ -123,11 +136,12 @@ export default function RifasActivas({
                   style={{ maxHeight: "200px", objectFit: "contain" }}
                   alt=""
                 />
-                <div className="p-3 px-3">
+                <div className="p-3 px-3 ">
                   <h6 className="raffles-title-card  ">
                     {" "}
                     {truncateText(raffle.name, 40)}
                   </h6>
+
                   <p className="card-text raffles-subtitle-card lh-sm">
                     {truncateText(raffle.description, 70)}
                   </p>
@@ -137,20 +151,33 @@ export default function RifasActivas({
                     {getPercetRaised(raffle)}%{" "}
                     {parseNumber(raffle?.raised || 0)} recaudado
                   </p>
-                  <button
-                    disabled={Number(getPercetRaised(raffle)) === 100}
-                    onClick={() => router.push(`/rifas/${raffle.id}`)}
-                    className="btn fs-6 btn-pink w-100"
+                  <div
+                    className="position-absolute "
+                    style={{
+                      bottom: 10,
+                      left: 0,
+                      right: 0,
+                      margin: "0 auto",
+                      width: "90%",
+                    }}
                   >
-                    Comprar boleto
-                  </button>
+                    <button
+                      disabled={Number(getPercetRaised(raffle)) === 100}
+                      onClick={() => router.push(`/rifas/${raffle.id}`)}
+                      className="btn fs-6 btn-pink w-100"
+                    >
+                      Comprar boleto
+                    </button>
 
-                  <button
-                    className="btn fs-6 btn-border-pink w-100 mt-2"
-                    onClick={() => router.push(`/rifas/detalles/${raffle.id}`)}
-                  >
-                    Ver detalles
-                  </button>
+                    <button
+                      className="btn fs-6 btn-border-pink w-100 mt-2"
+                      onClick={() =>
+                        router.push(`/rifas/detalles/${raffle.id}`)
+                      }
+                    >
+                      Ver detalles
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -165,13 +192,13 @@ export default function RifasActivas({
             >
               <IoIosArrowBack color="#C3286D" className="iconPreviousNext" />
             </button>
-            <Slider ref={slider} {...settings} className="  ">
+            <Slider ref={slider} {...settings} className="  h-100 ">
               {filterRaffles.map((raffle: RafflesI, index: number) => (
-                <div
-                  key={index}
-                  className="slide-container-raffle mt-4 mt-md-0 py-3"
-                >
-                  <div className="mx-2 shadow card-raffle-slide">
+                <div key={index} className=" mt-4 mt-md-0 py-3  h-100  ">
+                  <div
+                    className="mx-2 shadow card-raffle-slide h-100 position-relative "
+                    style={{ paddingBottom: 80 }}
+                  >
                     <Image
                       width={100}
                       height={100}
@@ -197,22 +224,33 @@ export default function RifasActivas({
                         {getPercetRaised(raffle)}%{" "}
                         {parseNumber(raffle?.raised || 0)} recaudado
                       </p>
-                      <button
-                        disabled={Number(getPercetRaised(raffle)) === 100}
-                        onClick={() => router.push(`/rifas/${raffle.id}`)}
-                        className="btn fs-6 btn-pink w-100"
+                      <div
+                        className="position-absolute "
+                        style={{
+                          bottom: 20,
+                          width: "90%",
+                          left: 0,
+                          right: 0,
+                          margin: "0 auto",
+                        }}
                       >
-                        Comprar boleto
-                      </button>
+                        <button
+                          disabled={Number(getPercetRaised(raffle)) === 100}
+                          onClick={() => router.push(`/rifas/${raffle.id}`)}
+                          className="btn fs-6 btn-pink w-100"
+                        >
+                          Comprar boleto
+                        </button>
 
-                      <button
-                        className="btn fs-6 btn-border-pink w-100 mt-2"
-                        onClick={() =>
-                          router.push(`/rifas/detalles/${raffle.id}`)
-                        }
-                      >
-                        Ver detalles
-                      </button>
+                        <button
+                          className="btn fs-6 btn-border-pink w-100 mt-2"
+                          onClick={() =>
+                            router.push(`/rifas/detalles/${raffle.id}`)
+                          }
+                        >
+                          Ver detalles
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

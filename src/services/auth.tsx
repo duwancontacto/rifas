@@ -112,18 +112,28 @@ export const createAsociacion = (asociacion: any) => {
 
   formData.append("user", asociacion.user);
 
-  formData.append("zip", asociacion.fiscal_address2 ? asociacion.zip : null);
+  formData.append("address", asociacion.address);
+  formData.append("zip", asociacion.zip);
+  formData.append("state", asociacion.state);
+  formData.append("province", asociacion.province);
+
+  formData.append("video", "");
+
   formData.append(
-    "address",
-    asociacion.fiscal_address2 ? asociacion.address : null
+    "association_address",
+    asociacion.fiscal_address2 ? asociacion.association_address : ""
   );
   formData.append(
-    "state",
-    asociacion.fiscal_address2 ? asociacion.state : null
+    "association_zip",
+    asociacion.fiscal_address2 ? asociacion.association_zip : ""
   );
   formData.append(
-    "province",
-    asociacion.fiscal_address2 ? asociacion.province : null
+    "association_state",
+    asociacion.fiscal_address2 ? asociacion.association_state : ""
+  );
+  formData.append(
+    "association_province",
+    asociacion.fiscal_address2 ? asociacion.association_province : ""
   );
 
   if (asociacion.image[0]) formData.append("image", asociacion.image[0]);
@@ -149,15 +159,26 @@ export const updateAsociacion = (asociacion: any) => {
   formData.append("rfc", asociacion.rfc);
   formData.append("user", asociacion.user);
 
-  formData.append("zip", asociacion.fiscal_address2 ? asociacion.zip : "");
+  formData.append("address", asociacion.address);
+  formData.append("zip", asociacion.zip);
+  formData.append("state", asociacion.state);
+  formData.append("province", asociacion.province);
+
   formData.append(
-    "address",
-    asociacion.fiscal_address2 ? asociacion.address : ""
+    "association_address",
+    asociacion.fiscal_address2 ? asociacion.association_address : ""
   );
-  formData.append("state", asociacion.fiscal_address2 ? asociacion.state : "");
   formData.append(
-    "province",
-    asociacion.fiscal_address2 ? asociacion.province : ""
+    "association_zip",
+    asociacion.fiscal_address2 ? asociacion.association_zip : ""
+  );
+  formData.append(
+    "association_state",
+    asociacion.fiscal_address2 ? asociacion.association_state : ""
+  );
+  formData.append(
+    "association_province",
+    asociacion.fiscal_address2 ? asociacion.association_province : ""
   );
 
   if (asociacion.image[0]) formData.append("image", asociacion.image[0]);

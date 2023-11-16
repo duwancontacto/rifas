@@ -1,15 +1,6 @@
 import React, { useEffect } from "react";
-import {
-  AiOutlineMenu,
-  AiFillDollarCircle,
-  AiOutlineUser,
-} from "react-icons/ai";
-import {
-  FaHandHoldingHeart,
-  FaGift,
-  FaBriefcase,
-  FaUsers,
-} from "react-icons/fa";
+import { AiFillDollarCircle, AiOutlineUser } from "react-icons/ai";
+import { FaGift, FaWallet } from "react-icons/fa";
 import { BsWindowSidebar } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useRouter } from "next/router";
@@ -67,7 +58,7 @@ export default function ProfileResume({ setShowScreen }: any) {
           </button>
         </div>
         <div className="container-resumen col-9 col-md-3 mx-4 my-2 text-center py-3">
-          <FaBriefcase color="#784B5F" size={30} />
+          <FaWallet color="#784B5F" size={30} />
           <p className="title-resumen m-0">Cartera</p>
           <button
             onClick={() => {

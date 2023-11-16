@@ -125,10 +125,15 @@ const createAsociacion = (asociacion)=>{
     formData.append("regime", asociacion.regime);
     formData.append("rfc", asociacion.rfc);
     formData.append("user", asociacion.user);
-    formData.append("zip", asociacion.fiscal_address2 ? asociacion.zip : null);
-    formData.append("address", asociacion.fiscal_address2 ? asociacion.address : null);
-    formData.append("state", asociacion.fiscal_address2 ? asociacion.state : null);
-    formData.append("province", asociacion.fiscal_address2 ? asociacion.province : null);
+    formData.append("address", asociacion.address);
+    formData.append("zip", asociacion.zip);
+    formData.append("state", asociacion.state);
+    formData.append("province", asociacion.province);
+    formData.append("video", "");
+    formData.append("association_address", asociacion.fiscal_address2 ? asociacion.association_address : "");
+    formData.append("association_zip", asociacion.fiscal_address2 ? asociacion.association_zip : "");
+    formData.append("association_state", asociacion.fiscal_address2 ? asociacion.association_state : "");
+    formData.append("association_province", asociacion.fiscal_address2 ? asociacion.association_province : "");
     if (asociacion.image[0]) formData.append("image", asociacion.image[0]);
     return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post(baseUrl + "/associations/", formData, {
         headers: {
@@ -149,10 +154,14 @@ const updateAsociacion = (asociacion)=>{
     formData.append("regime", asociacion.regime);
     formData.append("rfc", asociacion.rfc);
     formData.append("user", asociacion.user);
-    formData.append("zip", asociacion.fiscal_address2 ? asociacion.zip : "");
-    formData.append("address", asociacion.fiscal_address2 ? asociacion.address : "");
-    formData.append("state", asociacion.fiscal_address2 ? asociacion.state : "");
-    formData.append("province", asociacion.fiscal_address2 ? asociacion.province : "");
+    formData.append("address", asociacion.address);
+    formData.append("zip", asociacion.zip);
+    formData.append("state", asociacion.state);
+    formData.append("province", asociacion.province);
+    formData.append("association_address", asociacion.fiscal_address2 ? asociacion.association_address : "");
+    formData.append("association_zip", asociacion.fiscal_address2 ? asociacion.association_zip : "");
+    formData.append("association_state", asociacion.fiscal_address2 ? asociacion.association_state : "");
+    formData.append("association_province", asociacion.fiscal_address2 ? asociacion.association_province : "");
     if (asociacion.image[0]) formData.append("image", asociacion.image[0]);
     return axios__WEBPACK_IMPORTED_MODULE_1__["default"].put(baseUrl + `/associations/${asociacion.id}/`, formData, {
         headers: {
@@ -349,8 +358,10 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _utils_handleError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9956);
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5184);
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_auth__WEBPACK_IMPORTED_MODULE_0__, _utils_handleError__WEBPACK_IMPORTED_MODULE_1__]);
-([_services_auth__WEBPACK_IMPORTED_MODULE_0__, _utils_handleError__WEBPACK_IMPORTED_MODULE_1__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6201);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_auth__WEBPACK_IMPORTED_MODULE_0__, _utils_handleError__WEBPACK_IMPORTED_MODULE_1__, react_hot_toast__WEBPACK_IMPORTED_MODULE_3__]);
+([_services_auth__WEBPACK_IMPORTED_MODULE_0__, _utils_handleError__WEBPACK_IMPORTED_MODULE_1__, react_hot_toast__WEBPACK_IMPORTED_MODULE_3__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -443,6 +454,7 @@ const UpdateAsociacion = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.create
         };
         Asociacion.user = id?.toString();
         const result = await (0,_services_auth__WEBPACK_IMPORTED_MODULE_0__/* .updateAsociacion */ .l0)(Asociacion);
+        react_hot_toast__WEBPACK_IMPORTED_MODULE_3__["default"].success("Se actualizo el perfil con exito!!");
         return result.data;
     } catch (error) {
         (0,_utils_handleError__WEBPACK_IMPORTED_MODULE_1__/* .handleError */ .S)(error);

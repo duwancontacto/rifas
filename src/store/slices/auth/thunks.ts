@@ -14,6 +14,7 @@ import { RootState } from "@/store";
 import { Auth, FacebookAuth, GoogleAuth, Profile } from "@/types/Model/Profile";
 import { handleError } from "@/utils/handleError";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 const PREFIX: string = "auth";
 export const Register = createAsyncThunk(
   `${PREFIX}/register`,
@@ -147,6 +148,8 @@ export const UpdateAsociacion = createAsyncThunk(
       Asociacion.user = id?.toString();
 
       const result = await updateAsociacion(Asociacion);
+
+      toast.success("Se actualizo el perfil con exito!!");
 
       return result.data;
     } catch (error) {
