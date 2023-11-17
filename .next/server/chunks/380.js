@@ -259,11 +259,28 @@ const registerFields = [
         type: "text"
     },
     {
-        label: "Cuenta de PayPal*",
+        label: "Nombre de la AC a la que esta la cuenta*",
         required: true,
-        name: "paypal",
-        type: "text",
-        tooltip: "Cuenta de PayPal para recibir donaciones"
+        name: "account_owner",
+        type: "text"
+    },
+    {
+        label: "Nombre del Banco*",
+        required: true,
+        name: "n_account",
+        type: "text"
+    },
+    {
+        label: "CLABE*",
+        required: true,
+        name: "clabe",
+        type: "text"
+    },
+    {
+        label: "Numero de cuenta*",
+        required: true,
+        name: "bank",
+        type: "text"
     },
     {
         label: "Agrega el logotipo de tu asociacion*",

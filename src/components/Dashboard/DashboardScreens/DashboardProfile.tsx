@@ -112,12 +112,34 @@ export default function DashboardProfile({ nextStep }: any) {
       default: filterAssociation?.phone,
     },
     {
-      label: "Cuenta de PayPal*",
-      required: false,
-      name: "paypal",
+      label: "Nombre de la AC a la que esta la cuenta*",
+      required: true,
+      name: "account_owner",
       type: "text",
-      default: filterAssociation?.paypal,
+      default: filterAssociation?.account_owner,
     },
+    {
+      label: "Nombre del Banco*",
+      required: true,
+      name: "n_account",
+      type: "text",
+      default: filterAssociation?.n_account,
+    },
+    {
+      label: "CLABE*",
+      required: true,
+      name: "clabe",
+      type: "text",
+      default: filterAssociation?.clabe,
+    },
+    {
+      label: "Numero de cuenta*",
+      required: true,
+      name: "bank",
+      type: "text",
+      default: filterAssociation?.bank,
+    },
+
     {
       label: "Agrega el logotipo de tu asociacion*",
       required: false,

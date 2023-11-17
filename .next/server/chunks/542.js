@@ -120,7 +120,10 @@ const createAsociacion = (asociacion)=>{
     formData.append("first_name", asociacion.first_name);
     formData.append("last_name", asociacion.last_name);
     formData.append("last_name2", asociacion.last_name2);
-    formData.append("paypal", asociacion.paypal);
+    formData.append("account_owner", asociacion.account_owner);
+    formData.append("n_account", asociacion.n_account);
+    formData.append("bank", asociacion.bank);
+    formData.append("clabe", asociacion.clabe);
     formData.append("phone", asociacion.phone);
     formData.append("regime", asociacion.regime);
     formData.append("rfc", asociacion.rfc);
@@ -149,7 +152,10 @@ const updateAsociacion = (asociacion)=>{
     formData.append("first_name", asociacion.first_name);
     formData.append("last_name", asociacion.last_name);
     formData.append("last_name2", asociacion.last_name2);
-    formData.append("paypal", asociacion.paypal);
+    formData.append("account_owner", asociacion.account_owner);
+    formData.append("n_account", asociacion.n_account);
+    formData.append("bank", asociacion.bank);
+    formData.append("clabe", asociacion.clabe);
     formData.append("phone", asociacion.phone);
     formData.append("regime", asociacion.regime);
     formData.append("rfc", asociacion.rfc);
