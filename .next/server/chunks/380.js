@@ -262,7 +262,11 @@ const registerFields = [
         label: "Nombre de la AC a la que esta la cuenta*",
         required: true,
         name: "account_owner",
-        type: "text"
+        type: "text",
+        tooltip: {
+            title: "Para que usaran mi cuenta?",
+            content: "Para mayor transparencia y seguridad. solicitamos una cuenta bancaria para recibir los fondos generados de las rifas."
+        }
     },
     {
         label: "Nombre del Banco*",
@@ -795,7 +799,8 @@ function DefinicionRifa({ handleChangeRaffle  }) {
             name: "start_date",
             required: true,
             type: "date",
-            maxDate: "end_date"
+            maxDate: "end_date",
+            limitDays: 2
         },
         {
             label: "2. Informacion de tu rifa",

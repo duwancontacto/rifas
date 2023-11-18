@@ -324,8 +324,17 @@ function InputCustom(props) {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-function InputDate({ register , label , name , required , error , minDate ="" , maxDate ="" , watch  }) {
+function InputDate({ register , label , name , required , error , minDate ="" , maxDate ="" , watch , limitDays  }) {
     const values = watch();
+    const getMaxDate = ()=>{
+        // Si no se provee una fecha máxima, usamos la fecha actual
+        const baseMaxDate = new Date(values[maxDate] || new Date());
+        if (!limitDays) {
+            return baseMaxDate;
+        }
+        // Calculamos la fecha máxima teniendo en cuenta limitDate
+        return new Date(baseMaxDate.getTime() - limitDays * 24 * 60 * 60 * 1000);
+    };
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "col-5",
         children: [
@@ -341,7 +350,7 @@ function InputDate({ register , label , name , required , error , minDate ="" , 
                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                         type: "datetime-local",
                         min: new Date(values[minDate] || null).toISOString().slice(0, 16),
-                        max: new Date(values[maxDate] || new Date()).toISOString().slice(0, 16),
+                        max: getMaxDate().toISOString().slice(0, 16),
                         className: `w-100 form-control my-2 fs-5 m-0 ${error && "border-danger "}`,
                         ...register(name, {
                             required
@@ -852,7 +861,7 @@ function InputRange({ label , name , error , maxRange =10 , setValue , register 
 
 /***/ }),
 
-/***/ 5955:
+/***/ 7367:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
@@ -1038,35 +1047,113 @@ function InputSubtitle({ register , label , name , required , error , subLabel  
 
 /***/ }),
 
-/***/ 9521:
+/***/ 7232:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ InputText)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ InputText)
+});
+
+// EXTERNAL MODULE: external "react/jsx-runtime"
+var jsx_runtime_ = __webpack_require__(997);
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(6689);
+// EXTERNAL MODULE: external "react-bootstrap"
+var external_react_bootstrap_ = __webpack_require__(358);
+// EXTERNAL MODULE: external "react-icons/fa"
+var fa_ = __webpack_require__(6290);
+// EXTERNAL MODULE: external "react-icons/bi"
+var bi_ = __webpack_require__(6652);
+;// CONCATENATED MODULE: ./src/components/FormGenerator/Components/Tooltip.tsx
 
 
-function InputText({ register , label , name , required , error , subLabel , disabled , visible , watch  }) {
+
+
+
+function Tooltip({ tooltip  }) {
+    const [show, setShow] = (0,external_react_.useState)(false);
+    const target = (0,external_react_.useRef)(null);
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
+        children: [
+            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                ref: target,
+                onClick: ()=>setShow(!show),
+                children: /*#__PURE__*/ jsx_runtime_.jsx(fa_.FaLightbulb, {})
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Overlay, {
+                target: target.current,
+                show: show,
+                placement: "bottom",
+                children: ({ placement: _placement , arrowProps: _arrowProps , show: _show , popper: _popper , hasDoneInitialMeasure: _hasDoneInitialMeasure , ...props })=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        ...props,
+                        style: {
+                            position: "absolute",
+                            backgroundColor: "#f8f8f8",
+                            padding: "10px",
+                            paddingRight: 30,
+                            color: "black",
+                            maxWidth: 300,
+                            borderRadius: 3,
+                            ...props.style
+                        },
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                onClick: ()=>setShow(false),
+                                style: {
+                                    position: "absolute",
+                                    top: 7,
+                                    right: 10,
+                                    cursor: "pointer"
+                                },
+                                children: /*#__PURE__*/ jsx_runtime_.jsx(bi_.BiXCircle, {
+                                    size: 20
+                                })
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                style: {
+                                    fontWeight: 600
+                                },
+                                children: tooltip.title
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                children: tooltip.content
+                            })
+                        ]
+                    })
+            })
+        ]
+    });
+}
+
+;// CONCATENATED MODULE: ./src/components/FormGenerator/Fields/InputText.tsx
+
+
+
+function InputText({ register , label , name , required , error , subLabel , disabled , visible , watch , tooltip  }) {
+    const [show, setShow] = (0,external_react_.useState)(false);
+    const target = (0,external_react_.useRef)(null);
     const values = watch();
-    if (visible && !values[visible]) return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    if (visible && !values[visible]) return /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
         children: " "
     });
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
-                className: `${error && "text-danger"} title-form-generator`,
-                htmlFor: name,
-                children: label
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("label", {
+                className: `${error && "text-danger"} title-form-generator d-flex position-relative `,
+                children: [
+                    label,
+                    tooltip && /*#__PURE__*/ jsx_runtime_.jsx(Tooltip, {
+                        tooltip: tooltip
+                    })
+                ]
             }),
-            subLabel === "" ? null : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+            subLabel === "" ? null : /*#__PURE__*/ jsx_runtime_.jsx("p", {
                 className: ` text-secondary fs-6 mb-0 ${error && "text-danger"}`,
                 children: subLabel
             }),
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
+            /*#__PURE__*/ jsx_runtime_.jsx("input", {
                 id: name,
                 name: name,
                 disabled: disabled,
@@ -1254,7 +1341,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */   "ek": () => (/* binding */ isHttp),
 /* harmony export */   "wf": () => (/* binding */ handleGetFiles)
 /* harmony export */ });
-/* harmony import */ var _Fields_InputText__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9521);
+/* harmony import */ var _Fields_InputText__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7232);
 /* harmony import */ var _Fields_InputEmail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3844);
 /* harmony import */ var _Fields_InputCheckbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9829);
 /* harmony import */ var _Fields_InputPassword__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2064);
@@ -1264,7 +1351,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _Fields_inputSelect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(211);
 /* harmony import */ var _Fields_InputFile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4743);
 /* harmony import */ var _Fields_InputTextarea__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7599);
-/* harmony import */ var _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(5955);
+/* harmony import */ var _Fields_InputSelectItems__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(7367);
 /* harmony import */ var _Fields_InputSubtitle__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(5938);
 /* harmony import */ var _Fields_InputSliser__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(2536);
 /* harmony import */ var _Fields_InputDate__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(5343);

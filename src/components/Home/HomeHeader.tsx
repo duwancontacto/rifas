@@ -46,7 +46,7 @@ export default function HomeHeader() {
 
               <div className="d-block d-md-flex flex-wrap  pb-5 ">
                 {rafflesFeature[0] && (
-                  <div className=" p-3 shadow  col-12 col-md-5 mx-0 me-4 mt-4 mt-md-0 ">
+                  <div className=" p-3 shadow  col-12 col-md-5 mx-0 me-4 mt-4 mt-md-0 position-relative ">
                     <h6 className="raffles-title-card ">
                       {rafflesFeature[0]?.name}
                     </h6>
@@ -59,29 +59,44 @@ export default function HomeHeader() {
                       {raisedPercent}% ${" "}
                       {parseNumber(rafflesFeature[0]?.raised || 0)} recaudado
                     </p>
-                    <button
-                      disabled={Number(raisedPercent) === 100}
-                      className="btn fs-6 btn-pink w-100"
-                      onClick={() =>
-                        router.push(`/rifas/${rafflesFeature[0]?.id}`)
-                      }
-                    >
-                      Comprar boleto
-                    </button>
 
-                    <button
-                      className="btn fs-6 btn-border-pink w-100 mt-2"
-                      onClick={() =>
-                        router.push(`/rifas/detalles/${rafflesFeature[0]?.id}`)
-                      }
+                    <div style={{ height: 90 }} />
+                    <div
+                      className="position-absolute "
+                      style={{
+                        bottom: 10,
+                        left: 0,
+                        right: 0,
+                        margin: "0 auto",
+                        width: "90%",
+                      }}
                     >
-                      Ver detalles
-                    </button>
+                      <button
+                        disabled={Number(raisedPercent) === 100}
+                        className="btn fs-6 btn-pink w-100"
+                        onClick={() =>
+                          router.push(`/rifas/${rafflesFeature[0]?.id}`)
+                        }
+                      >
+                        Comprar boleto
+                      </button>
+
+                      <button
+                        className="btn fs-6 btn-border-pink w-100 mt-2"
+                        onClick={() =>
+                          router.push(
+                            `/rifas/detalles/${rafflesFeature[0]?.id}`
+                          )
+                        }
+                      >
+                        Ver detalles
+                      </button>
+                    </div>
                   </div>
                 )}
 
                 {rafflesFeature[1] && (
-                  <div className=" p-3 shadow  col-12 col-md-5 mx-0 me-4  mt-4 mt-md-0 ">
+                  <div className=" p-3 shadow  col-12 col-md-5 mx-0 me-4  mt-4 mt-md-0  position-relative ">
                     <h6 className="raffles-title-card ">
                       {rafflesFeature[1]?.name}
                     </h6>
@@ -94,23 +109,39 @@ export default function HomeHeader() {
                       {raisedPercent2}% ${" "}
                       {parseNumber(rafflesFeature[1]?.raised || 0)} recaudado
                     </p>
-                    <button
-                      disabled={Number(raisedPercent2) === 100}
-                      className="btn fs-6 btn-pink w-100"
-                      onClick={() =>
-                        router.push(`/rifas/${rafflesFeature[1]?.id}`)
-                      }
+
+                    <div style={{ height: 90 }} />
+
+                    <div
+                      className="position-absolute "
+                      style={{
+                        bottom: 10,
+                        left: 0,
+                        right: 0,
+                        margin: "0 auto",
+                        width: "90%",
+                      }}
                     >
-                      Comprar boleto
-                    </button>
-                    <button
-                      className="btn fs-6 btn-border-pink w-100 mt-2"
-                      onClick={() =>
-                        router.push(`/rifas/detalles/${rafflesFeature[1]?.id}`)
-                      }
-                    >
-                      Ver detalles
-                    </button>
+                      <button
+                        disabled={Number(raisedPercent2) === 100}
+                        className="btn fs-6 btn-pink w-100"
+                        onClick={() =>
+                          router.push(`/rifas/${rafflesFeature[1]?.id}`)
+                        }
+                      >
+                        Comprar boleto
+                      </button>
+                      <button
+                        className="btn fs-6 btn-border-pink w-100 mt-2"
+                        onClick={() =>
+                          router.push(
+                            `/rifas/detalles/${rafflesFeature[1]?.id}`
+                          )
+                        }
+                      >
+                        Ver detalles
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

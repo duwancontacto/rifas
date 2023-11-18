@@ -75,6 +75,11 @@ export const registerFields: Field[] = [
     required: true,
     name: "account_owner",
     type: "text",
+    tooltip: {
+      title: "Para que usaran mi cuenta?",
+      content:
+        "Para mayor transparencia y seguridad. solicitamos una cuenta bancaria para recibir los fondos generados de las rifas.",
+    },
   },
   {
     label: "Nombre del Banco*",

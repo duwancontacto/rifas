@@ -35,7 +35,11 @@ export default function AuthWrapper({ children }: Props) {
   };
 
   useEffect(() => {
-    if (validateAuthPath(router.pathname, authenticated)) router.push("/");
+    if (!authenticated && router.pathname === "/rifas/[id]") {
+      router.push("/rifas/verificacion");
+    } else {
+      if (validateAuthPath(router.pathname, authenticated)) router.push("/");
+    }
 
     //eslint-disable-next-line
   }, [router.pathname, authenticated]);

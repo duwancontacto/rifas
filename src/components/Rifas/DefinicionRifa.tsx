@@ -53,6 +53,7 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
       required: true,
       type: "date",
       maxDate: "end_date",
+      limitDays: 2,
     },
 
     {

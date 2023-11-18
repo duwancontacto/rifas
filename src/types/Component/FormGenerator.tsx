@@ -11,13 +11,14 @@ export interface Field {
   createTitle?: string;
   selectTitle?: string;
   subLabel?: string;
+  limitDays?: number;
   disabledStyle?: boolean;
   marks?: any;
   maxRange?: number;
   customChange?: any;
   minDate?: string;
   maxDate?: string;
-  tooltip?: string;
+  tooltip?: { title: string; content: string };
   disabled?: boolean;
   visible?: string;
   validate?: (value: string, payload: any) => void;

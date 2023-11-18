@@ -117,6 +117,11 @@ export default function DashboardProfile({ nextStep }: any) {
       name: "account_owner",
       type: "text",
       default: filterAssociation?.account_owner,
+      tooltip: {
+        title: "Para que usaran mi cuenta?",
+        content:
+          "Para mayor transparencia y seguridad. solicitamos una cuenta bancaria para recibir los fondos generados de las rifas.",
+      },
     },
     {
       label: "Nombre del Banco*",

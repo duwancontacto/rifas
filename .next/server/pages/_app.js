@@ -72,7 +72,11 @@ function AuthWrapper({ children  }) {
         setTimeout(()=>setLoading(false), 200);
     };
     (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
-        if ((0,_helper__WEBPACK_IMPORTED_MODULE_8__/* .validateAuthPath */ .D)(router.pathname, authenticated)) router.push("/");
+        if (!authenticated && router.pathname === "/rifas/[id]") {
+            router.push("/rifas/verificacion");
+        } else {
+            if ((0,_helper__WEBPACK_IMPORTED_MODULE_8__/* .validateAuthPath */ .D)(router.pathname, authenticated)) router.push("/");
+        }
     //eslint-disable-next-line
     }, [
         router.pathname,
