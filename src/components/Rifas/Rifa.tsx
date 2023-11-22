@@ -70,7 +70,7 @@ export default function Rifa({ all }: { all?: boolean }) {
             <p className="fs-3 mt-4 mt-md-0 raffle-container-title">
               Recaudado
             </p>
-            <div className="raffle-container-textinformation3">
+            <div className="raffle-container-textinformation3 flex-column flex-lg-row">
               <PercentageChart percentage={raisedPercent} />
               <p className="ps-2 m-0 raffle-container-textinformation  ">
                 {raisedPercent}%
@@ -121,7 +121,7 @@ export default function Rifa({ all }: { all?: boolean }) {
             </div>
             <div className=" border-bottom border-2  my-3 position-relative "></div>
 
-            <div className="d-flex  justify-content-between text-start me-3   ">
+            <div className=" d-flex flex-column flex-lg-row justify-content-center  justify-content-lg-between text-start me-3   ">
               <div className="">
                 <h6 className=" raffle-container-finish">
                   La rifa termina en:

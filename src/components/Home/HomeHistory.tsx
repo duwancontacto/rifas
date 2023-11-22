@@ -21,7 +21,7 @@ export default function HomeHistory() {
         <Image
           src={historiasFondo}
           alt="fondo"
-          className=" mx-auto d-block rounded "
+          className=" mx-auto d-block rounded w-100"
         />
       </div>
     </section>

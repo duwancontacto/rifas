@@ -1,25 +1,7 @@
 {
   "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
-  "/contacto": "pages/contacto.html",
-  "/crear_asociacion": "pages/crear_asociacion.html",
-  "/dashboard/[id]": "pages/dashboard/[id].html",
-  "/dashboard": "pages/dashboard.html",
-  "/frequentQuestions": "pages/frequentQuestions.html",
-  "/donaciones": "pages/donaciones.html",
-  "/login": "pages/login.html",
-  "/": "pages/index.html",
-  "/nosotros": "pages/nosotros.html",
-  "/privacyNotice": "pages/privacyNotice.html",
-  "/profile": "pages/profile.html",
-  "/rifas/[id]": "pages/rifas/[id].html",
-  "/registro": "pages/registro.html",
-  "/rifas/crear_rifas": "pages/rifas/crear_rifas.html",
-  "/rifas/detalles/[id]": "pages/rifas/detalles/[id].html",
   "/_error": "pages/_error.js",
-  "/rifas": "pages/rifas.html",
-  "/rifas/verificacion": "pages/rifas/verificacion.html",
-  "/terminosCondiciones": "pages/terminosCondiciones.html",
-  "/sitios/[id]": "pages/sitios/[id].html",
-  "/404": "pages/404.html"
+  "/_document": "pages/_document.js",
+  "/rifas": "pages/rifas.js",
+  "/": "pages/index.js"
 }

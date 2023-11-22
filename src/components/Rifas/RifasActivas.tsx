@@ -117,7 +117,7 @@ export default function RifasActivas({
         </div>
 
         {all ? (
-          <div className="d-flex flex-wrap justify-content-center justify-content-lg-start  ">
+          <div className="d-block d-md-flex flex-md-wrap justify-content-center justify-content-md-start  ">
             {filterRaffles.map((raffle: RafflesI, index: number) => (
               <div
                 key={index}
@@ -151,6 +151,7 @@ export default function RifasActivas({
                     {getPercetRaised(raffle)}%{" "}
                     {parseNumber(raffle?.raised || 0)} recaudado
                   </p>
+                  {/* <div style={{ height: 130 }}> .</div> */}
                   <div
                     className="position-absolute "
                     style={{
