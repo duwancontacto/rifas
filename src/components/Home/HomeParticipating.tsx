@@ -29,16 +29,14 @@ export default function HomeParticipating() {
         ¡te convierte en un ganador!
       </p>
 
-      <div className="d-flex justify-content-between  flex-wrap row mt-5 ">
+      <div className="d-flex justify-content-center   flex-wrap row mt-5 ">
         {options.map((option, index) => (
-          <div
-            key={index}
-            className=" mx-0 mx-lg-2 mt-5 col-12 col-sm-6 col-lg-2 "
-          >
+          <div key={index} className=" mx-0 mx-lg-2 mt-5 col-6  col-lg-2 ">
             <Image
               src={option.icon}
               className=" w-50 h-50  mx-auto d-block "
               alt={`icono-${index}`}
+              style={{ objectFit: "contain" }}
             />
             <p className="text-center text-partcipating mt-3 ">
               {option.label}
