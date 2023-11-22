@@ -1,9 +1,1 @@
-self.__NEXT_FONT_MANIFEST={
-  "pages": {
-    "/rifas": [],
-    "/": []
-  },
-  "app": {},
-  "appUsingSizeAdjust": false,
-  "pagesUsingSizeAdjust": false
-}
+self.__NEXT_FONT_MANIFEST={pages:{"/":[],"/nosotros":[],"/rifas/[id]":[],"/rifas/detalles/[id]":[],"/rifas":[],"/sitios/[id]":[]},app:{},appUsingSizeAdjust:!1,pagesUsingSizeAdjust:!1};
